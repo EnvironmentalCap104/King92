@@ -7716,10 +7716,24 @@ campaignTrail_temp.answer_feedback_json = [
 
 campaignTrail_temp.candidate_image_url = "https://i.imgur.com/G4LmoFA.png";
 campaignTrail_temp.running_mate_image_url = "https://i.imgur.com/8qhrwNv.png";
-campaignTrail_temp.candidate_last_name = "King";
-campaignTrail_temp.running_mate_last_name = "'92";
+campaignTrail_temp.candidate_last_name = "";
+campaignTrail_temp.running_mate_last_name = "";
 
-
+const customStyling = document.createElement("style");
+  customStyling.innerHTML = `
+  #campaign_sign {
+      background-image: url("https://i.imgur.com/rdI8S0E.png");
+      background-size: cover;
+      border-color: #c9c9c9;    
+      border-width: .01em;
+      margin: 0.1 auto;
+      background-position: center;
+      width: 100%; 
+      height: 110px; 
+      margin-left: -0.07em;
+    }
+    `;
+document.head.appendChild(customStyling);
 
 campaignTrail_temp.jet_data = [{
     "nicknames": {
@@ -7730,8 +7744,8 @@ campaignTrail_temp.jet_data = [{
     },
     "banner_enabled": true,
     "banner_data": {
-        "canName": "King",
-        "runName": "'92",
+        "canName": "",
+        "runName": "",
         "canImage": "https://i.imgur.com/G4LmoFA.png",
         "runImage": "https://i.imgur.com/8qhrwNv.png"
     },
