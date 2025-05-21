@@ -130,7 +130,7 @@ campaignTrail_temp.questions_json = [
         "pk": 727,
         "fields": {
             "priority": 4,
-            "description": "The Bush campaign is highlighting the pollution in Boston Harbor to counter your claims of a Massachusetts Miracle. How will you respond?",
+            "description": "You’ve seen it on the news and polls. The third candidate in this election, businessman extraordinaire Ross Perot, is really struggling. He’s had accusations of pushing loyalty oaths on his staff and the disastrous “You people” meeting with the NAACP that made you cringe. Just looking at it, he’s clearly faltering.",
             "likelihood": 1
         }
     },
@@ -472,7 +472,7 @@ campaignTrail_temp.answers_json = [
         "pk": 4443,
         "fields": {
             "question": 727,
-            "description": "We will point out that the Reagan EPA is chiefly at fault for the lack of funds and action in that case, and we'll attack Bush's dishonesty."
+            "description": "I think that no matter what he says, like millions of Americans, Mr. Perot just doesn’t know. We’ll reach out to him. We both share the same inspiration for America for it not to sell its workers livelihood. If we can agree on this, then a more united fight can be brought against President Bush."
         }
     },
     {
@@ -480,15 +480,7 @@ campaignTrail_temp.answers_json = [
         "pk": 4444,
         "fields": {
             "question": 727,
-            "description": "I think it would make a good TV ad if we went to Texas and spoke with some of the people who have been put out of work by the oil crash there. Let's ask them how they feel about the Reagan economy."
-        }
-    },
-    {
-        "model": "campaign_trail.answer",
-        "pk": 4445,
-        "fields": {
-            "question": 727,
-            "description": "It's important to remain above the fray and continue with the positive message of our campaign."
+            "description": "While all movements deserve all the support they can get, Mr. Perot is simply completely out of touch with the struggle of workers that don’t happen to also be white. We don’t need his support, we don’t want his support, we shall overcome without a closeted racist in our midst."
         }
     },
     {
@@ -5901,8 +5893,8 @@ campaignTrail_temp.answer_score_global_json = [
         "fields": {
             "answer": 4443,
             "candidate": 153,
-            "affected_candidate": 153,
-            "global_multiplier": -0.0175
+            "affected_candidate": 154,
+            "global_multiplier": -100
         }
     },
     {
@@ -5910,19 +5902,9 @@ campaignTrail_temp.answer_score_global_json = [
         "pk": 2272,
         "fields": {
             "answer": 4444,
-            "candidate": 153,
-            "affected_candidate": 153,
-            "global_multiplier": -0.011
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_global",
-        "pk": 2273,
-        "fields": {
-            "answer": 4445,
-            "candidate": 153,
-            "affected_candidate": 153,
-            "global_multiplier": -0.03
+            "candidate": 152,
+            "affected_candidate": 154,
+            "global_multiplier": -100
         }
     },
     {
@@ -6384,6 +6366,86 @@ campaignTrail_temp.answer_score_global_json = [
             "affected_candidate": 154,
             "global_multiplier": 5
         }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 15420,
+        "fields": {
+            "answer": 4464,
+            "candidate": 152,
+            "affected_candidate": 154,
+            "global_multiplier": -1.5
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 15421,
+        "fields": {
+            "answer": 4464,
+            "candidate": 153,
+            "affected_candidate": 154,
+            "global_multiplier": -1.5
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 15422,
+        "fields": {
+            "answer": 4465,
+            "candidate": 152,
+            "affected_candidate": 154,
+            "global_multiplier": -1.5
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 15423,
+        "fields": {
+            "answer": 4465,
+            "candidate": 153,
+            "affected_candidate": 154,
+            "global_multiplier": -1.5
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 15424,
+        "fields": {
+            "answer": 15387,
+            "candidate": 152,
+            "affected_candidate": 154,
+            "global_multiplier": -1.5
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 15425,
+        "fields": {
+            "answer": 15387,
+            "candidate": 153,
+            "affected_candidate": 154,
+            "global_multiplier": -1.5
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 15427,
+        "fields": {
+            "answer": 4444,
+            "candidate": 153,
+            "affected_candidate": 154,
+            "global_multiplier": -100
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 15428,
+        "fields": {
+            "answer": 4443,
+            "candidate": 153,
+            "affected_candidate": 153,
+            "global_multiplier": 0.015
+        }
     }
 ]
 
@@ -6815,6 +6877,16 @@ campaignTrail_temp.answer_score_issue_json = [
             "answer": 4516,
             "issue": 59,
             "issue_score": 0.65,
+            "issue_importance": 10
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_issue",
+        "pk": 15429,
+        "fields": {
+            "answer": 4443,
+            "issue": 58,
+            "issue_score": 0.45,
             "issue_importance": 10
         }
     }
@@ -7556,16 +7628,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 4444,
             "candidate": 153,
-            "answer_feedback": "This is a gutsy move, but people get the message. In any case, at least they're looking at your face instead of a toxic waste dump."
-        }
-    },
-    {
-        "model": "campaign_trail.answer_feedback",
-        "pk": 1918,
-        "fields": {
-            "answer": 4445,
-            "candidate": 153,
-            "answer_feedback": "Many observers believe that you are too cavalier about the Republican attack machine."
+            "answer_feedback": "Ross would drop a few days afterward. It was a rough ride with him as many of his supporters expected to drive him to the White House. Still, those disappointed in Perot found a great substitute in you when it came to bring down the dragon. Let’s hope it keeps at that."
         }
     },
     {
@@ -8007,6 +8070,15 @@ campaignTrail_temp.answer_feedback_json = [
             "answer": 4423,
             "candidate": 153,
             "answer_feedback": "No matter what the Bush administration has been trying to push forward, you both are more than acquainted with the levers of powers. Rapidly, that focus on competency hurt him instead of you as Vice president Dan Quayle will always remain its antithesis."
+        }
+    },
+    {
+        "model": "campaign_trail.answer_feedback",
+        "pk": 15426,
+        "fields": {
+            "answer": 4443,
+            "candidate": 153,
+            "answer_feedback": "Ross Perot outdoes your expectations. He decided to drop out and endorse you. As he put it, he said that you “Got the Juice” and that you can bring America out of a run toward the abyss. Not every man that would have voted for him is going to vote for you now but it does secure you a nice lead."
         }
     }
 ]
