@@ -1172,6 +1172,22 @@ campaignTrail_temp.answers_json = [
             "question": 15455,
             "description": "California has 54 electoral votes, and it would be foolish for us to not contest a state that large. We need to mobilize Blacks and Latinos in the big cities to come out and vote. While we're at it, we can make stops in some of the Southwestern states."
         }
+    },
+    {
+        "model": "campaign_trail.answer",
+        "pk": 15632,
+        "fields": {
+            "question": 15454,
+            "description": "We see in front us the acts of those that hide their illegal act against the nation as being for the greater good. President Bush was a driving part in the crack trade he himself condemned, and this man is both a liar and a hypocrite."
+        }
+    },
+    {
+        "model": "campaign_trail.answer",
+        "pk": 15633,
+        "fields": {
+            "question": 15454,
+            "description": "President Bush always showed himself as the president that was tough on drugs, and yet proof shows he was complicit in its proliferation. I always fought against such a trade without discrimination and my record proves it. This is a battle for the conscience of America."
+        }
     }
 ]
 
@@ -6406,7 +6422,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 4523,
             "candidate": 153,
             "affected_candidate": 153,
-            "global_multiplier": 0.005
+            "global_multiplier": 0.025
         }
     },
     {
@@ -6566,7 +6582,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 4525,
             "candidate": 153,
             "affected_candidate": 153,
-            "global_multiplier": 0.025
+            "global_multiplier": 0.01
         }
     },
     {
@@ -6946,7 +6962,27 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 15462,
             "candidate": 153,
             "affected_candidate": 153,
-            "global_multiplier": 0.06
+            "global_multiplier": 0.05
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 15635,
+        "fields": {
+            "answer": 15632,
+            "candidate": 153,
+            "affected_candidate": 153,
+            "global_multiplier": 0.035
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 15637,
+        "fields": {
+            "answer": 15633,
+            "candidate": 153,
+            "affected_candidate": 153,
+            "global_multiplier": 0.075
         }
     }
 ]
@@ -9605,6 +9641,24 @@ campaignTrail_temp.answer_feedback_json = [
             "answer": 15604,
             "candidate": 153,
             "answer_feedback": "California is probably the most important of this election considering its size. Even then, some nearby states can be competitive as well."
+        }
+    },
+    {
+        "model": "campaign_trail.answer_feedback",
+        "pk": 15634,
+        "fields": {
+            "answer": 15632,
+            "candidate": 153,
+            "answer_feedback": "You probably didn’t need to add in so much more to the condemnation, many were already ready to crucify him, especially those that don’t usually vote."
+        }
+    },
+    {
+        "model": "campaign_trail.answer_feedback",
+        "pk": 15636,
+        "fields": {
+            "answer": 15633,
+            "candidate": 153,
+            "answer_feedback": "This is probably as far as you could go without getting too much of a backlash while motivating people to vote for you. It seems like your decades of fighting the war on drugs are finally paying off."
         }
     }
 ]
