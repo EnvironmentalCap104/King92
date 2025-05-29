@@ -9705,17 +9705,50 @@ campaignTrail_temp.jet_data = [{
 }
 ]
 
-campaignTrail_temp.cyoa = true
-cyoAdventure = function (a) {
-    ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
-    if (e.question_number == 12) {
-        window.setTimeout(e.vpSwitcher, 20)
-      }
+campaignTrail_temp.cyoa = true;
+var rockefeller = 0;
+var blanchard = 0;
+var gore = 0;
+var tsongas = 0;
+var biden = 0;
+var richards = 0;
+var brown = 0;
+var harkin = 0;
+var primary = 0;
+var nafta = 0;
+var iraq = 0;
+var radical = 0;        
+
+function getQuestionNumberFromPk(pk) {
+    return campaignTrail_temp.questions_json.map(q => q.pk).indexOf(pk) - 1;
 }
 
-    if(ans == 4515 || ans == 4516 || ans == 4517){
+cyoAdventure = function(a) {
+    var ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1];
 
-    campaignTrail_temp.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 155, \"fields\": {\"candidate\": 153, \"running_mate\": 159}}]");
+    if (ans === 4413) {
+        biden += 1;
+    }
+    if (ans === 4415) {
+        harkin += 1;
+    }
+    if (ans === 4449) {
+        rockefeller += 1;
+    }
+    if (ans === 4459) {
+        brown += 1;
+        tsongas += 1;
+    }
+    if (ans === 4501) {
+        brown += 1;
+    }
+    if (ans === 4502) {
+        richards += 1;
+    }
+
+    if(biden = 1 && (ans == 4515 || 4516 || 4517)){
+
+    campaignTrail_temp.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 155, \"fields\": {\"candidate\": 153, \"running_mate\": 50000}}]");
     
 }
 
@@ -9818,3 +9851,4 @@ var changeGameDisp = (hide) => {
     })
   
   }
+}
