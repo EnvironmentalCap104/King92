@@ -437,6 +437,14 @@ document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_wi
 
 campaignTrail_temp.opponents_default_json = JSON.parse("[{\"election\": 15, \"candidates\": [152, 153, 154]}]");
 
+var changeGameDisp = (hide) => {
+  disp = "";
+  if (hide) {
+    disp = "none";
+  }
+  document.getElementsByClassName("inner_window_w_desc")[0].style.display = disp
+};
+
 e.creditsPage = () => {
   credits_html = `
     <h3>Coding</h3>
