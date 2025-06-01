@@ -9725,6 +9725,9 @@ function getQuestionNumberFromPk(pk) {
 
 cyoAdventure = function(a) {
     var ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1];
+    if (e.question_number == 12) {
+        window.setTimeout(e.vpSwitcher, 20)
+      }
 
     if (ans === 4413) {
         biden += 1;
@@ -9745,11 +9748,6 @@ cyoAdventure = function(a) {
     if (ans === 4502) {
         richards += 1;
     }
-
-    if(biden = 1 && (ans == 4515 || 4516 || 4517)){
-
-    campaignTrail_temp.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 155, \"fields\": {\"candidate\": 153, \"running_mate\": 50000}}]");
-    
 }
 
 var changeGameDisp = (hide) => {
@@ -9851,4 +9849,3 @@ var changeGameDisp = (hide) => {
     })
   
   }
-}
