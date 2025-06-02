@@ -9945,6 +9945,8 @@ cyoAdventure = function(a) {
               $("#campaign_sign").html(`<p>${e.candidate_last_name}</p><p>${e.running_mate_last_name}</p>`);
               $("#running_mate_pic").attr("src", e.running_mate_image_url)
           }
+          $("#inner_window_4").remove();
+          changeGameDisp(false);
     }
     )
     }
