@@ -9706,28 +9706,30 @@ campaignTrail_temp.jet_data = [{
 ]
 
 campaignTrail_temp.cyoa = true;
+
+// Scoring for the various systems features in this mod
+  var iraq = 0
+  var primary = 0;
+  var nafta = 0;
+  var radicality = 0;
+
+// First you have to set variables for each running mate after the code with your questions/answers/feedback.
 var rockefeller = 0;
+var richards = 0;
 var blanchard = 0;
 var gore = 0;
-var tsongas = 0;
 var biden = 0;
-var richards = 0;
+var tsongas = 0;
 var brown = 0;
 var harkin = 0;
-var primary = 0;
-var nafta = 0;
-var iraq = 0;
-var radical = 0;        
+ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
 
-function getQuestionNumberFromPk(pk) {
-    return campaignTrail_temp.questions_json.map(q => q.pk).indexOf(pk) - 1;
-}
+// If you're mixing and matching CYOA functions, remember - you only need ONE cyoa function. Just put everything inside of one of these
+cyoAdventure = function (a) {
 
-cyoAdventure = function(a) {
-    var ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1];
-    if (e.question_number == 12) {
-        window.setTimeout(e.vpSwitcher, 20)
-      }
+  if (e.question_number == 12) {
+    window.setTimeout(e.vpSwitcher, 20)
+   }
 
     if (ans == 4413) {
         biden += 1;
@@ -9738,33 +9740,142 @@ cyoAdventure = function(a) {
     if (ans == 4449) {
         rockefeller += 1;
     }
-    if (ans == 4458) {
-        iraq += 1;
-    }
     if (ans == 4459) {
         brown += 1;
         tsongas += 1;
-        iraq -= 1;
     }
     if (ans == 4501) {
         brown += 1;
-        nafta -= 1;
     }
     if (ans == 4502) {
         richards += 1;
         tsongas += 1;
-        nafta += 1;
     }
+
+// The actual setting of the running mates
+if((ans == 4515 || ans == 4516 || ans == 4517) && rockefeller >= 1){
+    console.log("Rockefeller, 159");  
+    campaignTrail_temp.running_mate_json.push({
+      "model":"campaign_trail.running_mate",
+      "pk": 1,
+      "fields" : {
+          "candidate": 153,
+          "running_mate": 159
+       }
+   }
+  )
+}
+
+if((ans == 4515 || ans == 4516 || ans == 4517) && richards >= 1){
+    console.log("Richards, 160");  
+    campaignTrail_temp.running_mate_json.push({
+      "model":"campaign_trail.running_mate",
+      "pk": 1,
+      "fields" : {
+          "candidate": 153,
+          "running_mate": 160
+       }
+   }
+  )
+}
+
+if((ans == 4515 || ans == 4516 || ans == 4517) && gore >= 0){
+  console.log("Gore, 161");  
+  campaignTrail_temp.running_mate_json.push({
+    "model":"campaign_trail.running_mate",
+    "pk": 2,
+    "fields" : {
+        "candidate": 153,
+        "running_mate": 161
+     }
+ }
+)
+}
+
+if((ans == 4515 || ans == 4516 || ans == 4517) && harkin >= 1){
+  console.log("Harkin, 162");  
+  campaignTrail_temp.running_mate_json.push({
+    "model":"campaign_trail.running_mate",
+    "pk": 3,
+    "fields" : {
+        "candidate": 153,
+        "running_mate": 162
+     }
+ }
+)
+}
+
+if((ans == 4515 || ans == 4516 || ans == 4517) && biden >= 1){
+  console.log("Biden, 50000");  
+  campaignTrail_temp.running_mate_json.push({
+    "model":"campaign_trail.running_mate",
+    "pk": 4,
+    "fields" : {
+        "candidate": 153,
+        "running_mate": 50000
+     }
+ }
+)
+}
+
+if((ans == 4515 || ans == 4516 || ans == 4517) && tsongas >= 2){
+  console.log("Tsongas, 50001");  
+  campaignTrail_temp.running_mate_json.push({
+    "model":"campaign_trail.running_mate",
+    "pk": 5,
+    "fields" : {
+        "candidate": 153,
+        "running_mate": 50001
+     }
+ }
+)
+}
+
+if((ans == 4515 || ans == 4516 || ans == 4517) && brown >= 2){
+  console.log("Brown, 50002");  
+  campaignTrail_temp.running_mate_json.push({
+    "model":"campaign_trail.running_mate",
+    "pk": 6,
+    "fields" : {
+        "candidate": 153,
+        "running_mate": 50002
+     }
+ }
+)
+}
+
+if((ans == 4515 || ans == 4516 || ans == 4517) && blanchard >= 0){
+  console.log("Blanchard, 50003");  
+  campaignTrail_temp.running_mate_json.push({
+    "model":"campaign_trail.running_mate",
+    "pk": 7,
+    "fields" : {
+        "candidate": 153,
+        "running_mate": 50003
+     }
+ }
+)
+}
+  
     if (ans == 4524) {
         primary += 1;
     }
     if (ans == 4446) {
         primary += 1;
     }
-    if (ans == 4481) {
-        primary += 1;
+    if (ans == 4458) {
+        iraq += 1;
     }
-    if (ans == 4524) {
+    if (ans == 4459) {
+        iraq -= 1;
+    }
+    if (ans == 4502) {
+        nafta += 1;
+    }
+    if (ans == 4501) {
+        nafta -= 1;
+    }
+    if (ans == 4481) {
         primary += 1;
     }
     if (ans == 4440) {
@@ -9776,188 +9887,102 @@ cyoAdventure = function(a) {
     if (ans == 4464) {
         primary += 1;
     }
-  if((ans == 4515 || ans == 4516 || ans == 4517) && rockefeller >= 1){
-    console.log("Rockefeller, 159");  
-}
-  if((ans == 4515 || ans == 4516 || ans == 4517) && blanchard >= 0){
-    console.log("Blanchard, 50003");  
-    campaignTrail_temp.running_mate_json.push({
-      "model":"campaign_trail.running_mate",
-      "pk": 801,
-      "fields" : {
-          "candidate": 153,
-          "running_mate": 50003
-       }
-   }
-  )
-}
-  if((ans == 4515 || ans == 4516 || ans == 4517) && gore >= 0){
-    campaignTrail_temp.running_mate_json.push({
-      "model":"campaign_trail.running_mate",
-      "pk": 802,
-      "fields" : {
-          "candidate": 153,
-          "running_mate": 161
-       }
-   }
-  )
-}
-  if((ans == 4515 || ans == 4516 || ans == 4517) && brown >= 2){
-    console.log("Brown, 50002");  
-    campaignTrail_temp.running_mate_json.push({
-      "model":"campaign_trail.running_mate",
-      "pk": 803,
-      "fields" : {
-          "candidate": 153,
-          "running_mate": 50002
-       }
-   }
-  )
-}
-  if((ans == 4515 || ans == 4516 || ans == 4517) && tsongas >= 2){
-    console.log("Tsongas, 50001");  
-    campaignTrail_temp.running_mate_json.push({
-      "model":"campaign_trail.running_mate",
-      "pk": 804,
-      "fields" : {
-          "candidate": 153,
-          "running_mate": 50001
-       }
-   }
-  )
-}
-  if((ans == 4515 || ans == 4516 || ans == 4517) && richards >= 1){
-    console.log("Richards, 160");  
-    campaignTrail_temp.running_mate_json.push({
-      "model":"campaign_trail.running_mate",
-      "pk": 805,
-      "fields" : {
-          "candidate": 153,
-          "running_mate": 160
-       }
-   }
-  )
-}
-  if((ans == 4515 || ans == 4516 || ans == 4517) && biden >= 1){
-    console.log("Biden, 50000");  
-    campaignTrail_temp.running_mate_json.push({
-      "model":"campaign_trail.running_mate",
-      "pk": 806,
-      "fields" : {
-          "candidate": 153,
-          "running_mate": 50000
-       }
-   }
-  )
-}
-  if((ans == 4515 || ans == 4516 || ans == 4517) && harkin >= 1){
-    console.log("Harkin, 162");  
-    campaignTrail_temp.running_mate_json.push({
-      "model":"campaign_trail.running_mate",
-      "pk": 807,
-      "fields" : {
-          "candidate": 153,
-          "running_mate": 162
-       }
-   }
-  )  
-}
 }
 
-  var changeGameDisp = (hide) => {
-      disp = "";
-      if (hide) {
-        disp = "none";
-      }
-      Array.from(gameWindow.children).forEach(f=>{
-          if(!f.classList.contains("game_header") && (f.id != "main_content_area" || !$("#campaign_sign")[0])) 
-              f.style.display = disp
-      });
-    };
+var changeGameDisp = (hide) => {
+    disp = "";
+    if (hide) {
+      disp = "none";
+    }
+    Array.from(gameWindow.children).forEach(f=>{
+        if(!f.classList.contains("game_header") && (f.id != "main_content_area" || !$("#campaign_sign")[0])) 
+            f.style.display = disp
+    });
+};
+
+e.vpSwitcher = () => {
+    let potential_running_mate_pks = e.running_mate_json.filter(f=>f.fields.candidate == e.candidate_id).map(f=>f.fields.running_mate);
+    let pot_run_mat = potential_running_mate_pks.map(f=>e.candidate_json.find(_f=>_f.pk===f));
+    let running_mate_options = ``;
+    pot_run_mat.forEach(f=> {
+        running_mate_options += `<option value="${f.pk}">${f.fields.first_name} ${f.fields.last_name}</option>\n`
+    });
   
-    e.vpSwitcher = () => {
-      let potential_running_mate_pks = e.running_mate_json.filter(f=>f.fields.candidate == e.candidate_id).map(f=>f.fields.running_mate);
-      let pot_run_mat = potential_running_mate_pks.map(f=>e.candidate_json.find(_f=>_f.pk===f));
-      let running_mate_options = ``;
-      pot_run_mat.forEach(f=> {
-          running_mate_options += `<option value="${f.pk}">${f.fields.first_name} ${f.fields.last_name}</option>\n`
-      });
-    
-      let vp_html = `
-          <div id="running_mate_form">
-              <form name="running mate">
-                  <p></p>
-                  <h3>Please select your running mate:</h3> 
-                  <select name="running_mate_id" id="running_mate_id">
-                      ${running_mate_options}
-                  </select>
-                  <p></p>
-              </form>
-          </div>
-          <div class="person_description_window" id="running_mate_description_window">
-              <div class="person_image" id="running_mate_image"> <img src="${pot_run_mat[0].fields.image_url}" width="210" height="250"> </div>
-              <div class="person_summary" id="running_mate_summary">
-                  <ul>
-                      <li>Name: ${pot_run_mat[0].fields.first_name} ${pot_run_mat[0].fields.last_name}</li>
-                      <li>Party: ${pot_run_mat[0].fields.party}</li>
-                      <li>Home State: ${pot_run_mat[0].fields.state}</li>
-                  </ul>
-                  ${pot_run_mat[0].fields.description_as_running_mate}
-              </div>
-          </div>
-          <p> <button class="person_button" id="running_mate_id_button">Continue</button> </p>
-      `
-    
-      let vp_screen = document.createElement("div");
-      vp_screen.classList.add("inner_window_w_desc");
-      vp_screen.id = "inner_window_4";
-      vp_screen.innerHTML = vp_html;
-    
-      changeGameDisp(true);
-    
-      gameWindow.appendChild(vp_screen);
-    
-      // now we make the stuff do stuff!
-    
-      $("#running_mate_id").change((_e)=>{
-          _e.preventDefault()
-    
-          let value = Number($("#running_mate_id").val());
-          let i = potential_running_mate_pks.findIndex(f=>f === value);
-    
-          let screen_html = `
-              <div class="person_image" id="running_mate_image"> <img src="${pot_run_mat[i].fields.image_url}" width="210" height="250"> </div>
-              <div class="person_summary" id="running_mate_summary">
-                  <ul>
-                      <li>Name: ${pot_run_mat[i].fields.first_name} ${pot_run_mat[i].fields.last_name}</li>
-                      <li>Party: ${pot_run_mat[i].fields.party}</li>
-                      <li>Home State: ${pot_run_mat[i].fields.state}</li>
-                  </ul>
-                  ${pot_run_mat[i].fields.description_as_running_mate}
-              </div>
-          `
-    
-          $("#running_mate_description_window").html(screen_html);
-    
-      });
-      // VP selected!
-    
-      $("#running_mate_id_button").click((_e)=>{
-          _e.preventDefault();
-    
-          let value = Number($("#running_mate_id").val());
-          let i = potential_running_mate_pks.findIndex(f=>f === value);
-    
-          e.running_mate_last_name = pot_run_mat[i].fields.last_name;
-          e.running_mate_image_url = pot_run_mat[i].fields.image_url;
-          e.selected_running_mate = pot_run_mat[i];
-    
-          if ($("#campaign_sign")[0]) {
-              $("#campaign_sign").html(`<p>${e.candidate_last_name}</p><p>${e.running_mate_last_name}</p>`);
-              $("#running_mate_pic").attr("src", e.running_mate_image_url)
-          }
-          $("#inner_window_4").remove();
-          changeGameDisp(false);
-    }
-    )
-    }
+    let vp_html = `
+        <div id="running_mate_form">
+            <form name="running mate">
+                <p></p>
+                <h3>Please select your running mate:</h3> 
+                <select name="running_mate_id" id="running_mate_id">
+                    ${running_mate_options}
+                </select>
+                <p></p>
+            </form>
+        </div>
+        <div class="person_description_window" id="running_mate_description_window">
+            <div class="person_image" id="running_mate_image"> <img src="${pot_run_mat[0].fields.image_url}" width="210" height="250"> </div>
+            <div class="person_summary" id="running_mate_summary">
+                <ul>
+                    <li>Name: ${pot_run_mat[0].fields.first_name} ${pot_run_mat[0].fields.last_name}</li>
+                    <li>Party: ${pot_run_mat[0].fields.party}</li>
+                    <li>Home State: ${pot_run_mat[0].fields.state}</li>
+                </ul>
+                ${pot_run_mat[0].fields.description_as_running_mate}
+            </div>
+        </div>
+        <p> <button class="person_button" id="running_mate_id_button">Continue</button> </p>
+    `
+  
+    let vp_screen = document.createElement("div");
+    vp_screen.classList.add("inner_window_w_desc");
+    vp_screen.id = "inner_window_4";
+    vp_screen.innerHTML = vp_html;
+  
+    changeGameDisp(true);
+  
+    gameWindow.appendChild(vp_screen);
+  
+    // now we make the stuff do stuff!
+  
+    $("#running_mate_id").change((_e)=>{
+        _e.preventDefault()
+  
+        let value = Number($("#running_mate_id").val());
+        let i = potential_running_mate_pks.findIndex(f=>f === value);
+  
+        let screen_html = `
+            <div class="person_image" id="running_mate_image"> <img src="${pot_run_mat[i].fields.image_url}" width="210" height="250"> </div>
+            <div class="person_summary" id="running_mate_summary">
+                <ul>
+                    <li>Name: ${pot_run_mat[i].fields.first_name} ${pot_run_mat[i].fields.last_name}</li>
+                    <li>Party: ${pot_run_mat[i].fields.party}</li>
+                    <li>Home State: ${pot_run_mat[i].fields.state}</li>
+                </ul>
+                ${pot_run_mat[i].fields.description_as_running_mate}
+            </div>
+        `
+  
+        $("#running_mate_description_window").html(screen_html);
+  
+    });
+    // VP selected!
+  
+    $("#running_mate_id_button").click((_e)=>{
+        _e.preventDefault();
+  
+        let value = Number($("#running_mate_id").val());
+        let i = potential_running_mate_pks.findIndex(f=>f === value);
+  
+        e.running_mate_last_name = pot_run_mat[i].fields.last_name;
+        e.running_mate_image_url = pot_run_mat[i].fields.image_url;
+        e.selected_running_mate = pot_run_mat[i];
+  
+        if ($("#campaign_sign")[0]) {
+            $("#campaign_sign").html(`<p>${e.candidate_last_name}</p><p>${e.running_mate_last_name}</p>`);
+            $("#running_mate_pic").attr("src", e.running_mate_image_url)
+        }
+  
+        $("#inner_window_4").remove();
+        changeGameDisp(false);
+    })
+}
