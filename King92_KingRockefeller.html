@@ -9755,21 +9755,31 @@ cyoAdventure = function(a) {
         tsongas += 1;
         nafta += 1;
     }
+    if (ans == 4524) {
+        primary += 1;
+    }
+    if (ans == 4446) {
+        primary += 1;
+    }
+    if (ans == 4481) {
+        primary += 1;
+    }
+    if (ans == 4524) {
+        primary += 1;
+    }
+    if (ans == 4440) {
+        primary += 1;
+    }
+    if (ans == 4442) {
+        primary += 2;
+    }
+    if (ans == 4464) {
+        primary += 1;
+    }
   if((ans == 4515 || ans == 4516 || ans == 4517) && rockefeller >= 1){
-    campaignTrail_temp.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 800, \"fields\": {\"candidate\": 153, \"running_mate\": 159}}]");
     console.log("Rockefeller, 159");  
-    campaignTrail_temp.running_mate_json.push({
-      "model":"campaign_trail.running_mate",
-      "pk": 800,
-      "fields" : {
-          "candidate": 153,
-          "running_mate": 159
-       }
-   }
-  )
 }
   if((ans == 4515 || ans == 4516 || ans == 4517) && blanchard >= 0){
-    campaignTrail_temp.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 801, \"fields\": {\"candidate\": 153, \"running_mate\": 50003}}]");
     console.log("Blanchard, 50003");  
     campaignTrail_temp.running_mate_json.push({
       "model":"campaign_trail.running_mate",
@@ -9782,8 +9792,6 @@ cyoAdventure = function(a) {
   )
 }
   if((ans == 4515 || ans == 4516 || ans == 4517) && gore >= 0){
-    campaignTrail_temp.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 802, \"fields\": {\"candidate\": 153, \"running_mate\": 161}}]");
-     console.log("Gore, 161");  
     campaignTrail_temp.running_mate_json.push({
       "model":"campaign_trail.running_mate",
       "pk": 802,
@@ -9795,7 +9803,6 @@ cyoAdventure = function(a) {
   )
 }
   if((ans == 4515 || ans == 4516 || ans == 4517) && brown >= 2){
-    campaignTrail_temp.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 803, \"fields\": {\"candidate\": 153, \"running_mate\": 50002}}]");
     console.log("Brown, 50002");  
     campaignTrail_temp.running_mate_json.push({
       "model":"campaign_trail.running_mate",
@@ -9808,7 +9815,6 @@ cyoAdventure = function(a) {
   )
 }
   if((ans == 4515 || ans == 4516 || ans == 4517) && tsongas >= 2){
-    campaignTrail_temp.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 804, \"fields\": {\"candidate\": 153, \"running_mate\": 50001}}]");
     console.log("Tsongas, 50001");  
     campaignTrail_temp.running_mate_json.push({
       "model":"campaign_trail.running_mate",
@@ -9821,7 +9827,6 @@ cyoAdventure = function(a) {
   )
 }
   if((ans == 4515 || ans == 4516 || ans == 4517) && richards >= 1){
-    campaignTrail_temp.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 805, \"fields\": {\"candidate\": 153, \"running_mate\": 160}}]");
     console.log("Richards, 160");  
     campaignTrail_temp.running_mate_json.push({
       "model":"campaign_trail.running_mate",
@@ -9834,7 +9839,6 @@ cyoAdventure = function(a) {
   )
 }
   if((ans == 4515 || ans == 4516 || ans == 4517) && biden >= 1){
-    campaignTrail_temp.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 806, \"fields\": {\"candidate\": 153, \"running_mate\": 50000}}]");
     console.log("Biden, 50000");  
     campaignTrail_temp.running_mate_json.push({
       "model":"campaign_trail.running_mate",
@@ -9847,7 +9851,6 @@ cyoAdventure = function(a) {
   )
 }
   if((ans == 4515 || ans == 4516 || ans == 4517) && harkin >= 1){
-    campaignTrail_temp.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 807, \"fields\": {\"candidate\": 153, \"running_mate\": 162}}]");
     console.log("Harkin, 162");  
     campaignTrail_temp.running_mate_json.push({
       "model":"campaign_trail.running_mate",
@@ -9857,7 +9860,8 @@ cyoAdventure = function(a) {
           "running_mate": 162
        }
    }
-  )  }
+  )  
+}
 }
 
   var changeGameDisp = (hide) => {
