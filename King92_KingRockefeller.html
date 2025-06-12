@@ -10434,25 +10434,40 @@ cyoAdventure = function (a) {
     window.setTimeout(e.vpSwitcher, 20)
    }
 
+// Example of changing the image URL based on a variable
+function changeImage(newImgUrl) {
+imgUrl = newImgUrl;
+console.log("Imgur Success")
+updateStyling(imgUrl);  // Update the styling with the new image URL
+}
+
     if (ans == 4413) {
         biden += 1;
+        console.log ("BRANDON");
     }
     if (ans == 4415) {
         harkin += 1;
+        console.log ("BYAHHH");
     }
     if (ans == 4449) {
         rockefeller += 1;
+        console.log ("COUNTRY ROADS");
     }
     if (ans == 4459) {
         brown += 1;
+        console.log ("MOONBEAM");
         tsongas += 1;
+        console.log ("LYMPHOMA");
     }
     if (ans == 4501) {
         brown += 1;
+        console.log ("MOONBEAM");
     }
     if (ans == 4502) {
         richards += 1;
+        console.log ("GRANDMA");
         tsongas += 1;
+        console.log ("LYMPHOMA");
     }
 
 // The actual setting of the running mates
@@ -10482,7 +10497,7 @@ if((ans == 4515 || ans == 4516 || ans == 4517) && richards >= 1){
   )
 }
 
-if((ans == 4515 || ans == 4516 || ans == 4517) && gore >= 0){
+if(ans == 4515 || ans == 4516 || ans == 4517){
   console.log("Gore, 161");  
   campaignTrail_temp.running_mate_json.push({
     "model":"campaign_trail.running_mate",
@@ -10547,7 +10562,7 @@ if((ans == 4515 || ans == 4516 || ans == 4517) && brown >= 2){
 )
 }
 
-if((ans == 4515 || ans == 4516 || ans == 4517) && blanchard >= 0){
+if(ans == 4515 || ans == 4516 || ans == 4517){
   console.log("Blanchard, 50003");  
   campaignTrail_temp.running_mate_json.push({
     "model":"campaign_trail.running_mate",
@@ -10695,6 +10710,8 @@ e.vpSwitcher = () => {
                 "likelihood": 1
               }
             }
+            changeImage("https://i.imgur.com/BHzPf4K.png");
+            console.log ("Blanchard, 50003")
             }
           
             if(e.running_mate_last_name==="Gore"){
@@ -10708,6 +10725,8 @@ e.vpSwitcher = () => {
                 "likelihood": 1
               }
             }
+            changeImage("https://i.imgur.com/BHzPf4K.png");
+            console.log ("Gore, 161")
             }
             
             if(e.running_mate_last_name==="Tsongas"){
@@ -10721,6 +10740,8 @@ e.vpSwitcher = () => {
                 "likelihood": 1
               }
             }
+            changeImage("https://i.imgur.com/MrR7vqo.png");
+            console.log ("Tsongas, 50001")
             }
           
             if(e.running_mate_last_name==="Biden"){
@@ -10734,6 +10755,8 @@ e.vpSwitcher = () => {
                 "likelihood": 1
               }
             }
+            changeImage("https://i.imgur.com/BHzPf4K.png");
+            console.log ("Biden, 50000")
             }
           
             if(e.running_mate_last_name==="Richards"){
@@ -10747,6 +10770,8 @@ e.vpSwitcher = () => {
                 "likelihood": 1
               }
             }
+            changeImage("https://i.imgur.com/BHzPf4K.png");
+            console.log ("Richards, 160")
             }
           
             if(e.running_mate_last_name==="Brown"){
@@ -10760,6 +10785,8 @@ e.vpSwitcher = () => {
                 "likelihood": 1
               }
             }
+            changeImage("https://i.imgur.com/BHzPf4K.png");
+            console.log ("Brown, 50002")
             }
             if(e.running_mate_last_name==="Harkin"){
             console.log(campaignTrail_temp.questions_json[13])
@@ -10772,6 +10799,8 @@ e.vpSwitcher = () => {
                 "likelihood": 1
               }
             }
+            changeImage("https://i.imgur.com/BHzPf4K.png");
+            console.log ("Harkin, 162")
             }
         $("#inner_window_4").remove();
         changeGameDisp(false);
