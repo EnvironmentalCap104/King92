@@ -502,7 +502,16 @@ campaignTrail_temp.questions_json = [
               "description": "Since you began your campaign with Tom, one criticism that has been repeated over and over is that “King has no plan”. You’ve been preparing your exact plan on the critic of the way America is falling down following its current path toward its dominion by Capital. You simply have to bring it clear.",
               "likelihood": 1
           }
-            }
+            },
+      {
+          "model": "campaign_trail.question",
+          "pk": 20027,
+          "fields": {
+              "priority": 1,
+              "description": "To the surprise of many, you’ve proven yourself a supporter of the war in Iraq, a position that is only supported by a minority of people in your own party. As Bush has the coattail of his greatest victory behind it, how would you go about defeating him as a person supportive of such a conflict?",
+              "likelihood": 1
+          }
+            },
 ]
 
 campaignTrail_temp.answers_json = [
@@ -1890,6 +1899,30 @@ campaignTrail_temp.answers_json = [
           "fields": {
               "question": 20020,
               "description": "Let’s take further time to speak about our plan in our meetings by focusing on easily understood familiar events that all persons could understand. Then we’ll bring what we need to change and how we intended on doing it. With a clear link, all will be clear."
+          }
+            },
+{
+          "model": "campaign_trail.answer",
+          "pk": 21091,
+          "fields": {
+              "question": 20027,
+              "description": "The maintaining of the freedom of the people of Kuwait is something that we must never abandon. However, the lies that were brandished to accelerate the conflict are deeply troubling and disgusting. No good cause can justify lies."
+          }
+            },
+{
+          "model": "campaign_trail.answer",
+          "pk": 21092,
+          "fields": {
+              "question": 20027,
+              "description": "The war that began simply isn’t over. As Mr. Bush’s peace allowed helicopters to be used by Saddam, he has used them to crush the popular insurrection that could have seen that dictatorship fall. Even today, Saddam is gathering his strength. If nothing changed, we would have driven the wolf out to the home where it rests."
+          }
+            },
+{
+          "model": "campaign_trail.answer",
+          "pk": 21093,
+          "fields": {
+              "question": 20027,
+              "description": "I think that the people have already moved on from such a subject. It’s a meaningless waste of energy to fight in the terrain our adversary is favored. The finances of the people are on fire, that is what people want to hear, not far off lands."
           }
             }
 ]
@@ -8307,7 +8340,38 @@ campaignTrail_temp.answer_score_global_json = [
             "affected_candidate": 153,
             "global_multiplier": -0.04
         }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 23091,
+        "fields": {
+            "answer": 21091,
+            "candidate": 153,
+            "affected_candidate": 153,
+            "global_multiplier": 0.01
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 23092,
+        "fields": {
+            "answer": 21092,
+            "candidate": 153,
+            "affected_candidate": 153,
+            "global_multiplier": 0.01
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 23093,
+        "fields": {
+            "answer": 21093,
+            "candidate": 153,
+            "affected_candidate": 153,
+            "global_multiplier": -0.005
+        }
     }
+
 ]
 
 campaignTrail_temp.answer_score_issue_json = [
@@ -10190,7 +10254,28 @@ campaignTrail_temp.answer_score_issue_json = [
             "issue_score": 0.15,
             "issue_importance": 20
         }
+    },
+    {
+        "model": "campaign_trail.answer_score_issue",
+        "pk": 24135,
+        "fields": {
+            "answer": 21091,
+            "issue": 61,
+            "issue_score": 0.35,
+            "issue_importance": 10
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_issue",
+        "pk": 24136,
+        "fields": {
+            "answer": 21092,
+            "issue": 61,
+            "issue_score": -0.35,
+            "issue_importance": 10
+        }
     }
+
 ]
 
 campaignTrail_temp.answer_score_state_json = [
