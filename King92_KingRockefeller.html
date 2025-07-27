@@ -512,6 +512,24 @@ campaignTrail_temp.questions_json = [
               "likelihood": 1
           }
             },
+      {
+          "model": "campaign_trail.question",
+          "pk": 20028,
+          "fields": {
+              "priority": 1,
+              "description": "You did not expect him to get back, but just before the debates, Ross Perot would draw on a blitz that allowed him to debate with the two of you. Considering his straight talk and Bush’s unwillingness to debate even you, this town is not large enough for two cowboys.",
+              "likelihood": 1
+          }
+            },
+      {
+          "model": "campaign_trail.question",
+          "pk": 20041,
+          "fields": {
+              "priority": 1,
+              "description": "You’ve seen it on the news and polls. The third candidate in this election, businessman extraordinaire Ross Perot, is really struggling. He’s had accusations of pushing loyalty oaths on his staff and the disastrous “You people” meeting with the NAACP that made you cringe. Just looking at it, he’s clearly faltering.",
+              "likelihood": 1
+          }
+            }
 ]
 
 campaignTrail_temp.answers_json = [
@@ -1924,7 +1942,48 @@ campaignTrail_temp.answers_json = [
               "question": 20027,
               "description": "I think that the people have already moved on from such a subject. It’s a meaningless waste of energy to fight in the terrain our adversary is favored. The finances of the people are on fire, that is what people want to hear, not far off lands."
           }
-            }
+            },
+{
+          "model": "campaign_trail.answer",
+          "pk": 21094,
+          "fields": {
+              "question": 20028,
+              "description": "I know that Mr. Perot's main problem starts with a B. He’s the main adversary of both of us and honestly, I think we can only gain more from both uniting our forces against him. He has no chance of becoming president; why not help him help us?"
+          }
+            },
+{
+          "model": "campaign_trail.answer",
+          "pk": 21095,
+          "fields": {
+              "question": 20028,
+              "description": "I have not enough words to say about that man. Mr. Perot’s prejudices are true and total and if he can’t put himself in the same category as people of black skin, how can he call himself a candidate for all Americans?"
+          }
+            },
+{
+          "model": "campaign_trail.answer",
+          "pk": 21096,
+          "fields": {
+              "question": 20028,
+              "description": "I think the best recourse is to let the two of them duke it out and let them bicker on some meaningless question no one cares about and then strike hard on the two. This is where we would shine, showing how America is not to be beholden by the interest of millionaire white men."
+          }
+            },
+{
+          "model": "campaign_trail.answer",
+          "pk": 21097,
+          "fields": {
+              "question": 20028,
+              "description": "I think it would be best to simply edge our bets and be reactive. This is certainly going to be a particularly heated debate so let’s not get into the fire too quickly while never allowing them to burn us without recourse."
+          }
+            },
+{
+          "model": "campaign_trail.answer",
+          "pk": 21146,
+          "fields": {
+              "question": 20041,
+              "description": "His candidacy doesn’t deserve our attention. Mr. Perot is just another millionaire that thinks he has the solution to everything because he’s just that special. Let him struggle."
+          }
+            },
+
 ]
 
 campaignTrail_temp.states_json = [
@@ -8370,8 +8429,147 @@ campaignTrail_temp.answer_score_global_json = [
             "affected_candidate": 153,
             "global_multiplier": -0.005
         }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 23094,
+        "fields": {
+            "answer": 21094,
+            "candidate": 154,
+            "affected_candidate": 154,
+            "global_multiplier": 0.2
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 23095,
+        "fields": {
+            "answer": 21095,
+            "candidate": 153,
+            "affected_candidate": 153,
+            "global_multiplier": -0.035
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 23096,
+        "fields": {
+            "answer": 21096,
+            "candidate": 153,
+            "affected_candidate": 153,
+            "global_multiplier": 0.035
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 23149,
+        "fields": {
+            "answer": 21094,
+            "candidate": 152,
+            "affected_candidate": 154,
+            "global_multiplier": 1.5
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 23150,
+        "fields": {
+            "answer": 21094,
+            "candidate": 153,
+            "affected_candidate": 154,
+            "global_multiplier": 1.5
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 23151,
+        "fields": {
+            "answer": 21095,
+            "candidate": 152,
+            "affected_candidate": 154,
+            "global_multiplier": 1.5
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 23152,
+        "fields": {
+            "answer": 21095,
+            "candidate": 153,
+            "affected_candidate": 154,
+            "global_multiplier": 1.5
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 23153,
+        "fields": {
+            "answer": 21096,
+            "candidate": 152,
+            "affected_candidate": 154,
+            "global_multiplier": 1.5
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 23154,
+        "fields": {
+            "answer": 21096,
+            "candidate": 153,
+            "affected_candidate": 154,
+            "global_multiplier": 1.5
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 23155,
+        "fields": {
+            "answer": 21097,
+            "candidate": 152,
+            "affected_candidate": 154,
+            "global_multiplier": 1.5
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 23156,
+        "fields": {
+            "answer": 21097,
+            "candidate": 153,
+            "affected_candidate": 154,
+            "global_multiplier": 1.5
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 23146,
+        "fields": {
+            "answer": 21146,
+            "candidate": 153,
+            "affected_candidate": 154,
+            "global_multiplier": -100
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 23147,
+        "fields": {
+            "answer": 21146,
+            "candidate": 152,
+            "affected_candidate": 154,
+            "global_multiplier": -100
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 23148,
+        "fields": {
+            "answer": 21146,
+            "candidate": 153,
+            "affected_candidate": 153,
+            "global_multiplier": 0.005
+        }
     }
-
 ]
 
 campaignTrail_temp.answer_score_issue_json = [
@@ -14780,7 +14978,51 @@ campaignTrail_temp.answer_feedback_json = [
             "answer_feedback": "You have found something strange. Even as you speak in situations people understand - things that are close to them, something isn’t stitching. Some say it's manipulation, and some say they are different. Denial - that poison brought by Bush is in their blood."
         }
     },
-
+    {
+        "model": "campaign_trail.answer_feedback",
+        "pk": 22094,
+        "fields": {
+            "answer": 21094,
+            "candidate": 153,
+            "answer_feedback": "Not the best move. Perot would strike the hardest on Bush, but there was no truce against you. You ended up reaching a second place right along Bush as Perot took everyone by surprise, shocking the two-party system."
+        }
+    },
+    {
+        "model": "campaign_trail.answer_feedback",
+        "pk": 22095,
+        "fields": {
+            "answer": 21095,
+            "candidate": 153,
+            "answer_feedback": "Going for Perot’s throat is certainly a strategy, as he would waste his time trying to explain himself the gaffe back at the NAACP and would lose all steam. Still, as you played the race card, the unsuspected winner would be George Bush himself"
+        }
+    },
+    {
+        "model": "campaign_trail.answer_feedback",
+        "pk": 22096,
+        "fields": {
+            "answer": 21096,
+            "candidate": 153,
+            "answer_feedback": "Bush and Perot would begin to drone on and on about some personal slight nobody really cares about until it came to your time to speak. As you said it was quite clear who was above all this, they knew you had won."
+        }
+    },
+    {
+        "model": "campaign_trail.answer_feedback",
+        "pk": 22097,
+        "fields": {
+            "answer": 21097,
+            "candidate": 153,
+            "answer_feedback": "This would certainly be an entertaining debate for the public as all of you scored a few points here and there. Most people that supported their candidate said their favorite won but overall, nobody really did."
+        }
+    },
+    {
+        "model": "campaign_trail.answer_feedback",
+        "pk": 22146,
+        "fields": {
+            "answer": 21146,
+            "candidate": 153,
+            "answer_feedback": "Ross would drop a few days afterward. It was a rough ride with him, as many of his supporters expected to drive him to the White House. Still, those disappointed in Perot found a fine substitute in you when it came to bring down the dragon. Let’s hope it keeps at that."
+        }
+    }
 ]
 
 campaignTrail_temp.candidate_image_url = "https://i.imgur.com/G4LmoFA.png";
@@ -14922,7 +15164,7 @@ if((ans == 4515 || ans == 4516 || ans == 4517) && rockefeller >= 1){
             "running_mate": 159
          }
      }
-    )
+    ) 
 }
 
 if((ans == 4515 || ans == 4516 || ans == 4517) && richards >= 1){
@@ -15050,6 +15292,27 @@ if((ans == 4515 || ans == 4516 || ans == 4517) && brown >= 2){
     if (ans == 4464) {
         primary += 1;
     }
+
+    if (ans == 4502) {
+        campaignTrail_temp.questions_json[29] = {
+          "model": "campaign_trail.question",
+          "pk": 20028,
+          "fields": {
+              "priority": 1,
+              "description": "You did not expect him to get back, but just before the debates, Ross Perot would draw on a blitz that allowed him to debate with the two of you. Considering his straight talk and Bush’s unwillingness to debate even you, this town is not large enough for two cowboys.",
+              "likelihood": 1
+          }
+            }
+        campaignTrail_temp.questions_json[14] = {
+          "model": "campaign_trail.question",
+          "pk": 20041,
+          "fields": {
+              "priority": 1,
+              "description": "You’ve seen it on the news and polls. The third candidate in this election, businessman extraordinaire Ross Perot, is really struggling. He’s had accusations of pushing loyalty oaths on his staff and the disastrous “You people” meeting with the NAACP that made you cringe. Just looking at it, he’s clearly faltering.",
+              "likelihood": 1
+          }
+            }
+      }
 }
 
 var changeGameDisp = (hide) => {
