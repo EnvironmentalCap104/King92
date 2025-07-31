@@ -15050,42 +15050,7 @@ campaignTrail_temp.jet_data = [{
     "cyoa_data": {}
 }
 ]
-// Initial variable holding the image URL
-let imgUrl = "https://i.imgur.com/0mT1MWo.png";
 
-// Create a <style> element
-const customStyling = document.createElement("style");
-
-// Function to update the style based on the image URL
-function updateStyling(imgUrl) {
-customStyling.innerHTML = `
-    #campaign_sign {
-        background-image: url("${imgUrl}");
-        background-size: cover;
-        border-color: #c9c9c9;    
-        border-width: .01em;
-        margin: 1 auto;
-        font-size: 0em;
-        background-position: center;
-        width: 100%; 
-        height: 92px; 
-        margin-left: -0.07em;
-    }
-    `;
-}
-
-// Append the <style> element to the head of the document
-document.head.appendChild(customStyling);
-
-// Set the initial styling
-updateStyling(imgUrl);
-
-// Example of changing the image URL based on a variable
-function changeImage(newImgUrl) {
-imgUrl = newImgUrl;
-console.log("Imgur Success")
-updateStyling(imgUrl);  // Update the styling with the new image URL
-}
 
 
 campaignTrail_temp.cyoa = true;
@@ -15107,6 +15072,13 @@ var brown = 0;
 var harkin = 0;
 ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
 
+function ctsAchievement(achievement, difficultyChecker = true){
+	if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
+		if(campaignTrail_temp.CTS){
+		unlockAchievement(achievement);
+	}
+}
+    
 // If you're mixing and matching CYOA functions, remember - you only need ONE cyoa function. Just put everything inside of one of these
 cyoAdventure = function (a) {
 
@@ -15170,11 +15142,11 @@ if (campaignTrail_temp.question_number == 12 && harkin < 1) {
 
 // The actual setting of the running mates
 if((ans == 4515 || ans == 4516 || ans == 4517) && rockefeller >= 1){
-    console.log("Rockefeller, 159");  
-  e.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 800, \"fields\": {\"candidate\": 153, \"running_mate\": 159}}]");
+    console.log("Rockefeller, 159"); 
+    lockInNominee('rockefeller'); 
       campaignTrail_temp.running_mate_json.push({
         "model":"campaign_trail.running_mate",
-        "pk": 900,
+        "pk": 159,
         "fields" : {
             "candidate": 153,
             "running_mate": 159
@@ -15184,11 +15156,11 @@ if((ans == 4515 || ans == 4516 || ans == 4517) && rockefeller >= 1){
 }
 
 if((ans == 4515 || ans == 4516 || ans == 4517) && richards >= 1){
-    console.log("Richards, 160");  
-  e.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 801, \"fields\": {\"candidate\": 153, \"running_mate\": 160}}]");
+    console.log("Richards, 160");
+    lockInNominee('richards'); 
       campaignTrail_temp.running_mate_json.push({
         "model":"campaign_trail.running_mate",
-        "pk": 901,
+        "pk": 160,
         "fields" : {
             "candidate": 153,
             "running_mate": 160
@@ -15199,21 +15171,24 @@ if((ans == 4515 || ans == 4516 || ans == 4517) && richards >= 1){
 
 if(ans == 4412 || ans == 4413 || ans == 4414){
   console.log("Gore, 161");
-  console.log("Blanchard, 50003");
-  e.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 802, \"fields\": {\"candidate\": 153, \"running_mate\": 161}}]");
+    lockInNominee('gore'); 
       campaignTrail_temp.running_mate_json.push({
         "model":"campaign_trail.running_mate",
-        "pk": 902,
+        "pk": 161,
         "fields" : {
             "candidate": 153,
             "running_mate": 161
          }
      }
     )
-  e.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 803, \"fields\": {\"candidate\": 153, \"running_mate\": 50003}}]");
+}
+
+if(ans == 4412 || ans == 4413 || ans == 4414){
+      console.log("Blanchard, 50003");
+    lockInNominee('blanchard'); 
       campaignTrail_temp.running_mate_json.push({
         "model":"campaign_trail.running_mate",
-        "pk": 903,
+        "pk": 50003,
         "fields" : {
             "candidate": 153,
             "running_mate": 50003
@@ -15223,11 +15198,11 @@ if(ans == 4412 || ans == 4413 || ans == 4414){
 }
 
 if((ans == 4515 || ans == 4516 || ans == 4517) && harkin >= 1){
-  console.log("Harkin, 162");  
-  e.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 804, \"fields\": {\"candidate\": 153, \"running_mate\": 162}}]");
+  console.log("Harkin, 162");
+    lockInNominee('harkin'); 
       campaignTrail_temp.running_mate_json.push({
         "model":"campaign_trail.running_mate",
-        "pk": 904,
+        "pk": 162,
         "fields" : {
             "candidate": 153,
             "running_mate": 162
@@ -15237,11 +15212,11 @@ if((ans == 4515 || ans == 4516 || ans == 4517) && harkin >= 1){
 }
 
 if((ans == 4515 || ans == 4516 || ans == 4517) && biden >= 1){
-  console.log("Biden, 50000");  
-  e.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 805, \"fields\": {\"candidate\": 153, \"running_mate\": 50000}}]");
+  console.log("Biden, 50000");
+    lockInNominee('biden'); 
       campaignTrail_temp.running_mate_json.push({
         "model":"campaign_trail.running_mate",
-        "pk": 905,
+        "pk": 50000,
         "fields" : {
             "candidate": 153,
             "running_mate": 50000
@@ -15252,10 +15227,10 @@ if((ans == 4515 || ans == 4516 || ans == 4517) && biden >= 1){
 
 if((ans == 4515 || ans == 4516 || ans == 4517) && tsongas >= 2){
   console.log("Tsongas, 50001");  
-  e.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 806, \"fields\": {\"candidate\": 153, \"running_mate\": 50001}}]");
+    lockInNominee('tsongas'); 
       campaignTrail_temp.running_mate_json.push({
         "model":"campaign_trail.running_mate",
-        "pk": 906,
+        "pk": 50001,
         "fields" : {
             "candidate": 153,
             "running_mate": 50001
@@ -15265,11 +15240,11 @@ if((ans == 4515 || ans == 4516 || ans == 4517) && tsongas >= 2){
 }
 
 if((ans == 4515 || ans == 4516 || ans == 4517) && brown >= 2){
-  console.log("Brown, 50002");  
-  e.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 807, \"fields\": {\"candidate\": 153, \"running_mate\": 50002}}]");
+  console.log("Brown, 50002");
+    lockInNominee('brown');        
       campaignTrail_temp.running_mate_json.push({
         "model":"campaign_trail.running_mate",
-        "pk": 907,
+        "pk": 50002,
         "fields" : {
             "candidate": 153,
             "running_mate": 50002
@@ -15277,58 +15252,7 @@ if((ans == 4515 || ans == 4516 || ans == 4517) && brown >= 2){
      }
     )
 }
-  
-    if (ans == 4524) {
-        primary += 1;
-    }
-    if (ans == 4446) {
-        primary += 1;
-    }
-    if (ans == 4458) {
-        iraq += 1;
-    }
-    if (ans == 4459) {
-        iraq -= 1;
-    }
-    if (ans == 4502) {
-        nafta += 1;
-    }
-    if (ans == 4501) {
-        nafta -= 1;
-    }
-    if (ans == 4481) {
-        primary += 1;
-    }
-    if (ans == 4440) {
-        primary += 1;
-    }
-    if (ans == 4442) {
-        primary += 2;
-    }
-    if (ans == 4464) {
-        primary += 1;
-    }
 
-    if (ans == 4502) {
-        campaignTrail_temp.questions_json[29] = {
-          "model": "campaign_trail.question",
-          "pk": 20028,
-          "fields": {
-              "priority": 1,
-              "description": "You did not expect him to get back, but just before the debates, Ross Perot would draw on a blitz that allowed him to debate with the two of you. Considering his straight talk and Bush’s unwillingness to debate even you, this town is not large enough for two cowboys.",
-              "likelihood": 1
-          }
-            }
-        campaignTrail_temp.questions_json[14] = {
-          "model": "campaign_trail.question",
-          "pk": 20041,
-          "fields": {
-              "priority": 1,
-              "description": "You’ve seen it on the news and polls. The third candidate in this election, businessman extraordinaire Ross Perot, is really struggling. He’s had accusations of pushing loyalty oaths on his staff and the disastrous “You people” meeting with the NAACP that made you cringe. Just looking at it, he’s clearly faltering.",
-              "likelihood": 1
-          }
-            }
-      }
 }
 
 var changeGameDisp = (hide) => {
@@ -15504,7 +15428,7 @@ e.vpSwitcher = () => {
             }
           
             if(e.running_mate_last_name==="Brown"){
-            console.log(campaignTrail_temp.questions_json[13])
+            console.log(campaignTrail_temp.questions_json[13])             
             campaignTrail_temp.questions_json[13] = {
               "model": "campaign_trail.question",
               "pk": 20005,
@@ -15535,6 +15459,7 @@ e.vpSwitcher = () => {
         changeGameDisp(false);
     })
 }
+            }
 // This handles all the nominees in the "Opposition File"
 // Well it's actually for the VPs but WHATEVERRRRRRRRRRRR
 // As you play the game, possible VPs slowly get removed.
