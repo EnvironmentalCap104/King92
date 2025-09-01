@@ -16984,6 +16984,29 @@ imgUrl = newImgUrl;
 console.log("Imgur Success")
 updateStyling(imgUrl);  // Update the styling with the new image URL
 }
+
+//This is how I swap out questions
+function tunnel(new_q){
+    let e = campaignTrail_temp;
+    if (!Array.isArray(e.questions_json)) {
+        console.error("e.questions_json is not an array or is undefined");
+        return undefined;
+    }
+    let pkArray = e.questions_json.map(f => {
+        if (f && 'pk' in f) {
+            return f.pk;
+        } else {
+            console.error("An element in questions_json is missing the pk property", f);
+            return undefined;
+        }
+    });
+    let index = pkArray.indexOf(new_q);
+    if (index === -1) {
+        console.error(`pk value ${new_q} not found in questions_json`);
+        return undefined;
+    }
+    return e.questions_json[index];
+}
 	
 // If you're mixing and matching CYOA functions, remember - you only need ONE cyoa function. Just put everything inside of one of these
 cyoAdventure = function (a) {
