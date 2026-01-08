@@ -8,7 +8,7 @@ campaignTrail_temp.election_json = [
         "pk": 15,
         "fields": {
             "year": 1992,
-            "summary": "<p>30 years of struggle. Since the day you thought that the Lord has decided to bring you to his side, you have devoted yourself to achieving progress in the Congress of the American people. As you saw the cogs of government first hand and the corruption seeping through the carcass of the American experiment, you saw it as your mission to break on through. The struggles in government never stopped. Though, as you reach a decade of Reaganism, you feel like you are pushing against an unmovable wall as the party of Lincoln is determined to undermine any and all progress in the land. You've never faltered, but as Congress is proving incapable against conservative presidents, maybe you could be the one to slay the dragon? A black man, a socialist, a civil right activist. It may not be what America wants, but maybe it is what America needs more than ever.</p>",
+            "summary": "<div style='overflow-y:scroll;height:200px;'><p>30 years of struggle. Since the day you thought that the Lord has decided to bring you to his side, you have devoted yourself to achieving progress in the Congress of the American people. As you saw the cogs of government firsthand and the corruption seeping through the carcass of the American experiment, you saw it as your mission to break on through. The struggles in government never stopped. As you reach a decade of Reaganism, you feel like you are pushing against an immovable wall as the party of Lincoln is determined to undermine any and all progress in the land.<br><br>You've never faltered, but as Congress is proving incapable against conservative presidents, maybe you could be the one to slay the dragon? A black man, a socialist, a civil rights activist. It may not be what America wants, but maybe it is what America needs more than ever.</p>",
             "image_url": "https://media.npr.org/assets/img/2016/06/10/mlk_slideshow_01_slide-a08b68622b3a5d052d3b9cd2ba6ce4b2ac5318ef.jpg",
             "winning_electoral_vote_number": 270,
             "advisor_url": "https://i.imgur.com/An0R3kI.png",
@@ -55,7 +55,7 @@ campaignTrail_temp.candidate_json = [
             "party": "Democrat",
             "state": "Georgia",
             "priority": 2,
-            "description": "<i>The time is always right to do what is right.</i><p>Martin Luther King Jr is probably the most well-known African-American politician in American history, with a long career in activism and public service. He is regarded as the leader of the Civil Rights movement, making powerful speeches such as his \"I Have a Dream\" and \"I've Been to the Mountaintop\" speeches, as well as writing his \"Letter from a Birmingham Jail\". After surviving multiple assassination attempts, he began his political career in 1972 taking Georgia's 5th Congressional district, serving the Atlanta area ever since. He has fought for economic and racial equality throughout his years in public service. In order to win the election, he will likely need to moderate on some issues, or hope enough people get tired of the 12-year Republican rule. Either way, many expect a heavy lift for MLK to make his Dream complete and become the first African-American president of the United States.</p>",
+            "description": "<div style='overflow-y:scroll;height:200px;'><i>''The time is always right to do what is right.''</i><p>Martin Luther King Jr. is probably the most well-known African-American politician in American history, with a long career in activism and public service. He is regarded as the leader of the civil rights movement, making powerful speeches such as ''I Have a Dream'' and ''I've Been to the Mountaintop,'' as well as writing his ''Letter from a Birmingham Jail.'' After surviving multiple assassination attempts, he began his political career in 1972 by taking Georgia's 5th Congressional district, serving the Atlanta area ever since. He has fought for economic and racial equality throughout his years in public service.<br><br>In order to win the election, he will likely need to moderate on some issues, or hope enough people get tired of the 12 years of Republican rule. Either way, many expect a heavy lift for MLK to make his Dream complete and become the first African-American president of the United States.</p>",
             "color_hex": "#c61515",
             "secondary_color_hex": "#90C0FF",
             "is_active": 1,
@@ -438,6 +438,46 @@ document.body.background = "https://i.imgur.com/1qedChl.jpeg";
 document.head.innerHTML += "<style>#results_container {color:#000000;} .inner_window_w_desc {background-color:#ffffff!important;}</style>";
 
 //#endcode
+
+let style = document.createElement('style');
+style.type = 'text/css';
+style.id = 'dynamic-style';
+
+style.innerHTML = `
+  .campaign_trail_start_emphasis {
+    background-color: #BDBFFF;
+  }
+  .overlay_window h3 {
+    background-color: #edcccc;
+  }
+  .inner_window_question h3 {
+    background-color: #edcccc;
+  }
+  #overall_result_container {
+    background-color: #BDBFFF;
+  }
+ #state_result_container {
+   background-color: #edcccc;
+}
+#state_info h3 {
+  background-color: #edcccc;
+}
+#menu_container {
+  background-color: #BDBFFF !important;
+    }
+#state_result h3 {
+  background-color: #edcccc;
+}
+#overall_result h3 {
+  background-color: #edcccc;
+}
+  a:-webkit-any-link {
+    color: #000000;
+  }
+`;
+
+document.head.appendChild(style);
+
 
 campaignTrail_temp.opponents_default_json = JSON.parse("[{\"election\": 15, \"candidates\": [152, 153, 154]}]");
 
