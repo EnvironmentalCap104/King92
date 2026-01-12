@@ -18695,41 +18695,65 @@ if (campaignTrail_temp.question_number == 12 && harkin < 1) {
         blanchard += 3;
     }
 // NAFTA Variables
-if((campaignTrail_temp.player_answers[0] == 4502) && e.running_mate_last_name==="Rockefeller") {
+if((ans == 4502) && e.running_mate_last_name==="Rockefeller") {
 		campaignTrail_temp.questions_json[14] = tunnel(20041)
 		campaignTrail_temp.questions_json[16] = tunnel(20024)
 		campaignTrail_temp.questions_json[29] =  tunnel(20028)
+		campaignTrail_temp.questions_json[31] =  tunnel(20034)	
 	}
-	if((campaignTrail_temp.player_answers[0] == 4502) && e.running_mate_last_name==="Tsongas") {
+if((ans == 4502) && e.running_mate_last_name==="Tsongas") {
 		campaignTrail_temp.questions_json[14] = tunnel(20041)
 		campaignTrail_temp.questions_json[16] = tunnel(20025)
 		campaignTrail_temp.questions_json[29] =  tunnel(20028)
+		campaignTrail_temp.questions_json[31] =  tunnel(20036)	
 	}
-if((campaignTrail_temp.player_answers[0] == 4502) && e.running_mate_last_name==="Blanchard") {
+if((ans == 4502) && e.running_mate_last_name==="Blanchard") {
 		campaignTrail_temp.questions_json[14] = tunnel(20041)
 		campaignTrail_temp.questions_json[16] = tunnel(20024)
 		campaignTrail_temp.questions_json[29] =  tunnel(20028)
+		campaignTrail_temp.questions_json[31] =  tunnel(20035)	
 	}
-if((campaignTrail_temp.player_answers[0] == 4502) && e.running_mate_last_name==="Gore") {
+if((ans == 4502) && e.running_mate_last_name==="Gore") {
 		campaignTrail_temp.questions_json[14] = tunnel(20041)
 		campaignTrail_temp.questions_json[16] = tunnel(20024)
 		campaignTrail_temp.questions_json[29] =  tunnel(20028)
+		campaignTrail_temp.questions_json[31] =  tunnel(20037)	
 	}	
-if((campaignTrail_temp.player_answers[0] == 4502) && e.running_mate_last_name==="Richards") {
+if((ans == 4502) && e.running_mate_last_name==="Richards") {
 		campaignTrail_temp.questions_json[14] = tunnel(20041)
 		campaignTrail_temp.questions_json[16] = tunnel(20024)
 		campaignTrail_temp.questions_json[29] =  tunnel(20028)
+		campaignTrail_temp.questions_json[31] =  tunnel(20039)	
 	}
-if((campaignTrail_temp.player_answers[0] == 4502) && e.running_mate_last_name==="Biden") {
+if((ans == 4502) && e.running_mate_last_name==="Biden") {
 		campaignTrail_temp.questions_json[14] = tunnel(20041)
 		campaignTrail_temp.questions_json[16] = tunnel(20024)
 		campaignTrail_temp.questions_json[29] =  tunnel(20028)
+		campaignTrail_temp.questions_json[31] =  tunnel(20038)		
 	}
-if((campaignTrail_temp.player_answers[0] == 4502) && e.running_mate_last_name==="Harkin") {
+if((ans == 4502) && e.running_mate_last_name==="Harkin") {
 		campaignTrail_temp.questions_json[14] = tunnel(20041)
 		campaignTrail_temp.questions_json[16] = tunnel(20026)
 		campaignTrail_temp.questions_json[29] =  tunnel(20028)
+		campaignTrail_temp.questions_json[31] =  tunnel(20040)	
 	}
+
+// Anti-NAFTA with Pro-NAFTA VPs
+if((ans == 4501) && e.running_mate_last_name==="Blanchard") {
+		campaignTrail_temp.questions_json[16] = tunnel(20021)
+	}
+if((ans == 4501) && e.running_mate_last_name==="Gore") {
+		campaignTrail_temp.questions_json[16] = tunnel(20023)
+	}
+if((ans == 4501) && e.running_mate_last_name==="Biden") {
+		campaignTrail_temp.questions_json[16] = tunnel(20022)
+	}
+
+// War Hawk
+if(ans == 4458) {
+		campaignTrail_temp.questions_json[28] = tunnel(20027)
+	}
+	
 // The actual setting of the running mates
 if((ans == 4515 || ans == 4516 || ans == 4517) && rockefeller >= 3){
     console.log("Rockefeller, 159"); 
@@ -18843,7 +18867,7 @@ if((ans == 4515 || ans == 4516 || ans == 4517) && brown >= 3){
     )
 }
 
-//King runs for Senate
+// King runs for Senate
 
 if (ans == 4420) {
 campaignTrail_temp.candidate_json[1]["fields"].first_name = "Bill";
