@@ -19693,7 +19693,14 @@ campaignTrail_temp.candidate_json[1]["fields"].last_name = "Clinton";
 campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://upload.wikimedia.org/wikipedia/commons/d/d7/Bill_Clinton_1992.jpg";
 campaignTrail_temp.question_number = 34;
 }
-	}
+
+  if(ans == 4411 || ans == 4412|| ans == 4413) {
+	e.election_json[0].fields.has_visits = 0
+  }
+  if(ans == 4515|| ans == 4516|| ans == 4517) {
+	e.election_json[0].fields.has_visits = 1
+  }
+}
 
 var changeGameDisp = (hide) => {
     disp = "";
