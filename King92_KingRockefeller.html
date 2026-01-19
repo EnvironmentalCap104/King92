@@ -6892,7 +6892,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 152,
             "state": 468,
-            "state_multiplier": 1
+            "state_multiplier": 1.01
         }
     },
     {
@@ -6910,7 +6910,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 152,
             "state": 470,
-            "state_multiplier": 0.98
+            "state_multiplier": 0.9835
         }
     },
     {
@@ -6973,7 +6973,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 152,
             "state": 477,
-            "state_multiplier": 0.98
+            "state_multiplier": 0.985
         }
     },
     {
@@ -7000,7 +7000,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 152,
             "state": 480,
-            "state_multiplier": 1
+            "state_multiplier": 1.0035
         }
     },
     {
@@ -7108,7 +7108,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 152,
             "state": 492,
-            "state_multiplier": 1
+            "state_multiplier": 1.005
         }
     },
     {
@@ -7351,7 +7351,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 153,
             "state": 468,
-            "state_multiplier": 0.88
+            "state_multiplier": 0.8775
         }
     },
     {
@@ -7549,7 +7549,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 153,
             "state": 490,
-            "state_multiplier": 0.65
+            "state_multiplier": 0.6475
         }
     },
     {
@@ -7684,7 +7684,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 153,
             "state": 505,
-            "state_multiplier": 0.755
+            "state_multiplier": 0.75
         }
     },
     {
@@ -19465,40 +19465,11 @@ updateStyling(imgUrl);  // Update the styling with the new image URL
 cyoAdventure = function (a) {
     ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1];
 // VP Tracker
-// Slowly removes them as you play
-// Gore and Blanchard are always available
-
-// If you don't select the Worker Right EPA answer, Rockefeller is removed
-if (campaignTrail_temp.question_number == 12 && rockefeller < 1) {
-  delete nominees.rockefeller;
+// Candidate compatibility scoring happens below;
+// final eligibility is enforced inside vpSwitcher right before the VP screen renders.
+if (campaignTrail_temp.question_number == 12) {
+  window.setTimeout(() => campaignTrail_temp.vpSwitcher(), 20);
 }
-// If you don't go tough on crime, Biden is removed
-if (campaignTrail_temp.question_number == 12 && biden < 1) {
-  delete nominees.biden;
-}
-
-// Going pro-NAFTA and-or pro-Iraq removes Brown
-if (campaignTrail_temp.question_number == 12 && brown < 2) {
-  delete nominees.brown;
-}
-
-// Going anti-NAFTA and-or pro-Iraq removes Tsongas
-if (campaignTrail_temp.question_number == 12 && tsongas < 2) {
-  delete nominees.tsongas;
-}
-
-// Going anti-NAFTA removes Richards
-if (campaignTrail_temp.question_number == 12 && richards < 1) {
-  delete nominees.richards;
-}
-    
-// If you don't expand the ADA, Harkin is removed
-if (campaignTrail_temp.question_number == 12 && harkin < 1) {
-  delete nominees.harkin;
-}
-  if (e.question_number == 12) {
-    window.setTimeout(e.vpSwitcher, 20)
-   }
 
     if (ans == 4413) {
         biden += 3;
@@ -19714,6 +19685,15 @@ var changeGameDisp = (hide) => {
 };
 
 e.vpSwitcher = () => {
+    // Apply VP availability rules right before building the dropdown.
+    // (running_mate_json can contain everyone by default; nominees controls what appears here.)
+    if (rockefeller < 1) delete nominees.rockefeller;
+    if (biden < 1) delete nominees.biden;
+    if (brown < 2) delete nominees.brown;
+    if (tsongas < 2) delete nominees.tsongas;
+    if (richards < 1) delete nominees.richards;
+    if (harkin < 1) delete nominees.harkin;
+
     // Deduplicate running mate entries so nobody appears twice in the dropdown.
     let potential_running_mate_pks = [...new Set(
         e.running_mate_json
@@ -19721,6 +19701,15 @@ e.vpSwitcher = () => {
             .map(f => f.fields.running_mate)
     )];
     let pot_run_mat = potential_running_mate_pks.map(f=>e.candidate_json.find(_f=>_f.pk===f));
+    // Filter the dropdown using the nominees object (which the VP Tracker modifies).
+    pot_run_mat = pot_run_mat.filter(f => f && nominees[String(f.fields.last_name).toLowerCase()]);
+    // Safety: Gore and Blanchard are always supposed to be available.
+    if (!pot_run_mat.length) {
+        pot_run_mat = [
+            e.candidate_json.find(_f => _f.pk === 161),
+            e.candidate_json.find(_f => _f.pk === 50003)
+        ].filter(Boolean);
+    }
     let running_mate_options = ``;
     pot_run_mat.forEach(f=> {
         running_mate_options += `<option value="${f.pk}">${f.fields.first_name} ${f.fields.last_name}</option>\n`
@@ -19766,7 +19755,8 @@ e.vpSwitcher = () => {
         _e.preventDefault()
   
         let value = Number($("#running_mate_id").val());
-        let i = potential_running_mate_pks.findIndex(f=>f === value);
+        let i = pot_run_mat.findIndex(f=>f.pk === value);
+        if (i < 0) i = 0;
   
         let screen_html = `
             <div class="person_image" id="running_mate_image"> <img src="${pot_run_mat[i].fields.image_url}" width="210" height="250"> </div>
@@ -19789,7 +19779,8 @@ e.vpSwitcher = () => {
         _e.preventDefault();
   
         let value = Number($("#running_mate_id").val());
-        let i = potential_running_mate_pks.findIndex(f=>f === value);
+        let i = pot_run_mat.findIndex(f=>f.pk === value);
+        if (i < 0) i = 0;
   
         e.running_mate_last_name = pot_run_mat[i].fields.last_name;
         e.running_mate_image_url = pot_run_mat[i].fields.image_url;
