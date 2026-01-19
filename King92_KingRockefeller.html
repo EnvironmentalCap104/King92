@@ -7369,7 +7369,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 153,
             "state": 470,
-            "state_multiplier": 0.825
+            "state_multiplier": 0.815
         }
     },
     {
@@ -7432,7 +7432,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 153,
             "state": 477,
-            "state_multiplier": 0.755
+            "state_multiplier": 0.745
         }
     },
     {
@@ -7549,7 +7549,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 153,
             "state": 490,
-            "state_multiplier": 0.66
+            "state_multiplier": 0.65
         }
     },
     {
@@ -7684,7 +7684,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 153,
             "state": 505,
-            "state_multiplier": 0.765
+            "state_multiplier": 0.755
         }
     },
     {
@@ -19707,7 +19707,12 @@ var changeGameDisp = (hide) => {
 };
 
 e.vpSwitcher = () => {
-    let potential_running_mate_pks = e.running_mate_json.filter(f=>f.fields.candidate == e.candidate_id).map(f=>f.fields.running_mate);
+    // Deduplicate running mate entries so nobody appears twice in the dropdown.
+    let potential_running_mate_pks = [...new Set(
+        e.running_mate_json
+            .filter(f => f.fields.candidate == e.candidate_id)
+            .map(f => f.fields.running_mate)
+    )];
     let pot_run_mat = potential_running_mate_pks.map(f=>e.candidate_json.find(_f=>_f.pk===f));
     let running_mate_options = ``;
     pot_run_mat.forEach(f=> {
