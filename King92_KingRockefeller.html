@@ -19687,12 +19687,12 @@ var changeGameDisp = (hide) => {
 e.vpSwitcher = () => {
     // Apply VP availability rules right before building the dropdown.
     // (running_mate_json can contain everyone by default; nominees controls what appears here.)
-    if (rockefeller < 1) delete nominees.rockefeller;
-    if (biden < 1) delete nominees.biden;
-    if (brown < 2) delete nominees.brown;
-    if (tsongas < 2) delete nominees.tsongas;
-    if (richards < 1) delete nominees.richards;
-    if (harkin < 1) delete nominees.harkin;
+    if (rockefeller < 3) delete nominees.rockefeller;
+    if (biden < 3) delete nominees.biden;
+    if (brown < 3) delete nominees.brown;
+    if (tsongas < 3) delete nominees.tsongas;
+    if (richards < 3) delete nominees.richards;
+    if (harkin < 3) delete nominees.harkin;
 
     // Deduplicate running mate entries so nobody appears twice in the dropdown.
     let potential_running_mate_pks = [...new Set(
