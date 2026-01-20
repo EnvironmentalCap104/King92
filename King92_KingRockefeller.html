@@ -18409,7 +18409,33 @@ campaignTrail_temp.answer_feedback_json = [
             "answer_feedback": "Rapidly, Harkin would begin drafting something he calls “the Workers’ Bill of Rights” which will safeguard blue collar workers from most of the effects of NAFTA. You see that he did so half-heartedly, but if the deal is to be made, he prefers to have it on his own terms."
         }
     },
-
+    {
+        "model": "campaign_trail.answer_feedback",
+        "pk": 22091,
+        "fields": {
+            "answer": 21091,
+            "candidate": 153,
+            "answer_feedback": "This was very rough criticism of the war coming from someone that voted for it. Yet people can understand where you are coming from. Considering many democrats were against it, it may also be your best ticket out of controversy."
+        }
+    },
+    {
+        "model": "campaign_trail.answer_feedback",
+        "pk": 22092,
+        "fields": {
+            "answer": 21092,
+            "candidate": 153,
+            "answer_feedback": "It’s true that you are pointing to a true issue coming from the deals made with Saddam during the peace treaty. Those were not decided by Bush, however he does suffer the ire of many hawks for fumbling a more total victory."
+        }
+    },
+    {
+        "model": "campaign_trail.answer_feedback",
+        "pk": 22093,
+        "fields": {
+            "answer": 21093,
+            "candidate": 153,
+            "answer_feedback": "Capitulating on this is certainly a strategy. Bush will continue to show off his success to those who may want to hear them, maybe you’d have more support elsewhere."
+        }
+    },
     {
         "model": "campaign_trail.answer_feedback",
         "pk": 22094,
@@ -19504,8 +19530,8 @@ if(ans == 4501 || ans == 4502) {
 	}
 
 // War Hawk
-if(ans == 4458) {
-		campaignTrail_temp.questions_json[28] = tunnel(20027)
+if(ans == 4458 || ans == 4459) {
+		campaignTrail_temp.iraq_choice = ans;
 	}
 	
 // The actual setting of the running mates
@@ -19789,11 +19815,7 @@ e.vpSwitcher = () => {
 			campaignTrail_temp.questions_json[22] = tunnel(20008)
 			campaignTrail_temp.questions_json[25] = tunnel(20051)	
 			campaignTrail_temp.questions_json[27] = tunnel(20015)
-			campaignTrail_temp.questions_json[18] = tunnel(20057)
-			campaignTrail_temp.questions_json[14] = tunnel(20041)
-			campaignTrail_temp.questions_json[16] = tunnel(20025)
-			campaignTrail_temp.questions_json[29] =  tunnel(20028)
-			campaignTrail_temp.questions_json[31] =  tunnel(20036)	
+			campaignTrail_temp.questions_json[18] = tunnel(20057)	
 			}
           
             if(e.running_mate_last_name==="Biden"){
@@ -19816,11 +19838,7 @@ e.vpSwitcher = () => {
 			campaignTrail_temp.questions_json[22] = tunnel(20011)
 			campaignTrail_temp.questions_json[25] = tunnel(20047)
 			campaignTrail_temp.questions_json[27] = tunnel(20018)
-			campaignTrail_temp.questions_json[18] = tunnel(20055)
-			campaignTrail_temp.questions_json[29] = tunnel(20028)
-			campaignTrail_temp.questions_json[31] = tunnel(20039)
-			campaignTrail_temp.questions_json[14] = tunnel(20041)
-			campaignTrail_temp.questions_json[16] = tunnel(20024)	
+			campaignTrail_temp.questions_json[18] = tunnel(20055)	
          	} 
 	
             if(e.running_mate_last_name==="Brown"){
@@ -19833,7 +19851,6 @@ e.vpSwitcher = () => {
 			campaignTrail_temp.questions_json[25] = tunnel(20053)	
 			campaignTrail_temp.questions_json[27] = tunnel(20019)
 			campaignTrail_temp.questions_json[18] = tunnel(20056)
-			campaignTrail_temp.questions_json[31] = tunnel(20032)
 			}
             if(e.running_mate_last_name==="Harkin"){
             console.log(campaignTrail_temp.questions_json[13])
@@ -19890,6 +19907,16 @@ e.vpSwitcher = () => {
                 }
             }
         }
+
+		// Apply Iraq Tunneling (based on earlier Iraq stance question)
+        if (typeof e.iraq_choice !== "undefined") {			
+			if (e.iraq_choice == 4458) {
+			// War Hawk
+			campaignTrail_temp.questions_json[28] = tunnel(20027);
+			} else if (e.iraq_choice == 4459) {
+			campaignTrail_temp.questions_json[28] = tunnel(15449);
+			}
+			}
 					$("#inner_window_4").remove();
         changeGameDisp(false);
     })
