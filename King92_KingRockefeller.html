@@ -19905,6 +19905,23 @@ e.vpSwitcher = () => {
                 } else if (e.running_mate_last_name === "Biden") {
                     campaignTrail_temp.questions_json[16] = tunnel(20022);
                 }
+                // Question 31 varies by running mate
+                if (e.running_mate_last_name === "Rockefeller") {
+                    campaignTrail_temp.questions_json[31] = tunnel(15452);
+                } else if (e.running_mate_last_name === "Blanchard") {
+                    campaignTrail_temp.questions_json[31] = tunnel(20029);
+                } else if (e.running_mate_last_name === "Gore") {
+                    campaignTrail_temp.questions_json[31] = tunnel(20030);
+                } else if (e.running_mate_last_name === "Biden") {
+                    campaignTrail_temp.questions_json[31] = tunnel(20031);
+                } else if (e.running_mate_last_name === "Harkin") {
+                    campaignTrail_temp.questions_json[31] = tunnel(20033);
+                } else if (e.running_mate_last_name === "Tsongas") {
+                    campaignTrail_temp.questions_json[31] = tunnel(20036);
+                } else if (e.running_mate_last_name === "Richards") {
+                    campaignTrail_temp.questions_json[31] = tunnel(20039);
+                } else if (e.running_mate_last_name === "Brown") {
+                    campaignTrail_temp.questions_json[31] = tunnel(20032);			
             }
         }
 
@@ -19915,6 +19932,7 @@ e.vpSwitcher = () => {
 			campaignTrail_temp.questions_json[28] = tunnel(20027);
 			} else if (e.iraq_choice == 4459) {
 			campaignTrail_temp.questions_json[28] = tunnel(15449);
+			}
 			}
 			}
 					$("#inner_window_4").remove();
