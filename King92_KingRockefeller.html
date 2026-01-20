@@ -7225,7 +7225,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 152,
             "state": 505,
-            "state_multiplier": 0.9912345
+            "state_multiplier": 0.9952345
         }
     },
     {
@@ -7684,7 +7684,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 153,
             "state": 505,
-            "state_multiplier": 0.75
+            "state_multiplier": 0.7495
         }
     },
     {
@@ -19464,6 +19464,7 @@ updateStyling(imgUrl);  // Update the styling with the new image URL
 // If you're mixing and matching CYOA functions, remember - you only need ONE cyoa function. Just put everything inside of one of these
 cyoAdventure = function (a) {
     ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1];
+    let e = campaignTrail_temp;
 // VP Tracker
 // Candidate compatibility scoring happens below;
 // final eligibility is enforced inside vpSwitcher right before the VP screen renders.
@@ -19496,46 +19497,10 @@ if (campaignTrail_temp.question_number == 12) {
         blanchard += 3;
     }
 // NAFTA Variables
-if((ans == 4502) && e.running_mate_last_name==="Rockefeller") {
-		campaignTrail_temp.questions_json[14] = tunnel(20041)
-		campaignTrail_temp.questions_json[16] = tunnel(20024)
-		campaignTrail_temp.questions_json[29] =  tunnel(20028)
-		campaignTrail_temp.questions_json[31] =  tunnel(20034)	
-	}
-if((ans == 4502) && e.running_mate_last_name==="Blanchard") {
-		campaignTrail_temp.questions_json[14] = tunnel(20041)
-		campaignTrail_temp.questions_json[16] = tunnel(20024)
-		campaignTrail_temp.questions_json[29] =  tunnel(20028)
-		campaignTrail_temp.questions_json[31] =  tunnel(20035)	
-	}
-if((ans == 4502) && e.running_mate_last_name==="Gore") {
-		campaignTrail_temp.questions_json[14] = tunnel(20041)
-		campaignTrail_temp.questions_json[16] = tunnel(20024)
-		campaignTrail_temp.questions_json[29] =  tunnel(20028)
-		campaignTrail_temp.questions_json[31] =  tunnel(20037)	
-	}	
-if((ans == 4502) && e.running_mate_last_name==="Biden") {
-		campaignTrail_temp.questions_json[14] = tunnel(20041)
-		campaignTrail_temp.questions_json[16] = tunnel(20024)
-		campaignTrail_temp.questions_json[29] =  tunnel(20028)
-		campaignTrail_temp.questions_json[31] =  tunnel(20038)		
-	}
-if((ans == 4502) && e.running_mate_last_name==="Harkin") {
-		campaignTrail_temp.questions_json[14] = tunnel(20041)
-		campaignTrail_temp.questions_json[16] = tunnel(20026)
-		campaignTrail_temp.questions_json[29] =  tunnel(20028)
-		campaignTrail_temp.questions_json[31] =  tunnel(20040)	
-	}
-
-// Anti-NAFTA with Pro-NAFTA VPs
-if((ans == 4501) && e.running_mate_last_name==="Blanchard") {
-		campaignTrail_temp.questions_json[16] = tunnel(20021)
-	}
-if((ans == 4501) && e.running_mate_last_name==="Gore") {
-		campaignTrail_temp.questions_json[16] = tunnel(20023)
-	}
-if((ans == 4501) && e.running_mate_last_name==="Biden") {
-		campaignTrail_temp.questions_json[16] = tunnel(20022)
+// NOTE: This question happens BEFORE the running mate is chosen.
+// So we store the NAFTA stance now, and apply VP-dependent tunneling once a running mate is locked in.
+if(ans == 4501 || ans == 4502) {
+		campaignTrail_temp.nafta_choice = ans;
 	}
 
 // War Hawk
@@ -19880,7 +19845,52 @@ e.vpSwitcher = () => {
 			campaignTrail_temp.questions_json[25] = tunnel(20052)	
 			campaignTrail_temp.questions_json[27] = tunnel(20020)
             }
-        $("#inner_window_4").remove();
+        // Apply VP-dependent NAFTA tunneling (based on earlier NAFTA stance question)
+        if (typeof e.nafta_choice !== "undefined") {
+            if (e.nafta_choice == 4502) {
+                // Pro-NAFTA
+                campaignTrail_temp.questions_json[14] = tunnel(20041);
+                campaignTrail_temp.questions_json[29] = tunnel(20028);
+
+                // Question 16 varies by running mate
+                if (e.running_mate_last_name === "Harkin") {
+                    campaignTrail_temp.questions_json[16] = tunnel(20026);
+                } else if (e.running_mate_last_name === "Tsongas") {
+                    campaignTrail_temp.questions_json[16] = tunnel(20025);
+                } else {
+                    campaignTrail_temp.questions_json[16] = tunnel(20024);
+                }
+
+                // Question 31 varies by running mate
+                if (e.running_mate_last_name === "Rockefeller") {
+                    campaignTrail_temp.questions_json[31] = tunnel(20034);
+                } else if (e.running_mate_last_name === "Blanchard") {
+                    campaignTrail_temp.questions_json[31] = tunnel(20035);
+                } else if (e.running_mate_last_name === "Gore") {
+                    campaignTrail_temp.questions_json[31] = tunnel(20037);
+                } else if (e.running_mate_last_name === "Biden") {
+                    campaignTrail_temp.questions_json[31] = tunnel(20038);
+                } else if (e.running_mate_last_name === "Harkin") {
+                    campaignTrail_temp.questions_json[31] = tunnel(20040);
+                } else if (e.running_mate_last_name === "Tsongas") {
+                    campaignTrail_temp.questions_json[31] = tunnel(20036);
+                } else if (e.running_mate_last_name === "Richards") {
+                    campaignTrail_temp.questions_json[31] = tunnel(20039);
+                } else if (e.running_mate_last_name === "Brown") {
+                    campaignTrail_temp.questions_json[31] = tunnel(20032);
+                }
+            } else if (e.nafta_choice == 4501) {
+                // Anti-NAFTA with Pro-NAFTA VPs
+                if (e.running_mate_last_name === "Blanchard") {
+                    campaignTrail_temp.questions_json[16] = tunnel(20021);
+                } else if (e.running_mate_last_name === "Gore") {
+                    campaignTrail_temp.questions_json[16] = tunnel(20023);
+                } else if (e.running_mate_last_name === "Biden") {
+                    campaignTrail_temp.questions_json[16] = tunnel(20022);
+                }
+            }
+        }
+					$("#inner_window_4").remove();
         changeGameDisp(false);
     })
 }
