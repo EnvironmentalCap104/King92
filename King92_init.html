@@ -75,14 +75,37 @@ campaignTrail_temp.candidate_json = [
       "first_name": "Ross",
       "last_name": "Perot",
       "election": 15,
-      "party": "Libertarian",
+      "party": "Independent",
       "state": "Texas",
       "priority": 3,
       "description": "'",
       "color_hex": "#c9bd2a",
       "secondary_color_hex": "#eeebbf",
       "is_active": 0,
-      "image_url": "https://cdn.britannica.com/44/3444-004-B29A664B/Ross-Perot-debate-1992.jpg",
+      "image_url": "https://i.postimg.cc/TPK04BsT/ross.jpg",
+      "electoral_victory_message": "'",
+      "electoral_loss_message": "'",
+      "no_electoral_majority_message": "'",
+      "description_as_running_mate": "'",
+      "candidate_score": 1,
+      "running_mate": false
+            }
+  },
+  {
+    "model": "campaign_trail.candidate",
+    "pk": 155,
+    "fields": {
+      "first_name": "Andre",
+      "last_name": "Marrou",
+      "election": 15,
+      "party": "Libertarian",
+      "state": "Texas",
+      "priority": 3,
+      "description": "'",
+      "color_hex": "#c56e23",
+      "secondary_color_hex": "#edd3bd",
+      "is_active": 0,
+      "image_url": "https://i.postimg.cc/LXqWjJSq/andre.jpg",
       "electoral_victory_message": "'",
       "electoral_loss_message": "'",
       "no_electoral_majority_message": "'",
@@ -378,7 +401,8 @@ campaignTrail_temp.opponents_default_json = [
     "candidates": [
       152,
       153,
-      154
+      154,
+      155
     ]
   }
 ]
@@ -389,7 +413,8 @@ campaignTrail_temp.opponents_weighted_json = [
     "candidates": [
       152,
       153,
-      154
+      154,
+      155
     ]
   }
 ]
@@ -479,7 +504,7 @@ style.innerHTML = `
 document.head.appendChild(style);
 
 
-campaignTrail_temp.opponents_default_json = JSON.parse("[{\"election\": 15, \"candidates\": [152, 153, 154]}]");
+campaignTrail_temp.opponents_default_json = JSON.parse("[{\"election\": 15, \"candidates\": [152, 153, 154, 155]}]");
 
 var changeGameDisp = (hide) => {
   disp = "";
