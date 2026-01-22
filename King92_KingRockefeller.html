@@ -20156,6 +20156,26 @@ function tunnel(new_q) {
 // If you're mixing and matching CYOA functions, remember - you only need ONE cyoa function. Just put everything inside of one of these
 cyoAdventure = function (a) {
     ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1];
+    if(ans == 21146){
+        campaignTrail_temp.candidate_json[2]["fields"].first_name = "Undecided";
+        campaignTrail_temp.candidate_json[2]["fields"].last_name = "Undecided";
+    }
+    if(ans == 21094){
+        campaignTrail_temp.candidate_json[2]["fields"].first_name = "Ross";
+        campaignTrail_temp.candidate_json[2]["fields"].last_name = "Perot";
+    }
+    if(ans == 21095){
+        campaignTrail_temp.candidate_json[2]["fields"].first_name = "Ross";
+        campaignTrail_temp.candidate_json[2]["fields"].last_name = "Perot";
+    }
+    if(ans == 21096){
+        campaignTrail_temp.candidate_json[2]["fields"].first_name = "Ross";
+        campaignTrail_temp.candidate_json[2]["fields"].last_name = "Perot";
+    }
+    if(ans == 21097){
+        campaignTrail_temp.candidate_json[2]["fields"].first_name = "Ross";
+        campaignTrail_temp.candidate_json[2]["fields"].last_name = "Perot";
+    }		
     let e = campaignTrail_temp;
     // VP Tracker
     // Candidate compatibility scoring happens below;
@@ -20696,4 +20716,11 @@ if (!element) {
     controlElement.style.display = 'none';
     controlElement.id = 'controlElement';
     document.body.appendChild(controlElement);
+}
+
+vpTable = {
+    "Martin Luther King Jr." : "insertVP",
+    "George Bush" : "Dan Quayle",
+    "Ross Perot" : "James Stockdale",
+    "Andre Marrou" : "Nancy Lord",
 }
