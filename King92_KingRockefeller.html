@@ -829,6 +829,15 @@ campaignTrail_temp.questions_json = [
             "likelihood": 1
         }
     },
+    {
+        "model": "campaign_trail.question",
+        "pk": 20058,
+        "fields": {
+            "priority": 4,
+            "description": "As you look around, you can see that the Democratic Party is already letting itself shift further away from progress, and further into the toleration of permanent unhappiness of the part of society they accept to ignore. Some still won’t ignore it, but you won’t. You only have to find who to help stop this peeling of what little rights remain.",
+            "likelihood": 1
+        }
+    },
 ]
 
 campaignTrail_temp.answers_json = [
@@ -3251,7 +3260,38 @@ campaignTrail_temp.answers_json = [
             "description": "As much as I would wish to profess my true opinion on the matter, it is a fact that such a declaration would ruin my electoral chances. Instead of speaking of expanding the rights of the gay community, I will pivot to the questions of HIV and discrimination in the military. I may not swing the door open, but a foot in it would be a strong start."
         }
     },
-
+    {
+        "model": "campaign_trail.answer",
+        "pk": 21197,
+        "fields": {
+            "question": 20058,
+            "description": "I see a man in the crowd. He doesn’t have the same gusto that Jesse had, but he does have the credibility people were so desperately clinging to. They say the US isn’t ready for a black president, but I’m sure Douglas Wilder will prove them wrong."
+        }
+    },
+    {
+        "model": "campaign_trail.answer",
+        "pk": 21198,
+        "fields": {
+            "question": 20058,
+            "description": "Brown Placeholder"
+        }
+    },
+    {
+        "model": "campaign_trail.answer",
+        "pk": 21199,
+        "fields": {
+            "question": 20058,
+            "description": "Tsongas Placeholder"
+        }
+    },
+    {
+        "model": "campaign_trail.answer",
+        "pk": 21200,
+        "fields": {
+            "question": 20058,
+            "description": "Harkin Placeholder"
+        }
+    },
 ]
 
 campaignTrail_temp.states_json = [
@@ -11471,6 +11511,46 @@ campaignTrail_temp.answer_score_global_json = [
             "candidate": 153,
             "affected_candidate": 153,
             "global_multiplier": -0.035
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 23297,
+        "fields": {
+            "answer": 21197,
+            "candidate": 153,
+            "affected_candidate": 153,
+            "global_multiplier": 0.25
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 23298,
+        "fields": {
+            "answer": 21198,
+            "candidate": 153,
+            "affected_candidate": 153,
+            "global_multiplier": 0.25
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 23299,
+        "fields": {
+            "answer": 21199,
+            "candidate": 153,
+            "affected_candidate": 153,
+            "global_multiplier": 0.25
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 23300,
+        "fields": {
+            "answer": 21200,
+            "candidate": 153,
+            "affected_candidate": 153,
+            "global_multiplier": 0.25
         }
     },
 ]
@@ -20031,7 +20111,42 @@ campaignTrail_temp.answer_feedback_json = [
             "answer_feedback": "The right saw you bleed and even if it’s probably the best you could do, it’s not a terrain to your advantage. The left really hoped for more and the right won’t listen to you seemingly trying to dodge their question on gay rights. In due time, it will change."
         }
     },
-
+    {
+        "model": "campaign_trail.answer_feedback",
+        "pk": 22197,
+        "fields": {
+            "answer": 21197,
+            "candidate": 153,
+            "answer_feedback": "Feedback"
+        }
+    },
+    {
+        "model": "campaign_trail.answer_feedback",
+        "pk": 22198,
+        "fields": {
+            "answer": 21198,
+            "candidate": 153,
+            "answer_feedback": "Feedback"
+        }
+    },
+    {
+        "model": "campaign_trail.answer_feedback",
+        "pk": 22199,
+        "fields": {
+            "answer": 21199,
+            "candidate": 153,
+            "answer_feedback": "Feedback"
+        }
+    },
+    {
+        "model": "campaign_trail.answer_feedback",
+        "pk": 22200,
+        "fields": {
+            "answer": 21200,
+            "candidate": 153,
+            "answer_feedback": "Feedback"
+        }
+    },
 ]
 
 campaignTrail_temp.candidate_image_url = "https://i.postimg.cc/g288Dqmv/MLKjr92.jpg";
@@ -20197,6 +20312,10 @@ cyoAdventure = function (a) {
         campaignTrail_temp.iraq_choice = ans;
     }
 
+	// King doesn't run for higher office
+	if (ans == 4419) {
+        campaignTrail_temp.questions_json[6] = tunnel(20058)
+		}
     // The actual setting of the running mates
     if ((ans == 4515 || ans == 4516 || ans == 4517) && rockefeller >= 3) {
         console.log("Rockefeller, 159");
@@ -20323,7 +20442,32 @@ cyoAdventure = function (a) {
         campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://upload.wikimedia.org/wikipedia/commons/d/d7/Bill_Clinton_1992.jpg";
         campaignTrail_temp.question_number = 34;
     }
-
+		
+	// King doesn't run for higher office
+    if (ans == 21197) {
+        campaignTrail_temp.candidate_json[1]["fields"].first_name = "Douglas";
+        campaignTrail_temp.candidate_json[1]["fields"].last_name = "Wilder";
+        campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://cdn.britannica.com/51/149851-050-CEF0A032/Douglas-Wilder.jpg";
+        campaignTrail_temp.question_number = 34;
+    }		
+    if (ans == 21198) {
+        campaignTrail_temp.candidate_json[1]["fields"].first_name = "Jerry";
+        campaignTrail_temp.candidate_json[1]["fields"].last_name = "Brown";
+        campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://i.imgur.com/3xgF5C1.jpeg";
+        campaignTrail_temp.question_number = 34;
+    }
+    if (ans == 21199) {
+        campaignTrail_temp.candidate_json[1]["fields"].first_name = "Paul";
+        campaignTrail_temp.candidate_json[1]["fields"].last_name = "Tsongas";
+        campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://i.imgur.com/fCtmChu.jpeg";
+        campaignTrail_temp.question_number = 34;
+    }
+    if (ans == 21200) {
+        campaignTrail_temp.candidate_json[1]["fields"].first_name = "Tom";
+        campaignTrail_temp.candidate_json[1]["fields"].last_name = "Harkin";
+        campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://i.imgur.com/fq5gwv3.jpeg";
+        campaignTrail_temp.question_number = 34;
+    }		
     if (ans == 4411 || ans == 4412 || ans == 4413) {
         e.election_json[0].fields.has_visits = 0
     }
