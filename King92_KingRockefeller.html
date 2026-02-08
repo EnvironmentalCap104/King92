@@ -319,7 +319,7 @@ campaignTrail_temp.questions_json = [
         "pk": 20000,
         "fields": {
             "priority": 1,
-            "description": "While no one expected you to have a running mate that was more famous than you, nobody also expected you to take a virtual nobody to the campaign trail. However, James Blanchard could grant you an aura of competency Bush’s running-mate could only dream of.",
+            "description": "While no one expected you to have a running mate that was more famous than you, nobody also expected you to take a virtual nobody to the campaign trail. Some of your most ardent supporters are queasy about his record which has used unfortunate dog whistles in the past. However, James Blanchard could grant you an aura of competency Bush’s running-mate could only dream of.",
             "likelihood": 1
         }
     },
@@ -445,7 +445,7 @@ campaignTrail_temp.questions_json = [
         "pk": 20014,
         "fields": {
             "priority": 1,
-            "description": "No matter your struggle, people can’t help themselves but find nothing to say about James Blanchard. He’s the guy at work that helps you with the task your boss asked you to complete by next week. People just struggle to ever find anything to say about him.",
+            "description": "As Bush is throwing every bolt of the kitchen sink to your face, it almost felt like your vice president would be spared. This would not be the case. Soon, the 1990 ad Blanchard had used seeing white prison guards dressing down black inmates was put back in the limelight, using it to discredit your commitment to civil rights and your vice president character.",
             "likelihood": 1
         }
     },
@@ -2041,7 +2041,7 @@ campaignTrail_temp.answers_json = [
         "pk": 21044,
         "fields": {
             "question": 20013,
-            "description": "Alright… I think there may have been a misunderstanding somewhere. I’ll ask Tom to explain his position more clearly. This doesn’t have to be a national scandal."
+            "description": "Very well… I think there may have been a misunderstanding somewhere. I’ll ask Tom to explain his position more clearly. This doesn’t have to be a national scandal."
         }
     }, {
         "model": "campaign_trail.answer",
@@ -2056,7 +2056,7 @@ campaignTrail_temp.answers_json = [
         "pk": 21046,
         "fields": {
             "question": 20014,
-            "description": "When we’re faced with such a wide break from my own personality, there is no better play than to take advantage of it. I’m sure they are popular shows where James can appear and make his case clear."
+            "description": "I am tired of seeing facts being wrangled by the course of political partisanship. We will fact check this ad publicly. The guard shown also dressed down white inmates. No, this was not racially targeted, it only was seen as such because of Bush’s Willie Horton ad in his 1988 campaign which was racially targeted."
         }
     },
     {
@@ -2064,7 +2064,7 @@ campaignTrail_temp.answers_json = [
         "pk": 21047,
         "fields": {
             "question": 20014,
-            "description": "I think that those that will listen to him the most are those he worked for all his life. James is a public servant of the midwest, his best performance would be if he would continue to act like so."
+            "description": "I was fully aware of who I was putting to follow me into the White House, and I am certain he will be ready to explain himself. James has made many mistakes in the past, yet unlike most politicians, he will admit to them. There’s no alternatives to accountability."
         }
     },
     {
@@ -2072,7 +2072,7 @@ campaignTrail_temp.answers_json = [
         "pk": 21048,
         "fields": {
             "question": 20014,
-            "description": "You know what, I don’t know how he should present himself and honestly, if he did the same to me I would find it offensive. Let’s ask James how he thinks he’d like to present himself."
+            "description": "I see this discussion as an opportunity rather than a threat. James and I will visit those prisons and show the issues of that carceral industrial complex which the Nixon-Reagan-Bush administration have been allowing to fester. Once our words ring clear between those thick walls, everyone will know where our hearts lean."
         }
     },
     {
@@ -3273,7 +3273,7 @@ campaignTrail_temp.answers_json = [
         "pk": 21198,
         "fields": {
             "question": 20058,
-            "description": "Brown Placeholder"
+            "description": "We have one man who does not fit any mold. Such an alien to our society people took to calling him Moonbeam. Gerald Brown knows what alienation has brought to our nation and he will make a fantastic candidate for this election."
         }
     },
     {
@@ -3281,7 +3281,7 @@ campaignTrail_temp.answers_json = [
         "pk": 21199,
         "fields": {
             "question": 20058,
-            "description": "Tsongas Placeholder"
+            "description": "Only one of them seems ready to sacrifice themself. Only one of them was ready to throw themselves in the fight while all were hiding away in fear. Only Paul Tsongas has shown the resolve necessary to become the president of the United States."
         }
     },
     {
@@ -3289,7 +3289,7 @@ campaignTrail_temp.answers_json = [
         "pk": 21200,
         "fields": {
             "question": 20058,
-            "description": "Harkin Placeholder"
+            "description": "There’s a radical in the Midwest, someone that people have been ignoring up until he became impossible to. Mister Harkin has pointed the finger on the issues which our nation faces today and will face tomorrow and he has my full support."
         }
     },
 ]
@@ -10229,7 +10229,17 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 21046,
             "candidate": 153,
             "affected_candidate": 153,
-            "global_multiplier": 0.015
+            "global_multiplier": -0.08
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
+        "pk": 23047,
+        "fields": {
+            "answer": 21047,
+            "candidate": 153,
+            "affected_candidate": 153,
+            "global_multiplier": -0.065
         }
     },
     {
@@ -10239,7 +10249,7 @@ campaignTrail_temp.answer_score_global_json = [
             "answer": 21048,
             "candidate": 153,
             "affected_candidate": 153,
-            "global_multiplier": 0.005
+            "global_multiplier": -0.045
         }
     },
     {
@@ -14648,7 +14658,7 @@ campaignTrail_temp.answer_score_state_json = [
             "state": 470,
             "candidate": 153,
             "affected_candidate": 153,
-            "state_multiplier": 0.02
+            "state_multiplier": 0.01
         }
     },
     {
@@ -17010,105 +17020,6 @@ campaignTrail_temp.answer_score_state_json = [
         "pk": 25137,
         "fields": {
             "answer": 21022,
-            "state": 478,
-            "candidate": 153,
-            "affected_candidate": 153,
-            "state_multiplier": 0.04
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 25138,
-        "fields": {
-            "answer": 21047,
-            "state": 477,
-            "candidate": 153,
-            "affected_candidate": 153,
-            "state_multiplier": 0.07
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 25139,
-        "fields": {
-            "answer": 21047,
-            "state": 490,
-            "candidate": 153,
-            "affected_candidate": 153,
-            "state_multiplier": 0.04
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 25140,
-        "fields": {
-            "answer": 21047,
-            "state": 504,
-            "candidate": 153,
-            "affected_candidate": 153,
-            "state_multiplier": 0.04
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 25141,
-        "fields": {
-            "answer": 21047,
-            "state": 493,
-            "candidate": 153,
-            "affected_candidate": 153,
-            "state_multiplier": 0.04
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 25142,
-        "fields": {
-            "answer": 21047,
-            "state": 505,
-            "candidate": 153,
-            "affected_candidate": 153,
-            "state_multiplier": 0.04
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 25143,
-        "fields": {
-            "answer": 21047,
-            "state": 470,
-            "candidate": 153,
-            "affected_candidate": 153,
-            "state_multiplier": 0.04
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 25144,
-        "fields": {
-            "answer": 21047,
-            "state": 469,
-            "candidate": 153,
-            "affected_candidate": 153,
-            "state_multiplier": 0.04
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 25145,
-        "fields": {
-            "answer": 21047,
-            "state": 468,
-            "candidate": 153,
-            "affected_candidate": 153,
-            "state_multiplier": 0.04
-        }
-    },
-    {
-        "model": "campaign_trail.answer_score_state",
-        "pk": 25146,
-        "fields": {
-            "answer": 21047,
             "state": 478,
             "candidate": 153,
             "affected_candidate": 153,
@@ -20082,7 +19993,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 21046,
             "candidate": 153,
-            "answer_feedback": "And so Martin’s “stereotypically white friend” would appear on In Living Colors with Jim Carrey doing an impressive impersonation of him. As he would tell more about himself, from his streaking as a kid to that time he survived a plane crash, people still are quite sure about James, but what they say isn’t negative."
+            "answer_feedback": "The mudslinging has truly reaching its lowest point possible as you made an attack ad concerning another attack ad. The Bush campaign will say you're deflecting and that Horton’s case has nothing to do with racism. For the NAACP, this was seen as the wrong step to take though they didn’t say a word publicly. The damage was done. Hopefully, it would not get worse than this."
         }
     },
     {
@@ -20091,7 +20002,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 21047,
             "candidate": 153,
-            "answer_feedback": "Shaking hands and giving hugs to the workers of Detroit was how he got his governorship many years ago. Not doing so was what lost it a few years back. Now, he can rectify it."
+            "answer_feedback": "Blanchard was known for his honesty as a politician, though previous scandals had put some dent in this. However, as Blanchard had fervently refused to pull off the ad when he was first pressed to do so, this does not come as cleanly as it should. Some will respect him for owing up to his mistake, others will call him spineless. Eventually, everyone will move on."
         }
     },
     {
@@ -20100,7 +20011,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 21048,
             "candidate": 153,
-            "answer_feedback": "This is something absolutely nobody expected. Blanchard has found himself to be the avid and extremely prolific party goer. Nobody would expect him to be a sensation on the dancefloor so much so people are talking a bit too much about him now, considering he was supposed to be the straight guy."
+            "answer_feedback": "While this visit proved a great success as taking on the issue head on allowed you to shift back the issue toward your own points, people will not forget Blanchard’s flip-flopping. It’s hard to trust again someone whom you’ve felt betrayed by. The wound will heal, it will only take time."
         }
     },
     {
@@ -21443,7 +21354,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 21197,
             "candidate": 153,
-            "answer_feedback": "Feedback"
+            "answer_feedback": "You can hear the jeers about you coming to help your own. This is just white noise. Still, no one can match your knack for organizing. Slowly, while the primary would be difficult, it eventually led to him finding an opening. You couldn’t walk the path, but you made someone else do so."
         }
     },
     {
@@ -21452,7 +21363,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 21198,
             "candidate": 153,
-            "answer_feedback": "Feedback"
+            "answer_feedback": "Brown’s stranger excesses like his flat taxes and abolishment of the Department of Education were easy to smooth out. As the primary evolved, a symbiosis slowly grew. On its end, he saw no other candidate than you to be his running-mate. Life seems to have found a way."
         }
     },
     {
@@ -21461,7 +21372,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 21199,
             "candidate": 153,
-            "answer_feedback": "Feedback"
+            "answer_feedback": "The Tsongas campaign would see dizzying highs, terrifying lows and creamy middles. From scams to attacks to much better and much worse, he would find his way to the convention floor. He will confide that he doubted he would ever be nominated without your help. It’s this honesty which needs to heal America."
         }
     },
     {
@@ -21470,7 +21381,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 21200,
             "candidate": 153,
-            "answer_feedback": "Feedback"
+            "answer_feedback": "Harkin's initial base of support was narrower than expected, but it would quickly grow as the DFL and minorities drew in the momentum to crown him. You had a long series of disappointments with many candidates among Democrats. For the first time in ages, both in the eyes you meet and in your heart, you feel warmth."
         }
     },
 ]
