@@ -23645,7 +23645,13 @@ cyoAdventure = function (a) {
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Wilder";
         campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://cdn.britannica.com/51/149851-050-CEF0A032/Douglas-Wilder.jpg";
         campaignTrail_temp.question_number = 34;
-    }		
+    }
+	if (ans == 21198) {
+        campaignTrail_temp.candidate_json[1]["fields"].first_name = "Jerry";
+        campaignTrail_temp.candidate_json[1]["fields"].last_name = "Brown";
+        campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://i.imgur.com/3xgF5C1.jpeg";
+        campaignTrail_temp.question_number = 34;
+    }
 	if (e.player_answers.includes(21146) || e.player_answers.includes(21198) || e.player_answers.includes(21200) || e.player_answers.includes(4444)) {
         campaignTrail_temp.candidate_json[2]["fields"].last_name = "Perot (Write In)";
 	}
