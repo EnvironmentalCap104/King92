@@ -12048,6 +12048,16 @@ campaignTrail_temp.answer_score_global_json = [
     },
     {
         "model": "campaign_trail.answer_score_global",
+        "pk": 23300,
+        "fields": {
+            "answer": 21200,
+            "candidate": 153,
+            "affected_candidate": 152,
+            "global_multiplier": 0.05
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_global",
         "pk": 23301,
         "fields": {
             "answer": 21198,
@@ -23664,7 +23674,7 @@ cyoAdventure = function (a) {
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Clinton";
         campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://upload.wikimedia.org/wikipedia/commons/d/d7/Bill_Clinton_1992.jpg";
         campaignTrail_temp.question_number = 34;
-		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#811313";
+		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#a11818";
     }
 		
 	// King doesn't run for higher office
@@ -23673,14 +23683,14 @@ cyoAdventure = function (a) {
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Wilder";
         campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://cdn.britannica.com/51/149851-050-CEF0A032/Douglas-Wilder.jpg";
         campaignTrail_temp.question_number = 34;
-		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#d61d1d";
+		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#cb2929";
     }
 	if (ans == 21198) {
         campaignTrail_temp.candidate_json[1]["fields"].first_name = "Jerry";
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Brown";
         campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://i.imgur.com/3xgF5C1.jpeg";
         campaignTrail_temp.question_number = 34;
-		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#c15413";
+		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#cb2c18";
     }
 	if (e.player_answers.includes(21146) || e.player_answers.includes(21198) || e.player_answers.includes(21200) || e.player_answers.includes(4444)) {
         campaignTrail_temp.candidate_json[2]["fields"].last_name = "Perot (Write In)";
@@ -23693,14 +23703,14 @@ cyoAdventure = function (a) {
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Tsongas";
         campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://i.imgur.com/fCtmChu.jpeg";
         campaignTrail_temp.question_number = 34;
-		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#c11354";
+		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#cb1833";
     }
     if (ans == 21200) {
         campaignTrail_temp.candidate_json[1]["fields"].first_name = "Tom";
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Harkin";
         campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://i.imgur.com/fq5gwv3.jpeg";
         campaignTrail_temp.question_number = 34;
-		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#816868";
+		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#cb1818";
     }		
     if (ans == 4411 || ans == 4412 || ans == 4413) {
         e.election_json[0].fields.has_visits = 0
