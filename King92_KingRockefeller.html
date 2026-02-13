@@ -7228,7 +7228,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 152,
             "state": 460,
-            "state_multiplier": 1.21125
+            "state_multiplier": 1.212151
         }
     },
     {
@@ -7831,7 +7831,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 153,
             "state": 476,
-            "state_multiplier": 0.941
+            "state_multiplier": 0.951121124135265115
         }
     },
     {
@@ -7930,7 +7930,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 153,
             "state": 487,
-            "state_multiplier": 0.87499833
+            "state_multiplier": 0.87996833
         }
     },
     {
@@ -18548,6 +18548,28 @@ campaignTrail_temp.answer_score_state_json = [
     },
     {
         "model": "campaign_trail.answer_score_state",
+        "pk": 26007,
+        "fields": {
+            "answer": 4420,
+            "state": 460,
+            "candidate": 153,
+            "affected_candidate": 152,
+            "state_multiplier": -0.05
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_state",
+        "pk": 26007,
+        "fields": {
+            "answer": 4420,
+            "state": 460,
+            "candidate": 153,
+            "affected_candidate": 153,
+            "state_multiplier": 0.05
+        }
+    },
+    {
+        "model": "campaign_trail.answer_score_state",
         "pk": 26008,
         "fields": {
             "answer": 4420,
@@ -23415,16 +23437,21 @@ const customStyling = document.createElement("style");
 function updateStyling(imgUrl) {
     customStyling.innerHTML = `
     #campaign_sign {
-        background-image: url("${imgUrl}");
-        background-size: cover;
-        border-color: #c9c9c9;    
-        border-width: .01em;
-        margin: 1 auto;
-        font-size: 0em;
-        background-position: center;
-        width: 100%; 
-        height: 92px; 
-        margin-left: -0.07em;
+  width: 100%;
+  height: 92px;                 /* stays inside the UI slot */
+  box-sizing: border-box;
+  border: .01em solid #c9c9c9;
+  margin: 0 auto;
+  overflow: hidden;
+
+  /* no crop, keeps 800x395 ratio inside the 92px slot */
+  background: #f8f8f8 url("${imgUrl}") center/contain no-repeat;
+}
+
+/* kill the injected last-name text */
+#campaign_sign p{
+  display: none !important;
+
     }
     `;
 }
@@ -23637,6 +23664,7 @@ cyoAdventure = function (a) {
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Clinton";
         campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://upload.wikimedia.org/wikipedia/commons/d/d7/Bill_Clinton_1992.jpg";
         campaignTrail_temp.question_number = 34;
+		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#811313";
     }
 		
 	// King doesn't run for higher office
@@ -23645,12 +23673,14 @@ cyoAdventure = function (a) {
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Wilder";
         campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://cdn.britannica.com/51/149851-050-CEF0A032/Douglas-Wilder.jpg";
         campaignTrail_temp.question_number = 34;
+		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#d61d1d";
     }
 	if (ans == 21198) {
         campaignTrail_temp.candidate_json[1]["fields"].first_name = "Jerry";
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Brown";
         campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://i.imgur.com/3xgF5C1.jpeg";
         campaignTrail_temp.question_number = 34;
+		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#c15413";
     }
 	if (e.player_answers.includes(21146) || e.player_answers.includes(21198) || e.player_answers.includes(21200) || e.player_answers.includes(4444)) {
         campaignTrail_temp.candidate_json[2]["fields"].last_name = "Perot (Write In)";
@@ -23663,12 +23693,14 @@ cyoAdventure = function (a) {
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Tsongas";
         campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://i.imgur.com/fCtmChu.jpeg";
         campaignTrail_temp.question_number = 34;
+		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#c11354";
     }
     if (ans == 21200) {
         campaignTrail_temp.candidate_json[1]["fields"].first_name = "Tom";
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Harkin";
         campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://i.imgur.com/fq5gwv3.jpeg";
         campaignTrail_temp.question_number = 34;
+		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#816868";
     }		
     if (ans == 4411 || ans == 4412 || ans == 4413) {
         e.election_json[0].fields.has_visits = 0
