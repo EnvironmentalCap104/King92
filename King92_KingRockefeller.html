@@ -23562,7 +23562,64 @@ cyoAdventure = function (a) {
         gore += 3;
         blanchard += 3;
     }
-    
+
+	// Primary Variables
+
+    if (ans == 4481) {
+        primary += 1;
+    }
+    if (ans == 4440) {
+        primary += 1;
+    }
+    if (ans == 4442) {
+        primary += 2;
+    }
+    if (ans == 21506) {
+        primary += 2;
+    }	
+    if (ans == 21526) {
+        primary += 2;
+    }	
+    if (ans == 15387) {
+        primary += 2;
+    }		
+    if (ans == 4464) {
+        primary += 1;
+    }
+    if (ans == 21523) {
+        primary += 1;
+    }
+    if (ans == 21512) {
+        primary += 1;
+    }
+    if (ans == 21511) {
+        primary += 1;
+    }	
+    if (ans == 21524) {
+        primary += 1;
+    }		
+    if (ans == 21510) {
+        primary += 1;
+    }		
+    if (ans == 4446) {
+        primary += 1;
+    }	
+    if (ans == 21502) {
+        primary += 1;
+    }
+    if (ans == 21507) {
+        primary += 1;
+    }		
+    if (ans == 21503) {
+        primary += 1;
+    }	
+    if (ans == 21519) {
+        primary += 1;
+    }		
+    if (ans == 4524) {
+        primary += 1;
+    }
+		
     // NAFTA Variables
     // NOTE: This question happens BEFORE the running mate is chosen.
     // So we store the NAFTA stance now, and apply VP-dependent tunneling once a running mate is locked in.
@@ -23745,7 +23802,7 @@ cyoAdventure = function (a) {
     if (ans == 4411 || ans == 4412 || ans == 4413) {
         e.election_json[0].fields.has_visits = 0
     }
-    if (ans == 4515 || ans == 4516 || ans == 4517) {
+    if (ans == 4515 || ans == 4516 || ans == 4517 || ans == 21515 || ans == 21516 || ans == 21517) {
         e.election_json[0].fields.has_visits = 1
     }
 
@@ -23782,8 +23839,16 @@ cyoAdventure = function (a) {
 	if ((ans == 4465 || ans == 15335) && (ans == 4450 || ans == 4451)) {
         campaignTrail_temp.questions_json[11] = tunnel(20510)
 		}
-
+		
+// LANDSLIDE
+	if (primary >=5) {
+		campaignTrail_temp.questions_json[12] = tunnel(20507)
+		}
+		
 // Lose the Primary in Q13
+	if (primary <=2) {
+        campaignTrail_temp.questions_json[12] = tunnel(20506)
+		}		
     if (ans == 21514) {
         campaignTrail_temp.candidate_json[1]["fields"].first_name = "Bill";
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Clinton";
