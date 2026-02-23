@@ -23835,7 +23835,7 @@ cyoAdventure = function (a) {
 	if (ans == 4524) {
         campaignTrail_temp.questions_json[8] = tunnel(20501)
 		}		
-	if (ans == 4502 && ans == 4524) {
+	if (e.player_answers.includes(4502) && e.player_answers.includes(4524)) {
         campaignTrail_temp.questions_json[8] = tunnel(20508)
 		}
 
@@ -23846,7 +23846,7 @@ cyoAdventure = function (a) {
 	if (ans == 4502) {
         campaignTrail_temp.questions_json[10] = tunnel(20503)
 		}		
-	if (ans == 4502 && ans == 4458) {
+	if (e.player_answers.includes(4502) && e.player_answers.includes(4458)) {
         campaignTrail_temp.questions_json[10] = tunnel(20509)
 		}
 // Q12
@@ -23856,7 +23856,7 @@ cyoAdventure = function (a) {
 	if (ans == 4465 || ans == 15335) {
         campaignTrail_temp.questions_json[11] = tunnel(20505)
 		}		
-	if ((ans == 4465 || ans == 15335) && (ans == 4450 || ans == 4451)) {
+	if ((e.player_answers.includes(4465) || e.player_answers.includes(15335)) && (e.player_answers.includes(4450) || e.player_answers.includes(4451))) {
         campaignTrail_temp.questions_json[11] = tunnel(20510)
 		}
 		
