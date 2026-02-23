@@ -7300,7 +7300,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 152,
             "state": 468,
-            "state_multiplier": 1.05
+            "state_multiplier": 1.055
         }
     },
     {
@@ -7381,7 +7381,7 @@ campaignTrail_temp.candidate_state_multiplier_json = [
         "fields": {
             "candidate": 152,
             "state": 477,
-            "state_multiplier": 1.0125
+            "state_multiplier": 1.0175
         }
     },
     {
@@ -23750,7 +23750,7 @@ cyoAdventure = function (a) {
     }
 
     // final eligibility is enforced inside vpSwitcher right before the VP screen renders.
-    if (campaignTrail_temp.question_number == 12) {        
+    if (campaignTrail_temp.question_number == 12 && ans != 21514) {        
         window.setTimeout(e.vpSwitcher, 20)
     }
 
