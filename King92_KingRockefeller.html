@@ -23904,7 +23904,7 @@ cyoAdventure = function (a) {
 	if (primary >=5) {
 		campaignTrail_temp.questions_json[12] = tunnel(20507)
 		}	
-		
+
 // Lose the Primary in Q13
 	if (primary <=2) {
         campaignTrail_temp.questions_json[12] = tunnel(20506)
@@ -24283,3 +24283,380 @@ if (!element) {
     controlElement.id = 'controlElement';
     document.body.appendChild(controlElement);
 }
+
+// This is for the recommended reading box. Specifically, it sets up
+// the styling for the tab system we have here. Taken from 2016ALOT
+(function () {
+  'use strict';
+
+  const sheet = new CSSStyleSheet();
+  sheet.replaceSync(`
+    /* Base box */
+	#recommended_reading_box {
+		border-style: double none;
+		margin-inline: auto;
+		width: 95%;
+		background: linear-gradient(rgb(247, 247, 247), rgb(241, 241, 241));
+		height: 30em;
+		color: #000;
+		overflow-y: auto;
+		overflow-x: hidden;
+		overscroll-behavior: contain;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	/* Tab bar */
+	#recommended_reading_box #tab-select {
+		position: sticky;
+		top: 0;
+		z-index: 2;
+		width: 100%;
+		height: 32px;
+		display: flex;
+		justify-content: center;
+		margin-bottom: 1em;
+		border-bottom: 5px solid #1b146c;
+		border-image: linear-gradient(#3c3ff6, #9f0c0c) 40;
+		background: linear-gradient(rgb(247, 247, 247), rgb(241, 241, 241));
+	}
+	#recommended_reading_box .ftab,
+	#recommended_reading_box .ftab-active {
+		font-family: Trebuchet MS, sans-serif;
+		width: 98px;
+		height: 32px;
+		margin-top: 0;
+		padding-top: 7px;
+		box-sizing: border-box;
+		cursor: pointer;
+		user-select: none;
+		background: linear-gradient(to bottom, #f7f7f7, #e0e0e0);
+		border: 1px solid #ccc;
+		border-radius: 10px 10px 0 0;
+		text-align: center;
+		transition: background 0.15s ease;
+	}
+	#recommended_reading_box .ftab:hover {
+		background: linear-gradient(to bottom, #fff, #ddd);
+	}
+	#recommended_reading_box .ftab-active {
+		background: #ffeded;
+		border-color: #aa2525;
+		cursor: default;
+	}
+	#recommended_reading_box #start.ftab,
+	#recommended_reading_box #start.ftab-active {
+		width: 100px;
+	}
+
+	/* Shared pane defaults */
+	#recommended_reading_box [id^="rpage"] {
+		display: block;
+		line-height: 1.5;
+	}
+	#recommended_reading_box > div:last-child {
+		contain: layout style;
+	}
+	#recommended_reading_box [id^="rpage"] h4 {
+		border-bottom: 2px solid #ddd;
+		padding-bottom: 8px;
+		margin-bottom: 1em;
+		font-size: 1.2em;
+		color: #1b146c;
+		font-family: Georgia, serif;
+	}
+	#recommended_reading_box [id^="rpage"] a {
+		color: #0056b3;
+		text-decoration: none;
+	}
+	#recommended_reading_box [id^="rpage"] a:hover {
+		text-decoration: underline;
+	}
+	#recommended_reading_box [id^="rpage"] blockquote {
+		margin: 0.5em 0 0.5em 20px;
+		padding: 0.75em 1.25em;
+		border-left: 4px solid #9f0c0c;
+		border-radius: 0.2em 0 0 0.2em;
+		font-style: italic;
+		color: #111;
+		background-color: #fafafa;
+	}
+
+	/* Lore */
+	.lore-content .lore-header {
+		border-bottom: 2px solid #eee;
+		margin-bottom: 20px;
+		padding-bottom: 10px;
+	}
+	.lore-content h2 {
+		color: #1b146c;
+		margin: 0 0 5px 0;
+		font-family: Georgia, serif;
+	}
+	.lore-content h3 {
+		color: #666;
+		margin: 0;
+		font-size: 1em;
+		font-weight: normal;
+		font-style: italic;
+	}
+	.lore-content .lore-body {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		gap: 25px;
+	}
+	.lore-content .lore-text {
+		flex: 2;
+		text-align: justify;
+		line-height: 1.5;
+	}
+	.lore-content .lore-note {
+		background: #f9f9f9;
+		border-left: 3px solid #1b146c;
+		padding: 10px;
+		font-size: 0.9em;
+		color: #444;
+		margin-top: 15px;
+	}
+	.lore-content .lore-media {
+		flex: 1;
+		display: flex;
+		justify-content: center;
+	}
+	.lore-content .img-wrapper {
+		background: white;
+		padding: 8px;
+		box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+		transform: rotate(-2deg);
+		text-align: center;
+		max-width: 220px;
+		will-change: transform;
+	}
+	.lore-content .img-wrapper img {
+		width: 100%;
+		height: auto;
+		display: block;
+		margin-bottom: 5px;
+	}
+	.lore-content .img-caption {
+		font-family: monospace;
+		font-size: 0.8em;
+		color: #333;
+	}
+
+	/* Credits */
+	.rec-credits-content { line-height: 1.6; }
+	.rec-credits-content > ul {
+		list-style: none;
+		padding-left: 0;
+	}
+	.rec-credits-content > ul > li {
+		position: relative;
+		padding: 0.6em 0 0.6em 1.5em;
+		border-bottom: 1px solid #eee;
+	}
+	.rec-credits-content > ul > li:last-child { border-bottom: none; }
+	.rec-credits-content > ul > li::before {
+		content: "▸";
+		position: absolute;
+		left: 0;
+		color: #9f0c0c;
+		font-weight: bold;
+	}
+	.rec-credits-content .thanks-list { list-style: none; padding-left: 0; }
+	.rec-credits-content .thanks-list > li {
+		position: relative;
+		padding: 0.5em 0 0.5em 1.8em;
+		border-bottom: 1px solid #f0f0f0;
+	}
+	.rec-credits-content .thanks-list > li:last-child { border-bottom: none; }
+	.rec-credits-content .thanks-list > li::before {
+		content: "★";
+		position: absolute;
+		left: 0;
+		color: #d4a017;
+		font-size: 1.1em;
+	}
+	.rec-credits-content .credits-closing {
+		margin-top: 1.5em;
+		padding: 0.8em 1em;
+		background: linear-gradient(135deg, #f9f9f9, #fff5f5);
+		border-left: 3px solid #1b146c;
+		border-radius: 0 4px 4px 0;
+		font-size: 0.95em;
+	}
+	.rec-credits-content hr {
+		border: none;
+		border-top: 1px solid lightgray;
+		margin: 1.5em 0;
+	}
+	.rec-credits-content blockquote {
+		background: linear-gradient(135deg, #fdfdf9, #f9f5f0);
+		padding: 1em 1.5em;
+		border-left: 4px solid #8b7355;
+		font-style: italic;
+		color: #444;
+		line-height: 1.7;
+		position: relative;
+		will-change: transform;
+	}
+	.rec-credits-content blockquote::before {
+		content: "✦";
+		position: absolute;
+		top: -8px;
+		left: -12px;
+		font-size: 1.2em;
+		color: #8b7355;
+		font-style: normal;
+	}
+
+	/* Notes */
+	.notes-content { line-height: 1.6; }
+	.notes-content > p {
+		font-weight: bold;
+		font-size: 1.05em;
+		color: #1b146c;
+	}
+	.notes-content .fact-list {
+		list-style: none;
+		padding-left: 0;
+		counter-reset: fact-counter;
+	}
+	.notes-content .fact-list > li {
+		counter-increment: fact-counter;
+		position: relative;
+		padding: 1em 1em 1em 3.5em;
+		margin-bottom: 1em;
+		background: white;
+		border: 1px solid #e8e8e8;
+		border-radius: 6px;
+		box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+		transition: box-shadow 0.2s ease;
+		contain: layout style paint;
+	}
+	.notes-content .fact-list > li:hover {
+		box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+	}
+	.notes-content .fact-list > li::before {
+		content: "#" counter(fact-counter);
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		width: 2.8em;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(135deg, #1b146c, #3c3ff6);
+		color: white;
+		font-weight: bold;
+		border-radius: 6px 0 0 6px;
+	}
+	.notes-content .fact-list > li img {
+		display: block;
+		margin: 1em auto 0.5em;
+		max-width: 75%;
+		height: auto;
+		object-fit: contain;
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+		content-visibility: auto;
+	}
+  `);
+
+  let stylesAdded = false;
+
+  function addStyles() {
+    if (stylesAdded) return;
+    document.adoptedStyleSheets = [...document.adoptedStyleSheets, sheet];
+    stylesAdded = true;
+  }
+
+  function initializeTabs(box) {
+    // if already initialized, skip
+    if (box._tabsInitialized) return;
+
+    const tabContainer = box.querySelector('#tab-select');
+    if (!tabContainer) return;
+
+    const contentContainer = tabContainer.nextElementSibling;
+    if (!contentContainer) return;
+
+    // cache tabs and panes
+    const tabs = [];
+    for (const child of tabContainer.children) {
+      if (child.tagName === 'P') tabs.push(child);
+    }
+
+    // pre-resolve panes once
+    const contentPanes = new Array(tabs.length);
+    for (let i = 0; i < tabs.length; i++) {
+      contentPanes[i] = contentContainer.querySelector(`#rpage${i}`);
+    }
+
+    let activeIdx = -1;
+
+	function updateState(newIndex) {
+		if (newIndex === activeIdx) return;
+
+        // deactivate previous
+		if (activeIdx !== -1) {
+			tabs[activeIdx].className = 'ftab';
+			if (contentPanes[activeIdx]) contentPanes[activeIdx].style.display = 'none';
+		}
+
+		// activate new
+		tabs[newIndex].className = 'ftab-active';
+		if (contentPanes[newIndex]) contentPanes[newIndex].style.display = 'block';
+
+		activeIdx = newIndex;
+	}
+	for (let i = 0; i < contentPanes.length; i++) {
+		if (contentPanes[i]) contentPanes[i].style.display = 'none';
+	}
+
+    // single delegated listener
+    function onTabClick(event) {
+      const clickedTab = event.target.closest('p.ftab, p.ftab-active');
+      if (!clickedTab || !tabContainer.contains(clickedTab)) return;
+
+      const index = tabs.indexOf(clickedTab);
+      if (index !== -1) updateState(index);
+    }
+
+    // cleanup
+    if (tabContainer._clickHandler) {
+      tabContainer.removeEventListener('click', tabContainer._clickHandler);
+    }
+    tabContainer._clickHandler = onTabClick;
+    tabContainer.addEventListener('click', onTabClick);
+
+    // strip inline handlers
+    for (const t of tabs) t.removeAttribute('onclick');
+
+    // set initial. hide everything first in one pass, then activate
+    for (let i = 0; i < contentPanes.length; i++) {
+      if (contentPanes[i]) contentPanes[i].style.display = 'none';
+    }
+
+    let initialIndex = tabs.findIndex(t => t.classList.contains('ftab-active'));
+    if (initialIndex === -1 && tabs.length > 0) initialIndex = 0;
+
+    // reset so updateState doesn't short-circuit
+    activeIdx = -1;
+    updateState(initialIndex);
+
+    box._tabsInitialized = true;
+  }
+
+  function ensureInitialized() {
+    const box = document.getElementById('recommended_reading_box');
+    if (!box) return;
+
+    if (!stylesAdded) addStyles();
+    if (!box._tabsInitialized) initializeTabs(box);
+  }
+
+  window.recommendedReading = { addStyles, initializeTabs, ensureInitialized };
+})();
