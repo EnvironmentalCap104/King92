@@ -23501,6 +23501,16 @@ var primary = 0;
 var nafta = 0;
 var radicality = 0;
 
+// State Variables for Achievements
+var SDwin = 0
+var KYwin = 0
+var TNwin = 0
+var MOwin = 0
+var ARwin = 0
+var TXwin = 0
+var WVwin = 0
+var LAwin = 0
+
 // First you have to set variables for each running mate after the code with your questions/answers/feedback.
 var rockefeller = 0;
 var richards = 0;
@@ -23679,6 +23689,8 @@ cyoAdventure = function (a) {
     if (ans == 4524) {
         primary += 1;
     }
+
+	// Achievement Variables
 		
     // NAFTA Variables
     // NOTE: This question happens BEFORE the running mate is chosen.
@@ -24267,7 +24279,76 @@ e.vpSwitcher = () => {
 		questionHTML(); 
     })
 }
-
+  function campaignSummary() {
+    const stateNamesMap = getStateNamesMap();  // Get map of state PKs to names
+    const candidateNamesMap = getCandidateNamesMap();  // Get map of candidate PKs to names
+    const visits = countVisitsPerState();  // Get visit counts
+    const votes = getVotePercentages();  // Get vote percentages
+  
+    for (const statePK in votes) {
+      const stateName = stateNamesMap[statePK] || `Unknown State (${statePK})`;  // Fallback if state name not found
+      console.log(`State: ${statePK}: ${stateName}`);
+      const visitCount = visits[statePK] || 0;  // Get the number of visits to the state
+      console.log(`Number of Visits: ${visitCount}`);
+      console.log(`Vote Percentages:`);
+  
+      let KingVotes = 0;
+      let maxVotes = 0;
+      let candidateMax = "";
+      let perotVotes = 0;
+  
+      votes[statePK].forEach((voteData) => {
+        const candidateName = candidateNamesMap[voteData.candidate] || `Candidate ${voteData.candidate}`;
+        console.log(`  ${candidateName}: ${voteData.percentage.toFixed(2)}%`);
+  
+        if (candidateName === "King Jr.") {
+          KingVotes = voteData.percentage;  // Track MLK's votes
+        }
+        if (candidateName === "Perot") {
+          perotVotes = voteData.percentage;  // Track Perot's votes
+        }
+        if (voteData.percentage > maxVotes) {
+          maxVotes = voteData.percentage;
+          candidateMax = candidateName;
+        }
+      });
+			
+      // State Checks
+      if (stateName === "South Dakota" && candidateMax === "King Jr.") {
+        SDwin = 1;  // MLK won South Dakota
+        console.log(`SDwin point assigned: MLK won South Dakota!`);
+      }
+      if (stateName === "Kentucky" && candidateMax === "King Jr.") {
+        KYwin = 1;  // MLK won Kentucky
+        console.log(`KYwin point assigned: MLK won Kentucky!`);
+      }
+      if (stateName === "Louisiana" && candidateMax === "King Jr.") {
+        LAwin = 1;  // MLK won Louisiana
+        console.log(`LAwin point assigned: MLK won Louisiana!`);
+      }			
+      if (stateName === "Arkansas" && candidateMax === "King Jr.") {
+        ARwin = 1;  // MLK won Arkansas
+        console.log(`ARwin point assigned: MLK won Arkansas!`);
+      }		
+      if (stateName === "Tennessee" && candidateMax === "King Jr.") {
+        TNwin = 1;  // MLK won Tennessee
+        console.log(`TNwin point assigned: MLK won Tennessee!`);
+      }		
+      if (stateName === "Missouri" && candidateMax === "King Jr.") {
+        MOwin = 1;  // MLK won Missouri
+        console.log(`MOwin point assigned: MLK won Missouri!`);
+      }	
+      if (stateName === "Texas" && candidateMax === "King Jr.") {
+        TXwin = 1;  // MLK won Texas
+        console.log(`TXwin point assigned: MLK won Texas!`);
+      }		
+      if (stateName === "West Virginia" && candidateMax === "King Jr.") {
+        WVwin = 1;  // MLK won West Virginia
+        console.log(`WVwin point assigned: MLK won West Virginia!`);
+      }
+}
+}
+			
 // This handles all the nominees in the "Opposition File"
 // Well it's actually for the VPs but WHATEVERRRRRRRRRRRR
 // As you play the game, possible VPs slowly get removed.
@@ -24354,3 +24435,49 @@ if (!element) {
     controlElement.id = 'controlElement';
     document.body.appendChild(controlElement);
 }
+// Endings
+campaignTrail_temp.multiple_endings = true;
+endingPicker = (out, totv, aa, quickstats) => {
+
+    function setImage(url) {
+        if(url == '' || url == null) return;
+        let interval = setInterval(function () {
+            img = document.getElementsByClassName("person_image")[0];
+            if (img != null) {
+                img.src = url;
+                clearInterval(interval);
+            }
+        }, 50);
+    }
+
+    if(quickstats[0] == 0) {
+        setImage("https://media.vanityfair.com/photos/58c02843208b4945c3920c8d/4:3/w_1280,h_960,c_limit/donald-trump-arnold-schwarzenegger-02.jpg");
+        return `<h3>Hasta la vista, baby!</h3><p>Those were the exact words that came out of President Arnold Schwarzenegger's mouth after he saw the news that you got 0% of the vote. But in all honesty, his anger was directed at his arch-rival for eight years: The man who started this political movement that attempted to overthrow the government four years ago. The man that called every election he lost rigged and stolen. That man is Donald J. Trump. <p>The people are sick of this man, and they were sick of you too. Everyone knew that after that dark day where there were chants of "Hang Lindsey" this movement was cooked for all eternity. This is a sweet victory for Arnold Schwarzenegger, no matter if Lindsey or Andy won this election.</p>`;
+    }        
+    if(quickstats[0] > 0  && quickstats[0] < 113) {
+        setImage("https://whyy.org/wp-content/uploads/2024/12/donald-trump-elon-musk-2024-10-05-768x512.jpg");
+        return `<h3>You did it. You actually deadlocked the election.</h3><p>Your good buddy Donald Trump or even Mighty Mike Huckabee weren't able to pull this off. But since you won Republican-leaning states, you would think that Vice President Lindsey Graham would win the election. However, that is up in the air as Democrats do have both houses of Congress. <p>So what the hell? This is the first deadlocked election since 1824, and now we could have Lindsey Graham as President and Tammy Duckworth as Vice President. But it could be a whole different ballgame. We'll have to wait and see what happens when the election is certified I guess. I can promise you one thing though: You are probably not going to be the 46th President of the United States, in spite of your historic achievement.</p>`;
+    }
+    if(quickstats[0] > 112  && quickstats[0] < 269) {
+        setImage("https://whyy.org/wp-content/uploads/2024/12/donald-trump-elon-musk-2024-10-05-768x512.jpg");
+        return `<h3>You did it. You actually deadlocked the election.</h3><p>Your good buddy Donald Trump or even Mighty Mike Huckabee weren't able to pull this off. But since you won Republican-leaning states, you would think that Vice President Lindsey Graham would win the election. However, that is up in the air as Democrats do have both houses of Congress. <p>So what the hell? This is the first deadlocked election since 1824, and now we could have Lindsey Graham as President and Tammy Duckworth as Vice President. But it could be a whole different ballgame. We'll have to wait and see what happens when the election is certified I guess. I can promise you one thing though: You are probably not going to be the 46th President of the United States, in spite of your historic achievement.</p>`;
+    }		
+    if(aa[0].electoral_votes > 269 && aa[0].candidate == 154) {
+        setImage("https://static01.nyt.com/images/2019/07/28/opinion/28kruseWeb/28kruseWeb-articleLarge.jpg?quality=75&auto=webp&disable=upscale");
+        return `<h3>By god! First time since George Wallace.</h3><p>The spirit of George Wallace has returned, as you have become the first third-party candidate to win states and electoral votes since Wallace's campaign in 1968. And let's be real, you and George had quite similar populist messages that appealed to the Christian right and the white working-class. <p>But all in all, it was still expected you would lose, even though you weren't able to tip the election to the Democrats for the third straight year. In all seriousness though, most wonder how you were able to win a state this year considering Trump and Huckabee couldn't do it either time. Maybe you had more support than them this year? Or was there a different factor at play?</p>`;
+    }        
+    if(quickstats[0] > 269 && quickstats[0] < 371) {
+        setImage("https://akm-img-a-in.tosshub.com/indiatoday/images/story/202410/the-tesla-ceo-was-spotted-wearing-a-black-maga-cap-along-with-a-gothic-looking-font-and-a-black-t--285945708-16x9_0.jpg?VersionId=9M..0a9LCG1Iia_hFfUvNEnsx_8O_Bw3");
+        return `<h3>Wrap your head around this.</h3><p>President Elon Musk. What the fuck? And how did this happen? Did you steal the election, or did people love you so much? Nobody knows, but not only is this the biggest upset in American presidential history, but also, this will likely go down as the craziest four years in the history of our country if in fact your election victory does get certified. <p>To you. Yes. You. The player. Behind the screen. Tell me how you were able to win as Elon Musk. Did you use Bigshot? Did you run the perfect campaign on Cakewalk? Will we ever know?</p>`;
+    }
+    if(quickstats[0] > 370 && quickstats[0] < 538) {
+        setImage("https://akm-img-a-in.tosshub.com/indiatoday/images/story/202410/the-tesla-ceo-was-spotted-wearing-a-black-maga-cap-along-with-a-gothic-looking-font-and-a-black-t--285945708-16x9_0.jpg?VersionId=9M..0a9LCG1Iia_hFfUvNEnsx_8O_Bw3");
+        return `<h3>Wrap your head around this.</h3><p>President Elon Musk. What the fuck? And how did this happen? Did you steal the election, or did people love you so much? Nobody knows, but not only is this the biggest upset in American presidential history, but also, this will likely go down as the craziest four years in the history of our country if in fact your election victory does get certified. <p>To you. Yes. You. The player. Behind the screen. Tell me how you were able to win as Elon Musk. Did you use Bigshot? Did you run the perfect campaign on Cakewalk? Will we ever know?</p>`;
+    }
+    if(quickstats[0] == 538) {
+        setImage("https://ichef.bbci.co.uk/news/1024/cpsprodpb/9efa/live/d4746000-4278-11ef-9e1c-3b4a473456a6.jpg.webp");
+        return `<h3>FIGHT! FIGHT! FIGHT!</h3><p>And so you did. They persecuted him. They took him off the ballot. They even tried to kill him. But He Kept Fighting until the end.<p>This is the greatest political movement in the history of our country, and America rose up. The radical establishment politicians have failed our country, and the people fought back. People hate being told what to do and how to live their lives by politicians, and this 538-0 landslide proves that conclusively. <p>The same movement that tried to steal the 2020 election on January 6th just four short years ago won every single electoral vote in the country, likely illegitimately...</p>`;
+    }
+}
+// End of Game Achievements
+	
