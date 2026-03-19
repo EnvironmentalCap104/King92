@@ -23934,6 +23934,76 @@ cyoAdventure = function (a) {
     }
 }
 
+let vpName = "ERROR YOU DIDN'T SET ME";
+
+vpTable = {
+    "Martin Luther King Jr." : vpName,
+    "George H.W. Bush" : "Dan Quayle",
+    "Ross Perot" : "James Stockdale",
+    "Jerry Brown" : "Martin Luther King Jr.",
+	"Bill Clinton" : "Al Gore",
+    "Tom Harkin" : "Martin Luther King Jr.",
+    "Paul Tsongas" : "Al Gore",
+    "Douglas Wilder" : "Dick Gephardt",
+	"Andre Marrou" : "Irrelevant",
+
+}
+
+vpTableHistorical = {
+    "Martin Luther King Jr." : "Jay Rockefeller",
+    "George H.W. Bush" : "Dan Quayle",
+    "Ross Perot" : "James Stockdale",
+    "Andre Marrou" : "Irrelevant",
+}
+
+function onGameWindowChangeCandidates() {
+    const resultsTableHolder = document.getElementById("overall_details_container");
+
+    if(!resultsTableHolder || resultsTableHolder.classList.contains("done")) {
+        return;
+    }
+
+    resultsTableHolder.classList.add("done");
+
+    const resultsTable = resultsTableHolder.childNodes[3].childNodes[3].children[0];
+    
+    for(let i = 0; i < resultsTable.children.length; i++) {
+        const row = resultsTable.children[i];
+        let name = row.firstChild.innerText;
+        row.insertCell(1);
+        if(name) {
+            name = name.replaceAll("-", "").trim();
+            console.log("name is:" + name)
+        }
+
+        if(i == 0) {
+            row.children[1].innerHTML = `<span style="font-weight:bold">Running Mate<span>`;
+        }
+        else {
+            row.children[1].innerHTML = vpTable[name];
+        }
+    }
+
+    
+    const resultsTableHistorical = resultsTableHolder.childNodes[5].childNodes[3].children[0];
+    
+    for(let i = 0; i < resultsTableHistorical.children.length; i++) {
+        const row = resultsTableHistorical.children[i];
+        let name = row.childNodes[1].innerText;
+        row.insertCell(1);
+        if(name) {
+            name = name.replaceAll("-", "").trim();
+        }
+
+        if(i == 0) {
+            row.children[1].innerHTML = `<span style="font-weight:bold">Running Mate<span>`;
+        }
+        else {
+            row.children[1].innerHTML = vpTableHistorical[name];
+        }
+    }
+}
+		
 var changeGameDisp = (hide) => {
     disp = "";
     if (hide) {
