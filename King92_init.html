@@ -500,6 +500,55 @@ style.innerHTML = `
   a:-webkit-any-link {
     color: #000000;
   }
+.endingtitle {
+    color: #000000 !important;
+    text-align: center;
+    font-size: 36px !important;
+    margin-bottom: 0.3rem !important;
+    font-family: "DM Serif Display", serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.endingdate {
+    color: #000000 !important;
+    text-align: center;
+    font-size: 18px !important;
+    margin-top: 0 !important;
+    font-family: "Inter", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    margin-bottom: 0.7rem !important;
+}
+
+    .ending-slide {
+    background-color: #f5f5f5;
+    padding: 36px;
+    border: 3px solid black;
+    box-shadow: inset 0 0 17px 4px #000000;
+    margin: 1rem auto;
+    max-width: 610px;
+    margin-left: 16.42rem;
+    color: #000000;
+}
+
+#results_container > .person_image {
+    position: sticky;
+    top: 1rem;
+    float: left;
+    margin: 1.2em 1em 5rem;
+    border: ridge 3px black;
+    height: 250px;
+    width: auto;
+}
+
+#results_container {
+    color: white;
+    overflow: auto;
+    height: 87%;
+    scrollbar-width: none;
+    border-bottom: 1px solid black;
+}        
 `;
 
 document.head.appendChild(style);
