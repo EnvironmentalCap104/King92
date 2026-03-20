@@ -1501,7 +1501,18 @@ const trackMeta = {
 
 setupMusicPlayer();
 
-
+// If the player starts a new run without a full page refresh, allow ending music swaps again.
+try {
+    if (campaignTrail_temp && typeof campaignTrail_temp.newGame === 'function' && !campaignTrail_temp._wrappedNewGame1996) {
+        const _oldNewGame = campaignTrail_temp.newGame;
+        campaignTrail_temp.newGame = function() {
+            try { campaignTrail_temp._endingPlaylistSwapped1996 = false; } catch (_err) { /* ignore */ }
+            return _oldNewGame.apply(this, arguments);
+        };
+        campaignTrail_temp._wrappedNewGame1996 = true;
+    }
+} catch (_err) { /* ignore */ }
+      
 RecReading = true
 
 styling = document.createElement("style");
