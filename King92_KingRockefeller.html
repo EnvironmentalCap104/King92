@@ -24439,6 +24439,21 @@ if (!element) {
 campaignTrail_temp.multiple_endings = true;
 endingPicker = (out, totv, aa, quickstats) => {
 
+    function swapEndingPlaylist(targetPlaylistIndex) {
+    try {
+    if (campaignTrail_temp._endingPlaylistSwapped1996) return;
+        const fn = (campaignTrail_temp && typeof campaignTrail_temp.setSoundtrack === 'function')
+         ? campaignTrail_temp.setSoundtrack
+         : (typeof window !== 'undefined' && typeof window.setSoundtrack === 'function')
+         ? window.setSoundtrack
+         : null;
+         if (!fn) return;
+            if (fn(targetPlaylistIndex, { autoplay: true })) {
+                campaignTrail_temp._endingPlaylistSwapped1996 = true;
+            }
+        } catch (_err) { console.error("playlist shit broke gng"); }
+    }			
+			
     function setImage(url) {
         if(url == '' || url == null) return;
         let interval = setInterval(function () {
@@ -24450,83 +24465,362 @@ endingPicker = (out, totv, aa, quickstats) => {
         }, 50);
     }
 
-    if(quickstats[0] == 0) {
-        setImage("https://media.vanityfair.com/photos/58c02843208b4945c3920c8d/4:3/w_1280,h_960,c_limit/donald-trump-arnold-schwarzenegger-02.jpg");
-        return `<h3>June 1776: PHILADELPHIA, PENNSYLVANIA</h3><p>JOHN ADAMS: In all preceding acts, in all expectable futures, the nation that we are set to build will onset the dominion of one race of one blood over the race of another. Is it really wise in such a position not to set our wishes for the eventual deconstruction of this abomination currently undergone that monetize each slashes and each hour of suffering of so many in the land our children shall call home?<p>THOMAS JEFFERSON: That institution of bondage is a macabre display of misery, yet we are not setting ourselves with the hope of one state against the wishes of one kingdom but the hopes of many of them. The exposition of the very notion that the employees of landed gentry may be suffering from pains untold and undeserved but for unfortunate providence is deeply insulting to most. This brandishing of eventual end would mean the eventual end of their position among men. No sane man will ever give the noose to hang the livelihood of his species, even less if such an act was certain to affect his very kin.<p>JOHN ADAMS: Are the people of those states not fighting against such inequities of existence? That the birth of man upon another continent brandished them the right of representation and dignity while those were forbidden to them? You spoke yourself of the horrors of such an institution but are the conditions you settle upon so gratifying to your person that the notions that the whip may not be carried by your children simply too much to bear? Are the men of this nation not of sufficient character to accept the notion of lesser welfare upon themselves for the benefit of the greater whole?<p>THOMAS JEFFERSON: No sane character would admonish their own position in the knowledge that those would mean their own bondage. It is not my belief that the fate of those not to be master is to be slaves, yet it is my belief that many do see it as an undeniable truth. For the idea that their representation may be limited by the number of free men in their states is already unbearable and the proposition of giving arms to the men of Africa ready to fight against Tory master yet more insurmountable for their tenure, neither the states of the Carolinas, of Georgia, Maryland, Delaware and my own home of Virginia would ever in a dozen decades on this earth sign their independence their subjugation for those northern state.
-<p>JOHN ADAMS: It is known however that such positions never were fatalities. This decision to not bring upon the idea that all men are created equal implies the equality of every person to be named under the creator will be an eternal driver of strife upon the great nation that is being founded. Is there no compromise not ignominious enough for us to tolerate the sales of buying of beings of another continent into our soil for decades more nor the enlargement of this miserable industry upon the free land to our west? Is the heart of that southern nobility so hardened to the plea of decency of persons they know of names that the fear of a change of a system of horror toward a system of equals on generations far removed to their own simply unbearable?<p>THOMAS JEFFERSON: Those notions are not for your person to judge. Those many states are bound by a great compromise that allows one another to enact their own law in each of their individual states as those done by the authorities above. This association is one of freedom and this freedom implies the freedom of each state not to suffer the laws of another state or another power separated by sea or boundaries. Those phantasms you profess do not stand the consent of the governed and will not stand their pity once they refuse their position and divide us among ourselves if not join the side that will tolerate their activities. Our great republic will tolerate the differences which sew its tapestry and it will grow only larger for it.</p>`;
-    }        
-    if(quickstats[0] > 0  && quickstats[0] < 113) {
-        setImage("https://whyy.org/wp-content/uploads/2024/12/donald-trump-elon-musk-2024-10-05-768x512.jpg");
-        return `<h3>You did it. You actually deadlocked the election.</h3><p>Your good buddy Donald Trump or even Mighty Mike Huckabee weren't able to pull this off. But since you won Republican-leaning states, you would think that Vice President Lindsey Graham would win the election. However, that is up in the air as Democrats do have both houses of Congress. <p>So what the hell? This is the first deadlocked election since 1824, and now we could have Lindsey Graham as President and Tammy Duckworth as Vice President. But it could be a whole different ballgame. We'll have to wait and see what happens when the election is certified I guess. I can promise you one thing though: You are probably not going to be the 46th President of the United States, in spite of your historic achievement.</p>`;
-    }
-    if(quickstats[0] > 112  && quickstats[0] < 269) {
-        setImage("https://whyy.org/wp-content/uploads/2024/12/donald-trump-elon-musk-2024-10-05-768x512.jpg");
-        return `<h3>You did it. You actually deadlocked the election.</h3><p>Your good buddy Donald Trump or even Mighty Mike Huckabee weren't able to pull this off. But since you won Republican-leaning states, you would think that Vice President Lindsey Graham would win the election. However, that is up in the air as Democrats do have both houses of Congress. <p>So what the hell? This is the first deadlocked election since 1824, and now we could have Lindsey Graham as President and Tammy Duckworth as Vice President. But it could be a whole different ballgame. We'll have to wait and see what happens when the election is certified I guess. I can promise you one thing though: You are probably not going to be the 46th President of the United States, in spite of your historic achievement.</p>`;
-    }		
-    if(aa[0].electoral_votes > 269 && aa[0].candidate == 154) {
-        setImage("https://static01.nyt.com/images/2019/07/28/opinion/28kruseWeb/28kruseWeb-articleLarge.jpg?quality=75&auto=webp&disable=upscale");
-        return `<h3>By god! First time since George Wallace.</h3><p>The spirit of George Wallace has returned, as you have become the first third-party candidate to win states and electoral votes since Wallace's campaign in 1968. And let's be real, you and George had quite similar populist messages that appealed to the Christian right and the white working-class. <p>But all in all, it was still expected you would lose, even though you weren't able to tip the election to the Democrats for the third straight year. In all seriousness though, most wonder how you were able to win a state this year considering Trump and Huckabee couldn't do it either time. Maybe you had more support than them this year? Or was there a different factor at play?</p>`;
-    }        
-    if(quickstats[0] > 269 && quickstats[0] < 371) {
+    	if(aa[0].electoral_votes < 270) {
+		swapEndingPlaylist(4);
+        setImage("https://i.postimg.cc/XJzMtV5C/Screenshot-2026-03-18-212004.png");
+        return `    <div class="ending-slide">
+        <h3 class="endingtitle">MR. KING SPEAKS TO CONGRESS</h3>
+		<h2 class="endingdate">JANUARY 6, 1993</h2>
+        <p>Is this it? This is what I got all this slander for?</p>
+        <p>I had a dream once. It was a dream that little black boys and little black girls would drink from the river of prosperity, freed from the thirst of oppression. I knew this dream would only succeed if I took my message to the White House, in which we do not have to come here and decide who will be leading the next four years. That power should belong in the hands of the people, not politicians. But lo and behold, some three decades later, what have I found but a bunch of trifling, shiftless, good-for-nothing fools?</p>
+        <p>You don't want to be a fool, 'cause fools are living contradictions! </p>
+        <p>Fools are full of unfulfilled ambitions! Fools wax and wane; fools love to complain! Fools love to hear themselves talk, but hate to explain!</p>
+        <p>Fools love being another man's judge and jury! Fools procrastinate until it's time to worry! Fools love to be late, fools hate to hurry!</p>
+        <p>This unjust division in this House of Representatives is the worst thing I've ever seen in my life! The first time since 1824 where we have to come here to decide the presidency and vice presidency. There is no way I want Dan Quayle to be my Vice President.</p>
+        <p>I've seen what's around the corner, I've seen what's over the horizon, and I promise you - you fools won't have nothing to celebrate. And no, I won't get there with you. I'm going to Canada.</p>			
+    </div>
+    `;    
+			}			
+   else if(quickstats[0] == 0) {
+        swapEndingPlaylist(1);			
+        setImage("https://i.postimg.cc/fLG8d7RH/Screenshot-2026-03-18-211924.png");
+        return `    <div class="ending-slide">
+        <h3 class="endingtitle">JUNE 1776</h3>
+		<h2 class="endingdate">PHILADELPHIA, PENNSYLVANIA</h2>
+        <p>JOHN ADAMS: In all preceding acts, in all expectable futures, the nation that we are set to build will onset the dominion of one race of one blood over the race of another. Is it really wise in such a position not to set our wishes for the eventual deconstruction of this abomination currently undergone that monetize each slashes and each hour of suffering of so many in the land our children shall call home?</p>
+        <p>THOMAS JEFFERSON: That institution of bondage is a macabre display of misery, yet we are not setting ourselves with the hope of one state against the wishes of one kingdom but the hopes of many of them. The exposition of the very notion that the employees of landed gentry may be suffering from pains untold and undeserved but for unfortunate providence is deeply insulting to most. This brandishing of eventual end would mean the eventual end of their position among men. No sane man will ever give the noose to hang the livelihood of his species, even less if such an act was certain to affect his very kin.</p>
+        <p>JOHN ADAMS: Are the people of those states not fighting against such inequities of existence? That the birth of man upon another continent brandished them the right of representation and dignity while those were forbidden to them? You spoke yourself of the horrors of such an institution but are the conditions you settle upon so gratifying to your person that the notions that the whip may not be carried by your children simply too much to bear? Are the men of this nation not of sufficient character to accept the notion of lesser welfare upon themselves for the benefit of the greater whole?</p>
+        <p>THOMAS JEFFERSON: No sane character would admonish their own position in the knowledge that those would mean their own bondage. It is not my belief that the fate of those not to be master is to be slaves, yet it is my belief that many do see it as an undeniable truth. For the idea that their representation may be limited by the number of free men in their states is already unbearable and the proposition of giving arms to the men of Africa ready to fight against Tory masters yet more insurmountable for their tenure, neither the states of the Carolinas, of Georgia, Maryland, Delaware and my own home of Virginia would ever in a dozen decades on this earth sign their independence their subjugation for those northern states.</p>
+        <p>JOHN ADAMS: It is known however that such positions never were fatalities. This decision to not bring upon the idea that all men are created equal implies the equality of every person to be named under the creator will be an eternal driver of strife upon the great nation that is being founded. Is there no compromise not ignominious enough for us to tolerate the sales of buying of beings of another continent into our soil for decades more nor the enlargement of this miserable industry upon the free land to our west? Is the heart of that southern nobility so hardened to the plea of decency of persons they know of names that the fear of a change of a system of horror toward a system of equals on generations far removed to their own simply unbearable?</p>
+        <p>THOMAS JEFFERSON: Those notions are not for your person to judge. Those many states are bound by a great compromise that allows one another to enact their own law in each of their individual states as those done by the authorities above. This association is one of freedom and this freedom implies the freedom of each state not to suffer the laws of another state or another power separated by sea or boundaries. Those phantasms you profess do not stand the consent of the governed and will not stand their pity once they refuse their position and divide us among ourselves if not join the side that will tolerate their activities. Our great republic will tolerate the differences which sew its tapestry and it will grow only larger for it.</p>
+    </div>
+    `;
+	}        
+   else if(quickstats[0] > 0  && quickstats[0] < 113) {
+        swapEndingPlaylist(2);					
+        setImage("https://i.postimg.cc/d0k5WNpL/Screenshot-2026-03-18-211938.png");
+        return `    <div class="ending-slide">
+        <h3 class="endingtitle">JANUARY 28, 1972</h3>
+		<h2 class="endingdate">NEW YORK CITY</h2>
+        <p>MLK: And this would bring that bloodless revolution? I share no doubt in your will nor in your intent, I doubt that people respond kindly to your wishes.</p>
+        <p>Shirley: One person has to rise up eventually for the nation to realize that as all are equal, all have equal access to all jobs in the nations. If it takes me to put my name on the line for the great men above to finally understand the laws from which our country is bound by. What would you say? There always needs to be someone speaking up for things to move.</p>
+        <p>MLK: It is something that I understand. I will campaign for you, I know you won’t win but it’s a fight that needs to be done.</p>
+        <p>Shirley: Don’t say those words. No one thought you’d win when you ran for Representative. No one expected it because they have turned jaded in what could be.</p>
+        <p>MLK: I understand your enthusiasm, we both know that those things are very different. It’s not the people that will be deciding the nominee here but byzantine political machination inside of a party that is beholden to interest they dare not name.</p>
+        <p>Shirley: I know. That’s why I must win. That’s why we must win. McGovern’s reform of the nomination system has opened a door for us. Some may not consider anything under me being nominated to be the first major party presidential nominee as a defeat, but those people don’t understand what victories are.</p>
+        <p>MLK: To always move, if we can’t run, if we can’t walk nor crawl, to vote our conscience and show in the ballot our hopes for tomorrow.</p>
+        <p>Shirley: They won’t stand for this victory. They will call it a defeat, they will say that the radicalism inside the democratic party has been dismantled. They can continue to lie to themselves, those below will see in this small victory that a path has been marked. It must take Fremont to make Lincoln.</p>			
+    </div>
+    `; 
+	   }
+   else if(quickstats[0] > 112  && quickstats[0] < 269) {
+        swapEndingPlaylist(3);			
+        setImage("https://i.postimg.cc/wvv8Wt1R/Screenshot-2026-03-18-211953.png");
+        return `    <div class="ending-slide">
+        <h3 class="endingtitle">NOVEMBER 7, 1972</h3>
+		<h2 class="endingdate">ATLANTA, GEORGIA</h2>
+        <p>Walter Cronkite: As you can see, President Nixon is only the second Republican in history to carry the state of Georgia, taking 12 electoral votes away from Senator McGovern. We are still keeping a close eye on that Senate race there pitting State Representative Sam Nunn - the Democrat, against Atlanta Congressman Fletcher Thompson who did all the work by himself. Most assumed that Mr. Nunn would win the seat, considering Georgia has not elected a Republican to the U.S. Senate since Reconstruction. But right now it is a surprisingly close race, but not as surprising considering how well Nixon is doing in the state.</p>
+        <p>To replace Mr. Thompson in Congress, you might know this name. Martin Luther King Jr. One of the most famed figures in the Civil Rights movement, will become the next Congressman in Georgia’s Fifth Congressional District, representing the city of Atlanta. The first African-American since Reconstruction to be elected to Congress in Georgia, and also the former Confederacy. A historic, historic moment for not just the people that elected Dr. King in Atlanta, but across the entire country. Dr. King is now speaking at the Election Night party at Ebenezer Baptist Church, where he spent most of his life preaching and attending services. Let’s take a listen…</p>
+        <p>MLK: I have seen the struggles of my fellow brothers and sisters not just here in Atlanta, but all across this country of our Lord. One day I hope and pray that our fellow neighbors would have their voices be heard in our capitol city, after being ignored through the sins of slavery, segregation, and oppression. </p>
+        <p>I led a movement towards justice and equality, and my time as an activist was just not fulfilling enough for me. If nobody is going to save us, we’re going to save ourselves. That is why I ran for Congress, and I am blessed to have the honor to serve my brothers and sisters in Atlanta on Capitol Hill. I don’t know how long I will be there brother, but I will be there as long as it takes to fulfill my long-lasting dream. Create a more just, equal, and nonviolent world. For every one of my brothers and sisters across this great land.</p>
+        <p><b>i>FAST FORWARD TO THE PRESENT</i></b></p>
+        <p>That was the beginning of an era. Martin did not think it would take twenty years to fulfill his dream, but that’s just how it plays out. He long prayed that his presidential election against twelve years of Reaganism would put him on the Mountaintop of his dream becoming a reality, but he just couldn’t get there. The world has always had injustice, and it is only a matter of time before America will ever achieve Martin’s dream.</p>
+        <p>While it may be the end of one of the most influential political and activism careers in American history, someday, somebody will walk in the shoes of Martin, and prevail. Do what Jesse and Martin could not. Become President of the United States. That title would eventually go to a skinny kid with a funny name, as Barack Obama would finish what Brother Martin started, becoming the 44th President of the United States in 2012.</p>			
+    </div>
+    `;
+	   }			
+   else if(aa[0].electoral_votes > 269 && aa[0].candidate == 154) {
+		swapEndingPlaylist(16);		
+        setImage("https://i.postimg.cc/1XVxQLc1/Screenshot-2026-03-18-212151.png");
+        return `    <div class="ending-slide">
+        <h3 class="endingtitle">THE END OF THE TWO-PARTY SYSTEM</h3>
+        <p>In an unspeakably shocking upset, independent Texas businessman Ross Perot has won the 1992 election, when he never wanted to run for President in the first place. Many are scratching their heads as to why this upset occurred. Were you too much of a Communist? Was Bush too much of a liar? Was Perot too honest, straightforward, and palatable for the working-class and independents?</p>
+        <p>The short answer is… you. Yes, you. On the other side of the screen. You cheated. You used cheats to get this ending. It is not even possible for Ross Perot to win this election. Even in Cakewalk.</p>
+        <p>But hey, at least you get a nice achievement. This is probably the last achievement you will get for this mod, so congratulations on that 100%. </p>
+    </div>
+    `;   
+	   }        
+   else if(quickstats[0] > 269 && quickstats[0] < 371) {
+		swapEndingPlaylist(5);		
+        setImage("https://i.postimg.cc/26KpgzWQ/Screenshot-2026-03-18-212016.png");
+        return `    <div class="ending-slide">
+        <h3 class="endingtitle">ON THE PULSE OF MORNING</h3>
+		<h2 class="endingdate">Maya Angelou, 1993</h2>
+		<p>A Rock, A River, A Tree</p>
+		<p>Hosts to species long since departed,</p>
+		<p>Marked the mastodon,</p>
+		<p>The dinosaur, who left dried tokens</p>
+		<p>Of their sojourn here</p>
+		<p>On our planet floor,</p>
+		<p>Any broad alarm of their hastening doom</p>
+		<p>Is lost in the gloom of dust and ages.</p>
+		<p>But today, the Rock cries out to us, clearly, forcefully,</p>
+		<p>Come, you may stand upon my</p>
+		<p>Back and face your distant destiny,</p>
+		<p>But seek no haven in my shadow.</p>
+		<p>I will give you no hiding place down here.</p>
+		<p>You, created only a little lower than</p>
+		<p>The angels, have crouched too long in</p>
+		<p>The bruising darkness</p>
+		<p>Have lain too long</p>
+		<p>Face down in ignorance.</p>
+		<p>Your mouths spilling words</p>
+		<p>Armed for slaughter.</p>
+		<p>The Rock cries out to us today, you may stand upon me,</p>
+		<p>But do not hide your face.</p>
+		<p>Across the wall of the world,</p>
+		<p>A River sings a beautiful song. It says,</p>
+		<p>Come, rest here by my side.</p>
+		<p>Each of you, a bordered country,</p>
+		<p>Delicate and strangely made proud,</p>
+		<p>Yet thrusting perpetually under siege.</p>
+		<p>Your armed struggles for profit</p>
+		<p>Have left collars of waste upon</p>
+		<p>My shore, currents of debris upon my breast.</p>
+		<p>Yet today I call you to my riverside,</p>
+		<p>If you will study war no more. Come,</p>
+		<p>Clad in peace, and I will sing the songs</p>
+		<p>The Creator gave to me when I and the</p>
+		<p>Tree and the rock were one.</p>
+		<p>Before cynicism was a bloody sear across your</p>
+		<p>Brow and when you yet knew you still</p>
+		<p>Knew nothing.</p>
+		<p>The River sang and sings on.</p>
+		<p>There is a true yearning to respond to</p>
+		<p>The singing River and the wise Rock.</p>
+		<p>So say the Asian, the Hispanic, the Jew</p>
+		<p>The African, the Native American, the Sioux,</p>
+		<p>The Catholic, the Muslim, the French, the Greek</p>
+		<p>The Irish, the Rabbi, the Priest, the Sheik,</p>
+		<p>The Gay, the Straight, the Preacher,</p>
+		<p>The privileged, the homeless, the Teacher.</p>
+		<p>They hear. They all hear</p>
+		<p>The speaking of the Tree.</p>
+		<p>They hear the first and last of every Tree</p>
+		<p>Speak to humankind today. Come to me, here beside the River.</p>
+		<p>Plant yourself beside the River.</p>
+		<p>Each of you, descendant of some passed</p>
+		<p>On traveller, has been paid for.</p>
+		<p>You, who gave me my first name, you,</p>
+		<p>Pawnee, Apache, Seneca, you</p>
+		<p>Cherokee Nation, who rested with me, then</p>
+		<p>Forced on bloody feet,</p>
+		<p>Left me to the employment of</p>
+		<p>Other seekers—desperate for gain,</p>
+		<p>Starving for gold.</p>
+		<p>You, the Turk, the Arab, the Swede, the German, the Eskimo, the Scot,</p>
+		<p>You the Ashanti, the Yoruba, the Kru, bought,</p>
+		<p>Sold, stolen, arriving on the nightmare</p>
+		<p>Praying for a dream.</p>
+		<p>Here, root yourselves beside me.</p>
+		<p>I am that Tree planted by the River,</p>
+		<p>Which will not be moved.</p>			
+		<p>I, the Rock, I the River, I the Tree</p>
+		<p>I am yours—your passages have been paid.</p>			
+		<p>Lift up your faces, you have a piercing need</p>			
+		<p>For this bright morning dawning for you.</p>				
+		<p>History, despite its wrenching pain</p>	
+		<p>Cannot be unlived, but if faced</p>	
+		<p>With courage, need not be lived again.</p>	
+		<p>Lift up your eyes upon</p>	
+		<p>This day breaking for you.</p>	
+		<p>Give birth again</p>	
+		<p>To the dream.</p>	
+		<p>Women, children, men,</p>	
+		<p>Take it into the palms of your hands,</p>	
+		<p>Mold it into the shape of your most</p>	
+		<p>Private need. Sculpt it into</p>
+		<p>The image of your most public self.</p>	
+		<p>Lift up your hearts</p>	
+		<p>Each new hour holds new chances</p>	
+		<p>For a new beginning.</p>	
+		<p>To fear, yoked eternally</p>
+		<p>To brutishness.</p>			
+		<p>The horizon leans forward,</p>
+		<p>Offering you space to place new steps of change.</p>
+		<p>Here, on the pulse of this fine day</p>
+		<p>You may have the courage</p>
+		<p>To look up and out and upon me, the</p>
+		<p>Rock, the River, the Tree, your country.</p>
+		<p>No less to Midas than the mendicant.</p>
+		<p>No less to you now than the mastodon then.</p>
+		<p>Here, on the pulse of this new day</p>
+		<p>You may have the grace to look up and out</p>
+		<p>And into your sister’s eyes, and into</p>
+		<p>Your brother’s face, your country</p>
+		<p>And say simply</p>
+		<p>Very simply</p>
+		<p>With hope—</p>
+		<p>Good morning.</p>			
+    </div>
+    `;    }
+   else if(quickstats[0] > 370 && quickstats[0] < 538) {
+		swapEndingPlaylist(6);		
+        setImage("https://i.postimg.cc/zBcm4JhF/Screenshot-2026-03-18-212024.png");
+        return `    <div class="ending-slide">
+        <h3 class="endingtitle">JANUARY 20, 2013</h3>
+		<h2 class="endingdate">WASHINGTON, DC</h2>
+        <p>Twenty years ago, the people of the United States made a decision that would fundamentally change this nation forever. Electing an African-American thirty years after the Civil Rights Act, and 130 years after the end of slavery. Martin Luther King Jr is the ring-bearer of progress in America, getting elected in convincing fashion to mark a new era in the history of our country. After Communism fell, President King fulfilled the dream that he had thirty years prior, where racial and economic boundaries seemed to have fallen apart, and Harry Truman’s dream of universal healthcare being achieved. </p>
+        <p>The legacy of President King remains strong, particularly in the moment surrounding today. On November 6th, Senator Barack Obama was elected the 46th President of the United States with many parallels to his protege. A radically unpopular Republican president in Ron Paul failed to recover the economy from the recession that got him elected in the first place, as the people of America marched in the spirit of President King to Occupy Wall Street and make billionaires and corporations pay their fair share. The people were hungry for change, and Barack Obama - the skinny kid with a funny name who was the keynote speaker at the 2004 DNC when Wellstone got the nomination, spoke to his fellow brothers and sisters across the country. </p>
+        <p>Barack Obama is the second African-American to become President of the United States, and he could not have gotten here without the man who came before him. President King played a critical role in the presidential transition, advising the now President during the process. The former President just celebrated his 84th birthday last Tuesday and is beginning to fall ill, but he is still an influential figure in Democratic politics as he has been for the last five decades. This is the moment that Mr. King wanted to see more than anything. It mattered more than his own presidential victories in ‘92 and ‘96 to see one of his younger brothers or sisters walking in his footsteps and taking the same oath of office he took when he became President.</p>	
+    </div>
+    `;    }
+   else if(quickstats[0] == 538) {
+		swapEndingPlaylist(7);		
+        setImage("https://i.postimg.cc/jj9tmjcx/Screenshot-2026-03-18-212033.png");
+        return `    <div class="ending-slide">
+        <h3 class="endingtitle">SOCIALISM IN AMERICA</h3>
+		<h2 class="endingdate">WITH BERNIE SANDERS</h2>
+        <p>JON LOVETT: Today on Pod Save America, we are joined by former President Bernie Sanders. Mr. Sanders, I understand tomorrow is a big day for you. If you would’ve told somebody one year ago before President Ryan began his second term that you would be swearing in a 34-year-old Muslim state assemblyman to be the first Muslim mayor of New York City, would they have believed you?</p>
+        <p>BERNIE SANDERS: No, not at all. The way Zohran ran his campaign is just inspiring. He was on the ground talking to people about the real issues facing New Yorkers and he inspired an entire country. Zohran showed us that we can build an America that works for all, not just the wealthy and the few.</p>
+        <p>JON LOVETT: Zohran Mamdani ran a campaign on making New York City more affordable and accessible to all, with promises such as universal childcare and free and fast public transportation. Mr. Sanders, you have been an instrumental voice in the Democratic Socialists of America or the DSA. It has been growing since Martin Luther King’s presidential victories of 1992 and 1996, and it has largely taken over the Democratic Party at this point - especially with your successful campaigns of 2012 and 2016. As we rewind and reflect on how we got to this moment, can you give us some insight as to how Democratic socialism became so popular in the United States?</p>
+        <p>BERNIE SANDERS: Yes absolutely. People feel that when their leaders frame the country to work for the billionaires and oligarchs, ordinary people feel left behind. Republicans have been the pro-business, pro-wealthy, pro-billionaire, and pro-oligarch party, and Democratic Socialists have always been for those who can’t afford to pay their bills, feed their families, and put gas in their car. Not because we raise taxes on them, but we raise taxes on those who should be paying their fair share. If Republicans love to talk about trickle-down economics, they need to prove that it actually works. After twelve years of trickle-down economics during the Reagan-Bush years, the middle and working class did not prosper. That is where Martin Luther King Jr came in, winning every single electoral vote in this country in 1992 thanks to the working-class showing up and making their voices heard.</p>
+        <p>JON LOVETT: It is largely proven that trickle-down economics do not work, and we have seen massive efforts to redistribute wealth in the United States starting with the King administration, and then your administration. One thing that many folks out there find very jarring is that Democratic socialism got elected just after Communism fell in the Soviet Union. Reagan and Bush were credited for ending the Cold War, and some say that a Democratic socialist like Martin Luther King should never have gotten elected in the first place in that climate. Do you care to address that?</p>
+        <p>BERNIE SANDERS: It is important to make the distinction between Democratic socialism and Communism. Communism is designed to control the state to ultimately get rid of the government itself through one-party authoritarianism and state ownership of property. We fully believe that there should be both public and private-owned property, and we seek to reduce class struggle through democratic institutions and allowing for social welfare. But the answer to your question is simple. President King got elected because the working-class were left behind, and Mr. King talked to them about his dreams of racial and economic justice and equality. That message resonated across the entire country, and the wealthy elites tried to tie Mr. King to Communism when he was not a Communist. He won 538 electoral votes against an incumbent President. That right there shows how the working-class was fed up with the trickle-down nonsense and they wanted someone to work for them.</p>
+        <p>JON LOVETT: Very well said, Mr. President. I know Mr. King was definitely one of your inspirations for your presidency, and you did a lot to continue his legacy, so thank you so much for your leadership as President. Your legacy will live on, and it is living right here in New York. Anyways, that is all the time we have for today, and I will be watching the inauguration tomorrow. Thank you for coming on Pod Save America.</p>	
+		<p>BERNIE SANDERS: It was a pleasure, Jon. Thank you.</p>	
+    </div>
+    `;    }
+   else if(quickstats[0] > 269 && e.player_answers.includes(21198)) {
+		swapEndingPlaylist(12);		
+        setImage("https://i.postimg.cc/P5TWvX1c/Screenshot-2026-03-18-212111.png");
+        return `    <div class="ending-slide">
+        <h3 class="endingtitle">GOV. JERRY BROWN (D-CA) ELECTED 42ND PRESIDENT</h3>
+        <p>When Martin felt he could not be the nominee due to Brother Jesse’s past failures, he knew who could take his place. Governor Jerry Brown of California received the strong support from Mr. King, and Martin’s hard work delivered Brown the Democratic nomination. As a nod to all of his hard work, he was awarded the vice presidential spot on the 1992 Democratic ticket. </p>
+        <p>This winning campaign has been the most liberal Democratic campaign since George McGovern’s severely ill-fated campaign in 1992, but this campaign had a magic to it that McGovern and Mondale did not have. A star-studded Atlanta Congressman and a Civil Rights leader who was willing to help take on the establishment and fight for those who have been abandoned for too long. Martin’s insight will almost certainly be instrumental throughout the next four years as Governor Moonbeam becomes President Moonbeam.</p>
+        <p>The Republicans tried to put a lot of dirt onto this campaign, but they failed miserably. Some may even argue the death of Lee Atwater allowed for Jerry Brown to become the 42nd President of the United States and for Brother Martin to become the highest-ranking African-American official in history.</p>
+        <p>Liberalism has finally won in America, and that will show over the next four years, even though the conservative sentiment among Southern Democrats will be an obstacle that Gerald and Martin must overcome. If successful, re-election in 1996 should be quite easy. Martin might be too old to run in 2000, but being this close to the mountaintop of the American government should make him quite proud.</p>		
+    </div>
+    `;    }		
+   else if(quickstats[0] > 269 && e.player_answers.includes(21197)) {
+		swapEndingPlaylist(15);		
+        setImage("https://i.postimg.cc/Y9pZXBcT/Screenshot-2026-03-18-212143.png");
+        return `    <div class="ending-slide">
+        <h3 class="endingtitle">GOV. DOUGLAS WILDER (D-VA) ELECTED 42ND PRESIDENT</h3>
+        <p>In big part due to Martin Luther King Jr’s massive efforts during the presidential campaign, Virginia Governor Douglas Wilder has become the first African-American President of the United States. Starting off as a dark horse in the primaries, the momentum that Mr. King gave him during the primary campaign was enough to propel him to the nomination. After Jesse failed in ‘84 and ‘88, the Rainbow Coalition was stronger in ‘92 than ever before, and it just seemed like the third time was the charm. Even if not for Jesse or Martin. </p>
+        <p>Many were skeptical as to whether Doug could get to this point, considering he had only barely won the governorship in Virginia to become the first ever African-American to be elected Governor of a U.S. state, but he did nonetheless. His message pledging to work across the aisle resonated with folks around the country, and the idea of a black President energized Jesse and Martin’s Rainbow Coalition through the roof. He also brought along the House Majority Leader Dick Gephardt to the Vice Presidency as a way to unite the Democratic Party and bring in an establishmentarian figure to counteract Wilder’s outsider persona.</p>
+        <p>Brother Martin’s dream of an African-American becoming President has come true, and he knew somebody out there could do it. Most expected that it would be Jesse Jackson in the 80s, or Martin Luther King himself, but it ended up being the first African-American Governor in the United States, in a state that no one would expect to pull off such a feat. The direction that President-elect Wilder will take America remains to be seen, but it is very likely that he will take along many elements of Jesse and Martin’s vision of America.</p>		
+    </div>
+    `;    }
+   else if(quickstats[0] > 269 && e.player_answers.includes(21199)) {
+		swapEndingPlaylist(14);		
+        setImage("https://i.postimg.cc/3xFP2xV4/Screenshot-2026-03-18-212132.png");
+        return `    <div class="ending-slide">
+        <h3 class="endingtitle">SEN. PAUL TSONGAS (D-MA) ELECTED 42ND PRESIDENT</h3>
+        <p>In large part due to Martin Luther King Jr’s efforts during the 1992 campaign, former Massachusetts Senator Paul Tsongas has become the 42nd President of the United States in a resounding political comeback. Most thought he was done for after his lymphoma diagnosis when he retired from the Senate after just one term, but Paul proved otherwise. George Bush beat the man with a Greek last name from Massachusetts who rode on a tank and was hammered for opposing the death penalty, however the second Greek Democrat from Massachusetts did not see the same fate as his predecessor. For his Vice Presidential pick, Paul brought along Tennessee Senator Al Gore, someone who can bring the Southern wing of the party into the fold and double down on environmental reforms.</p>
+        <p>For Martin, this is somewhat of a setback. Granted Paul was the less evil choice in the 1992 campaign, his economic plan is far closer to the failed policies of the last twelve years than the real issues of wealth redistribution and keeping corporations in check. Although everyone loves a balanced budget, America is not doing enough for ordinary people struggling to simply get by. The Rainbow Coalition is also still wary over Tsongas defeating the first duly elected African-American Senator in the country. However, his anti-war and pro-environment persona made it up so that the Rainbow Coalition did not flock to Ross Perot.</p>
+        <p>President-elect Tsongas did look quite weak on the campaign trail, but that mostly had to do with his health challenges. Rumors of Tsongas only serving one term are fairly widespread right now, making 1996 an open primary for the Democrats. Maybe Martin can redeem himself then, but Vice President-elect Al Gore is currently the favorite for the nomination.</p>	
+    </div>
+    `;    }
+   else if(quickstats[0] > 269 && e.player_answers.includes(21200)) {
+		swapEndingPlaylist(13);		
+        setImage("https://i.postimg.cc/bNz0sY0P/Screenshot-2026-03-18-212119.png");
+        return `    <div class="ending-slide">
+        <h3 class="endingtitle">SEN. TOM HARKIN (D-IA) ELECTED 42ND PRESIDENT</h3>
+        <p>When Martin felt he could not be the nominee, he put his support by a true fighter. A fighter for the rights of workers and people with disabilities. That fighter is Iowa Senator Tom Harkin, who has just been elected the 42nd President of the United States. As an admirable gesture for his support, Harkin picked Martin to be his running-mate in his campaign, making him the highest-ranking Black official in American history.</p>
+        <p>One of the most charismatic figures to come out of the Democratic Party in a generation emerged, and he made his campaign a movement. A movement for workers’ rights, disability rights, civil rights, and farmers’ rights. The Farmer-Labor coalition has risen, and the Democrats are finally back to the worker’s party.</p>
+        <p>Many felt that Tom was too liberal to win a general election, considering what happened to fellow DFLers Hubert Humphrey, George McGovern, and Walter Mondale. However, Harkin proved that the fourth time was the charm, and America has finally sent a Midwestern Farmer-Labor Democrat to the White House. To top that off, one of the most famous civil rights leaders and a twenty-year veteran of the House of Representatives as Vice President. Martin will be a central figure in American politics during the Harkin presidency, and he will largely get to see his dream put into action.</p>
+        <p>Liberalism has finally won in America, and that will show over the next four years, even though the conservative sentiment among Southern Democrats will be an obstacle that Tom and Martin must overcome. If successful, re-election in 1996 should be quite easy. Brother Martin might be too old to run in 2000, but being this close to the mountaintop of the American government should make him quite proud.</p>		
+    </div>
+    `;    }	
+   else if(quickstats[0] < 269 && e.player_answers.includes(21198)) {
+		swapEndingPlaylist(9);		
+        setImage("https://i.postimg.cc/TwMgGTYT/Screenshot-2026-03-18-212159.png");
+        return `    <div class="ending-slide">
+        <h3 class="endingtitle">THE GREATER EVIL HAS WON IN AMERICA</h3>
+        <p>Even as the Vice Presidential candidate, you just weren’t able to propel you and your running-mate Jerry Brown over the mountaintop. President Bush was able to survive for four more years, largely due to this ticket’s perception as the most liberal since George McGovern. We all remember what happened to him, Hubert, Walter, and Mike.</p>
+        <p>Most thought that twelve years of failed trickle-down economics would put the Democrats back in power, on top of having you as a very energetic running-mate in an anti-establishment, anti-NAFTA, and populist campaign. But no, President Bush survived. The people just appreciated his leadership during the Gulf War and the fall of the Soviet Union. Plus people bought into Bush’s attack ads like they did for Dukakis four years ago. </p>
+        <p>As for you Martin, you have had quite a career. You are by far the most influential African-American politician in our nation’s history, and now you are out of elected office for the first time in twenty years. After sixteen years of Republican rule, 1996 could be a slam-dunk for any Democrat who seeks the presidency. Mario Cuomo, Bill Clinton, and Ann Richards are the favorites for the Democrats right now, but you may certainly become one if you decide to try for the mountaintop again.</p>
+        <p>The people of Georgia’s 5th Congressional District have someone just as influential as you representing them: The Boy from Troy, your Brother John Lewis. A fellow Civil Rights leader like you and a mentee of yours. You will definitely be providing him a lot of support and mentorship as he heads to Congress to continue your message and fight Reaganism for its final four years. </p>		
+   </div>
+    `;    }
+   else if(quickstats[0] < 269 && e.player_answers.includes(21199)) {
+		swapEndingPlaylist(9);		
+        setImage("https://i.postimg.cc/TwMgGTYT/Screenshot-2026-03-18-212159.png");
+        return `    <div class="ending-slide">
+        <h3 class="endingtitle">THE GREATER EVIL HAS WON IN AMERICA</h3>
+        <p>You put a lot of hard work into Paul Tsongas’s campaign this year, but he and Al Gore were unable to get across the finish line. President Bush was able to survive for four more years, which would have been the expected outcome a year or two ago. Even with your strong support for the deficit hawk and environmentalist, the voters did not follow suit. Paul’s ideas of continuing the failed economic policies of the last twelve years likely hurt his standing among progressives and workers, many of whom flocking to Perot’s candidacy.</p>
+        <p>Some thought that Ross Perot’s vote-splitting would’ve put Tsongas in the White House or even deadlocked the Electoral College, and that twelve years of failed trickle-down economics would put the Democrats back in power. But no, President Bush survived. The people just appreciated his leadership during the Gulf War and the fall of the Soviet Union. Plus people bought into Bush’s attack ads like they did for Dukakis four years ago.</p>
+        <p>As for you Martin, you have had quite a career. You are by far the most influential African-American politician in our nation’s history, and now you are out of elected office for the first time in twenty years. After sixteen years of Republican rule, 1996 could be a slam-dunk for any Democrat who seeks the presidency. Mario Cuomo, Bill Clinton, and Ann Richards are the favorites for the Democrats right now, but you may certainly become one if you decide to try for the mountaintop again.</p>
+        <p>The people of Georgia’s 5th Congressional District have someone just as influential as you representing them: The Boy from Troy, your Brother John Lewis. A fellow Civil Rights leader like you and a mentee of yours. You will definitely be providing him a lot of support and mentorship as he heads to Congress to continue your message and fight Reaganism for its final four years. </p>		
+   </div>
+    `;    }	
+   else if(quickstats[0] < 269 && e.player_answers.includes(21200)) {
+		swapEndingPlaylist(9);		
+        setImage("https://i.postimg.cc/TwMgGTYT/Screenshot-2026-03-18-212159.png");
+        return `    <div class="ending-slide">
+        <h3 class="endingtitle">THE GREATER EVIL HAS WON IN AMERICA</h3>
+        <p>Even as the Vice Presidential candidate, you just weren’t able to propel you and your running-mate Tom Harkin over the mountaintop. President Bush was able to survive for four more years, largely due to this ticket’s perception as the most liberal since George McGovern. We all remember what happened to him, Hubert, Walter, and Mike.</p>
+        <p>Most thought that twelve years of failed trickle-down economics would put the Democrats back in power, on top of having you as a very energetic running-mate in a populist, labor-ran campaign. But no, President Bush survived. The people just appreciated his leadership during the Gulf War and the fall of the Soviet Union. Plus people bought into Bush’s attack ads like they did for Dukakis four years ago. </p>
+        <p>As for you Martin, you have had quite a career. You are by far the most influential African-American politician in our nation’s history, and now you are out of elected office for the first time in twenty years. After sixteen years of Republican rule, 1996 could be a slam-dunk for any Democrat who seeks the presidency. Mario Cuomo, Bill Clinton, and Ann Richards are the favorites for the Democrats right now, but you may certainly become one if you decide to try for the mountaintop again.</p>
+        <p>The people of Georgia’s 5th Congressional District have someone just as influential as you representing them: The Boy from Troy, your Brother John Lewis. A fellow Civil Rights leader like you and a mentee of yours. You will definitely be providing him a lot of support and mentorship as he heads to Congress to continue your message and fight Reaganism for its final four years. </p>		
+   </div>
+    `;    }	
+   else if(quickstats[0] < 269 && e.player_answers.includes(21197)) {
+		swapEndingPlaylist(9);		
+        setImage("https://i.postimg.cc/TwMgGTYT/Screenshot-2026-03-18-212159.png");
+        return `    <div class="ending-slide">
+        <h3 class="endingtitle">THE GREATER EVIL HAS WON IN AMERICA</h3>
+        <p>Even if it may be demoralizing for you, Douglas Wilder did not reach the Mountaintop and your dream of an African-American president has been deferred. Quite frankly, it was miraculous for Wilder to even get the Democratic nomination, but he could not do it without you, Brother Martin. Regardless, Bush’s re-election would have been the expected outcome a year or two ago. </p>
+        <p>While Wilder’s race and bipartisan message resonated with independents, third-way Democrats, and the Rainbow Coalition, Wilder was too unknown of a figure to topple an incumbent President. Even if House Majority Leader Gephardt’s presence on the ticket helped sway blue-collar workers and establishment Democrats away from Perot’s candidacy, it was not enough.</p>
+        <p>Some thought that Ross Perot’s vote-splitting would’ve put Wilder in the White House or even deadlocked the Electoral College, and that twelve years of failed trickle-down economics would put the Democrats back in power. But no, President Bush survived. The people just appreciated his leadership during the Gulf War and the fall of the Soviet Union. Plus people bought into Bush’s attack ads like they did for Dukakis four years ago.</p>
+		<p>As for you Martin, you have had quite a career. You are by far the most influential African-American politician in our nation’s history, and now you are out of elected office for the first time in twenty years. After sixteen years of Republican rule, 1996 could be a slam-dunk for any Democrat who seeks the presidency. Mario Cuomo, Bill Clinton, and Ann Richards are the favorites for the Democrats right now, but you may certainly become one if you decide to try for the mountaintop again. However, if a black man failed to become President now, it is difficult to say if you can redeem the Rainbow Coalition in 1996.</p>	
+        <p>The people of Georgia’s 5th Congressional District have someone just as influential as you representing them: The Boy from Troy, your Brother John Lewis. A fellow Civil Rights leader like you and a mentee of yours. You will definitely be providing him a lot of support and mentorship as he heads to Congress to continue your message and fight Reaganism for its final four years. </p>		
+   </div>
+    `;    }
+   else if(quickstats[0] > 269 && e.player_answers.includes(4420)) {
+		swapEndingPlaylist(10);		
         setImage("https://akm-img-a-in.tosshub.com/indiatoday/images/story/202410/the-tesla-ceo-was-spotted-wearing-a-black-maga-cap-along-with-a-gothic-looking-font-and-a-black-t--285945708-16x9_0.jpg?VersionId=9M..0a9LCG1Iia_hFfUvNEnsx_8O_Bw3");
-        return `<h3>Wrap your head around this.</h3><p>President Elon Musk. What the fuck? And how did this happen? Did you steal the election, or did people love you so much? Nobody knows, but not only is this the biggest upset in American presidential history, but also, this will likely go down as the craziest four years in the history of our country if in fact your election victory does get certified. <p>To you. Yes. You. The player. Behind the screen. Tell me how you were able to win as Elon Musk. Did you use Bigshot? Did you run the perfect campaign on Cakewalk? Will we ever know?</p>`;
-    }
-    if(quickstats[0] > 370 && quickstats[0] < 538) {
+        return `    <div class="ending-slide">
+        <h3 class="endingtitle">GOV. JERRY BROWN (D-CA) ELECTED 42ND PRESIDENT</h3>
+        <p>When Martin felt he could not be the nominee due to Brother Jesse’s past failures, he knew who could take his place. Governor Jerry Brown of California received the strong support from Mr. King, and Martin’s hard work delivered Brown the Democratic nomination. As a nod to all of his hard work, he was awarded the vice presidential spot on the 1992 Democratic ticket. </p>
+        <p>This winning campaign has been the most liberal Democratic campaign since George McGovern’s severely ill-fated campaign in 1992, but this campaign had a magic to it that McGovern and Mondale did not have. A star-studded Atlanta Congressman and a Civil Rights leader who was willing to help take on the establishment and fight for those who have been abandoned for too long. Martin’s insight will almost certainly be instrumental throughout the next four years as Governor Moonbeam becomes President Moonbeam.</p>
+        <p>The Republicans tried to put a lot of dirt onto this campaign, but they failed miserably. Some may even argue the death of Lee Atwater allowed for Jerry Brown to become the 42nd President of the United States and for Brother Martin to become the highest-ranking African-American official in history.</p>
+        <p>Liberalism has finally won in America, and that will show over the next four years, even though the conservative sentiment among Southern Democrats will be an obstacle that Gerald and Martin must overcome. If successful, re-election in 1996 should be quite easy. Martin might be too old to run in 2000, but being this close to the mountaintop of the American government should make him quite proud.</p>		
+    </div>
+    `;    }	
+   else if(quickstats[0] < 269 && e.player_answers.includes(4420)) {
+		swapEndingPlaylist(11);		
         setImage("https://akm-img-a-in.tosshub.com/indiatoday/images/story/202410/the-tesla-ceo-was-spotted-wearing-a-black-maga-cap-along-with-a-gothic-looking-font-and-a-black-t--285945708-16x9_0.jpg?VersionId=9M..0a9LCG1Iia_hFfUvNEnsx_8O_Bw3");
-        return `<h3>Wrap your head around this.</h3><p>President Elon Musk. What the fuck? And how did this happen? Did you steal the election, or did people love you so much? Nobody knows, but not only is this the biggest upset in American presidential history, but also, this will likely go down as the craziest four years in the history of our country if in fact your election victory does get certified. <p>To you. Yes. You. The player. Behind the screen. Tell me how you were able to win as Elon Musk. Did you use Bigshot? Did you run the perfect campaign on Cakewalk? Will we ever know?</p>`;
-    }
-    if(quickstats[0] == 538) {
-        setImage("https://ichef.bbci.co.uk/news/1024/cpsprodpb/9efa/live/d4746000-4278-11ef-9e1c-3b4a473456a6.jpg.webp");
-        return `<h3>FIGHT! FIGHT! FIGHT!</h3><p>And so you did. They persecuted him. They took him off the ballot. They even tried to kill him. But He Kept Fighting until the end.<p>This is the greatest political movement in the history of our country, and America rose up. The radical establishment politicians have failed our country, and the people fought back. People hate being told what to do and how to live their lives by politicians, and this 538-0 landslide proves that conclusively. <p>The same movement that tried to steal the 2020 election on January 6th just four short years ago won every single electoral vote in the country, likely illegitimately...</p>`;
-    }
-    if(quickstats[0] > 269 && e.player_answers.includes(21198)) {
-        setImage("https://akm-img-a-in.tosshub.com/indiatoday/images/story/202410/the-tesla-ceo-was-spotted-wearing-a-black-maga-cap-along-with-a-gothic-looking-font-and-a-black-t--285945708-16x9_0.jpg?VersionId=9M..0a9LCG1Iia_hFfUvNEnsx_8O_Bw3");
-        return `<h3>Wrap your head around this.</h3><p>President Elon Musk. What the fuck? And how did this happen? Did you steal the election, or did people love you so much? Nobody knows, but not only is this the biggest upset in American presidential history, but also, this will likely go down as the craziest four years in the history of our country if in fact your election victory does get certified. <p>To you. Yes. You. The player. Behind the screen. Tell me how you were able to win as Elon Musk. Did you use Bigshot? Did you run the perfect campaign on Cakewalk? Will we ever know?</p>`;
-    }		
-    if(quickstats[0] > 269 && e.player_answers.includes(21197)) {
-        setImage("https://akm-img-a-in.tosshub.com/indiatoday/images/story/202410/the-tesla-ceo-was-spotted-wearing-a-black-maga-cap-along-with-a-gothic-looking-font-and-a-black-t--285945708-16x9_0.jpg?VersionId=9M..0a9LCG1Iia_hFfUvNEnsx_8O_Bw3");
-        return `<h3>Wrap your head around this.</h3><p>President Elon Musk. What the fuck? And how did this happen? Did you steal the election, or did people love you so much? Nobody knows, but not only is this the biggest upset in American presidential history, but also, this will likely go down as the craziest four years in the history of our country if in fact your election victory does get certified. <p>To you. Yes. You. The player. Behind the screen. Tell me how you were able to win as Elon Musk. Did you use Bigshot? Did you run the perfect campaign on Cakewalk? Will we ever know?</p>`;
-    }
-    if(quickstats[0] > 269 && e.player_answers.includes(21199)) {
-        setImage("https://akm-img-a-in.tosshub.com/indiatoday/images/story/202410/the-tesla-ceo-was-spotted-wearing-a-black-maga-cap-along-with-a-gothic-looking-font-and-a-black-t--285945708-16x9_0.jpg?VersionId=9M..0a9LCG1Iia_hFfUvNEnsx_8O_Bw3");
-        return `<h3>Wrap your head around this.</h3><p>President Elon Musk. What the fuck? And how did this happen? Did you steal the election, or did people love you so much? Nobody knows, but not only is this the biggest upset in American presidential history, but also, this will likely go down as the craziest four years in the history of our country if in fact your election victory does get certified. <p>To you. Yes. You. The player. Behind the screen. Tell me how you were able to win as Elon Musk. Did you use Bigshot? Did you run the perfect campaign on Cakewalk? Will we ever know?</p>`;
-    }
-    if(quickstats[0] > 269 && e.player_answers.includes(21200)) {
-        setImage("https://akm-img-a-in.tosshub.com/indiatoday/images/story/202410/the-tesla-ceo-was-spotted-wearing-a-black-maga-cap-along-with-a-gothic-looking-font-and-a-black-t--285945708-16x9_0.jpg?VersionId=9M..0a9LCG1Iia_hFfUvNEnsx_8O_Bw3");
-        return `<h3>Wrap your head around this.</h3><p>President Elon Musk. What the fuck? And how did this happen? Did you steal the election, or did people love you so much? Nobody knows, but not only is this the biggest upset in American presidential history, but also, this will likely go down as the craziest four years in the history of our country if in fact your election victory does get certified. <p>To you. Yes. You. The player. Behind the screen. Tell me how you were able to win as Elon Musk. Did you use Bigshot? Did you run the perfect campaign on Cakewalk? Will we ever know?</p>`;
-    }	
-    if(quickstats[0] < 269 && e.player_answers.includes(21198)) {
-        setImage("https://akm-img-a-in.tosshub.com/indiatoday/images/story/202410/the-tesla-ceo-was-spotted-wearing-a-black-maga-cap-along-with-a-gothic-looking-font-and-a-black-t--285945708-16x9_0.jpg?VersionId=9M..0a9LCG1Iia_hFfUvNEnsx_8O_Bw3");
-        return `<h3>Wrap your head around this.</h3><p>President Elon Musk. What the fuck? And how did this happen? Did you steal the election, or did people love you so much? Nobody knows, but not only is this the biggest upset in American presidential history, but also, this will likely go down as the craziest four years in the history of our country if in fact your election victory does get certified. <p>To you. Yes. You. The player. Behind the screen. Tell me how you were able to win as Elon Musk. Did you use Bigshot? Did you run the perfect campaign on Cakewalk? Will we ever know?</p>`;
-    }
-    if(quickstats[0] < 269 && e.player_answers.includes(21199)) {
-        setImage("https://akm-img-a-in.tosshub.com/indiatoday/images/story/202410/the-tesla-ceo-was-spotted-wearing-a-black-maga-cap-along-with-a-gothic-looking-font-and-a-black-t--285945708-16x9_0.jpg?VersionId=9M..0a9LCG1Iia_hFfUvNEnsx_8O_Bw3");
-        return `<h3>Wrap your head around this.</h3><p>President Elon Musk. What the fuck? And how did this happen? Did you steal the election, or did people love you so much? Nobody knows, but not only is this the biggest upset in American presidential history, but also, this will likely go down as the craziest four years in the history of our country if in fact your election victory does get certified. <p>To you. Yes. You. The player. Behind the screen. Tell me how you were able to win as Elon Musk. Did you use Bigshot? Did you run the perfect campaign on Cakewalk? Will we ever know?</p>`;
-    }	
-    if(quickstats[0] < 269 && e.player_answers.includes(21200)) {
-        setImage("https://akm-img-a-in.tosshub.com/indiatoday/images/story/202410/the-tesla-ceo-was-spotted-wearing-a-black-maga-cap-along-with-a-gothic-looking-font-and-a-black-t--285945708-16x9_0.jpg?VersionId=9M..0a9LCG1Iia_hFfUvNEnsx_8O_Bw3");
-        return `<h3>Wrap your head around this.</h3><p>President Elon Musk. What the fuck? And how did this happen? Did you steal the election, or did people love you so much? Nobody knows, but not only is this the biggest upset in American presidential history, but also, this will likely go down as the craziest four years in the history of our country if in fact your election victory does get certified. <p>To you. Yes. You. The player. Behind the screen. Tell me how you were able to win as Elon Musk. Did you use Bigshot? Did you run the perfect campaign on Cakewalk? Will we ever know?</p>`;
-    }	
-    if(quickstats[0] < 269 && e.player_answers.includes(21197)) {
-        setImage("https://akm-img-a-in.tosshub.com/indiatoday/images/story/202410/the-tesla-ceo-was-spotted-wearing-a-black-maga-cap-along-with-a-gothic-looking-font-and-a-black-t--285945708-16x9_0.jpg?VersionId=9M..0a9LCG1Iia_hFfUvNEnsx_8O_Bw3");
-        return `<h3>Wrap your head around this.</h3><p>President Elon Musk. What the fuck? And how did this happen? Did you steal the election, or did people love you so much? Nobody knows, but not only is this the biggest upset in American presidential history, but also, this will likely go down as the craziest four years in the history of our country if in fact your election victory does get certified. <p>To you. Yes. You. The player. Behind the screen. Tell me how you were able to win as Elon Musk. Did you use Bigshot? Did you run the perfect campaign on Cakewalk? Will we ever know?</p>`;
-    }
-    if(quickstats[0] > 269 && e.player_answers.includes(4420)) {
-        setImage("https://akm-img-a-in.tosshub.com/indiatoday/images/story/202410/the-tesla-ceo-was-spotted-wearing-a-black-maga-cap-along-with-a-gothic-looking-font-and-a-black-t--285945708-16x9_0.jpg?VersionId=9M..0a9LCG1Iia_hFfUvNEnsx_8O_Bw3");
-        return `<h3>Wrap your head around this.</h3><p>President Elon Musk. What the fuck? And how did this happen? Did you steal the election, or did people love you so much? Nobody knows, but not only is this the biggest upset in American presidential history, but also, this will likely go down as the craziest four years in the history of our country if in fact your election victory does get certified. <p>To you. Yes. You. The player. Behind the screen. Tell me how you were able to win as Elon Musk. Did you use Bigshot? Did you run the perfect campaign on Cakewalk? Will we ever know?</p>`;
-    }	
-    if(quickstats[0] < 269 && e.player_answers.includes(4420)) {
-        setImage("https://akm-img-a-in.tosshub.com/indiatoday/images/story/202410/the-tesla-ceo-was-spotted-wearing-a-black-maga-cap-along-with-a-gothic-looking-font-and-a-black-t--285945708-16x9_0.jpg?VersionId=9M..0a9LCG1Iia_hFfUvNEnsx_8O_Bw3");
-        return `<h3>Wrap your head around this.</h3><p>President Elon Musk. What the fuck? And how did this happen? Did you steal the election, or did people love you so much? Nobody knows, but not only is this the biggest upset in American presidential history, but also, this will likely go down as the craziest four years in the history of our country if in fact your election victory does get certified. <p>To you. Yes. You. The player. Behind the screen. Tell me how you were able to win as Elon Musk. Did you use Bigshot? Did you run the perfect campaign on Cakewalk? Will we ever know?</p>`;
-    }
-    if(quickstats[0] > 269 && e.player_answers.includes(21514)) {
-        setImage("https://akm-img-a-in.tosshub.com/indiatoday/images/story/202410/the-tesla-ceo-was-spotted-wearing-a-black-maga-cap-along-with-a-gothic-looking-font-and-a-black-t--285945708-16x9_0.jpg?VersionId=9M..0a9LCG1Iia_hFfUvNEnsx_8O_Bw3");
-        return `<h3>Wrap your head around this.</h3><p>President Elon Musk. What the fuck? And how did this happen? Did you steal the election, or did people love you so much? Nobody knows, but not only is this the biggest upset in American presidential history, but also, this will likely go down as the craziest four years in the history of our country if in fact your election victory does get certified. <p>To you. Yes. You. The player. Behind the screen. Tell me how you were able to win as Elon Musk. Did you use Bigshot? Did you run the perfect campaign on Cakewalk? Will we ever know?</p>`;
-    }	
-    if(quickstats[0] < 269 && e.player_answers.includes(21514)) {
-        setImage("https://akm-img-a-in.tosshub.com/indiatoday/images/story/202410/the-tesla-ceo-was-spotted-wearing-a-black-maga-cap-along-with-a-gothic-looking-font-and-a-black-t--285945708-16x9_0.jpg?VersionId=9M..0a9LCG1Iia_hFfUvNEnsx_8O_Bw3");
-        return `<h3>Wrap your head around this.</h3><p>President Elon Musk. What the fuck? And how did this happen? Did you steal the election, or did people love you so much? Nobody knows, but not only is this the biggest upset in American presidential history, but also, this will likely go down as the craziest four years in the history of our country if in fact your election victory does get certified. <p>To you. Yes. You. The player. Behind the screen. Tell me how you were able to win as Elon Musk. Did you use Bigshot? Did you run the perfect campaign on Cakewalk? Will we ever know?</p>`;
-    }		
+        return `    <div class="ending-slide">
+        <h3 class="endingtitle">GOV. JERRY BROWN (D-CA) ELECTED 42ND PRESIDENT</h3>
+        <p>When Martin felt he could not be the nominee due to Brother Jesse’s past failures, he knew who could take his place. Governor Jerry Brown of California received the strong support from Mr. King, and Martin’s hard work delivered Brown the Democratic nomination. As a nod to all of his hard work, he was awarded the vice presidential spot on the 1992 Democratic ticket. </p>
+        <p>This winning campaign has been the most liberal Democratic campaign since George McGovern’s severely ill-fated campaign in 1992, but this campaign had a magic to it that McGovern and Mondale did not have. A star-studded Atlanta Congressman and a Civil Rights leader who was willing to help take on the establishment and fight for those who have been abandoned for too long. Martin’s insight will almost certainly be instrumental throughout the next four years as Governor Moonbeam becomes President Moonbeam.</p>
+        <p>The Republicans tried to put a lot of dirt onto this campaign, but they failed miserably. Some may even argue the death of Lee Atwater allowed for Jerry Brown to become the 42nd President of the United States and for Brother Martin to become the highest-ranking African-American official in history.</p>
+        <p>Liberalism has finally won in America, and that will show over the next four years, even though the conservative sentiment among Southern Democrats will be an obstacle that Gerald and Martin must overcome. If successful, re-election in 1996 should be quite easy. Martin might be too old to run in 2000, but being this close to the mountaintop of the American government should make him quite proud.</p>		
+    </div>
+    `;    }
+   else if(quickstats[0] > 269 && e.player_answers.includes(21514)) {
+		swapEndingPlaylist(8);		
+        setImage("https://i.postimg.cc/0jJNNwtJ/Screenshot-2026-03-18-212043.png");
+        return `    <div class="ending-slide">
+        <h3 class="endingtitle">THE PRESIDENT'S RADIO ADDRESS</h3>
+		<h2 class="endingdate">FEBRUARY 19, 2000
+        <p>Good morning. On February 12, 1926, as a tribute to the birthdays of Frederick Douglass and Abraham Lincoln, the noted African-American scholar and historian Carter G. Woodson initiated Black History Week, the forerunner of what has become Black History Month.</p>
+        <p>This observance is important because many of the stereotypes and much of the distrust between the races are the result of historical inaccuracies or omissions that have persisted over too many years. The truth is, whether we're talking about the heroic freedom-fighting efforts of the Black Moses, Harriet Tubman, or the landmark legal accomplishments of Thurgood Marshall, we're really talking about vital aspects of all Americans' history. But too many Americans are not aware of the extraordinary contributions African-Americans have made to the life of our Nation, and that's a tragedy.</p>
+        <p>Together, we have come a mighty long way. Today, we're in the midst of the longest and strongest economic expansion in our Nation's history: nearly 21 million new jobs; unemployment at 4 percent, the lowest rate in 30 years; incomes up across all groups of American workers; and among African-Americans, poverty and unemployment rates at the lowest levels ever recorded. Crime, which has been especially devastating to many African-American neighborhoods, is now the lowest it's been in 25 years. We've cut taxes for millions of hard-pressed working families and cut the welfare rolls in half while moving millions of people—almost 7 million of them—from welfare to work.</p>
+        <p>But still there are wide and disturbing disparities in health, income, perceptions of justice, and educational achievements that break down along the color line. It is clear we must do more to close these gaps and give all our citizens a chance both to contribute to and share in our growing prosperity and promise. That is one of the reasons I created a One America Office in the White House last year, and why the Vice President and I have worked so hard to bring loans and new investments to distressed communities through empowerment zones, the Community Reinvestment Act, community development banks, and now through our new markets initiative.</p>	
+		<p>Especially, we need to make sure our young people are prepared for this new economy, by helping every child enter school ready to learn and graduate ready to succeed. More Americans—and more African-Americans—are going on to college than ever before. But we must give every child that chance, and we must help their families shoulder the burden.</p>	
+		<p>Today I'm pleased to announce that the Department of Labor is awarding $223 million in youth opportunity grants to bring education and job training to up to 44,000 young people in 36 communities, from Watts to the Pine Ridge Indian Reservation. This will provide a lifeline of opportunity to any young person willing to work for a better future. And it's a key component of our broader youth opportunity agenda.</p>
+		<p>We've requested an increase of $1.3 billion this year to bring an array of education and training assistance to at-risk youth, from the GEAR UP and TRIO mentoring and support programs to get more kids on the right track to success, to an increase in Pell grants to help more of them afford the cost of college.</p>	
+		<p>These youth opportunity grants will draw on the experience and dedication of people like Jacquelene Sharp Massey of Baltimore's Career Academy. For 20 years, Jacquelene has made history of her own by helping literally hundreds of young people to turn their lives around, people like 20-year-old Michael Dupree, who with the help of the Academy has gone from being a high school dropout to a biotechnology lab assistant and a member of Baltimore's Youth Council.</p>	
+		<p>Sixty years ago today, the Army Air Corps activated its second squadron of African-American fighter pilots in Tuskegee, Alabama. That squadron and three others fought fascism in the air and racism on the ground. As Tuskegee Airmen, the sky was their limit. And they helped to lead the way to this modern digital age in which there are virtually no limits to how high our people can fly. Their story is a precious contribution to our common history and very much worth remembering this Black History Month.</p>	
+		<p>Their belief in an America that would respect their courage and honor their service is the foundation of the America we all want to live in, one where every person is treated with dignity and respect and all our children have the chance to live their dreams.</p>	
+		<p>That's the America we should work for in the new millennium.</p>	
+		<p>Thanks for listening.</p>				
+    </div>
+    `;    }	
+   else if(quickstats[0] < 269 && e.player_answers.includes(21514)) {
+		swapEndingPlaylist(9);		
+        setImage("https://i.postimg.cc/TwMgGTYT/Screenshot-2026-03-18-212159.png");
+        return `    <div class="ending-slide">
+        <h3 class="endingtitle">THE GREATER EVIL HAS WON IN AMERICA</h3>
+        <p>The Democratic primary was quite messy this year between you and Bill Clinton, and the Clinton-Gore ticket certainly felt the effects in the general. In a not-so-surprising upset, President Bush has been re-elected for four more years, which would have been the expected outcome just a year or two ago.</p>
+        <p>Most thought that Ross Perot’s vote-splitting would’ve put Clinton in the White House or even deadlocked the Electoral College, and that twelve years of failed trickle-down economics would put the Democrats back in power. But no, President Bush survived. The people just appreciated his leadership during the Gulf War and the fall of the Soviet Union. Plus people bought into Bush’s attack ads like they did for Dukakis four years ago. </p>
+        <p>As for you Martin, you have had quite a career. You are by far the most influential African-American politician in our nation’s history, and now you are out of elected office for the first time in twenty years. After sixteen years of Republican rule, 1996 could be a slam-dunk for any Democrat who seeks the presidency. Mario Cuomo, Al Gore, and Ann Richards are the favorites for the Democrats right now, but you may certainly become one if you decide to try for the mountaintop again. </p>
+        <p>The people of Georgia’s 5th Congressional District have someone just as influential as you representing them: The Boy from Troy, your Brother John Lewis. A fellow Civil Rights leader like you and a mentee of yours. You will definitely be providing him a lot of support and mentorship as he heads to Congress to continue your message and fight Reaganism for its final four years. </p>		
+   </div>
+    `;    }		
 }
 // End of Game Achievements
 	
