@@ -515,63 +515,6 @@ var changeGameDisp = (hide) => {
   document.getElementsByClassName("inner_window_w_desc")[0].style.display = disp
 };
 
-e.creditsPage = () => {
-  credits_html = `
-    <h3>Coding</h3>
-    <p>Environmental_Cap104</p>
-    <p>.theanswerisme</p>
-    <h3>Writing</h3>
-    <p>Environmental_Cap104</p>
-    <p>UlricMorningstarG</p>
-    <h3>Music Credit</h3>
-    <p>Marvin Gaye, Tammi Terrell - Ain’t No Mountain High Enough</p>
-    <p>Aretha Franklin - Respect</p>
-    <p>Whitney Houston - I Will Always Love You</p>
-    <p>Bob Marley - One Love</p>
-    <p>Common, John Legend - Glory</p><br><br>
-  `
-  changeGameDisp(true);
-  var spacer = document.createElement("amongusspacerthisisntarealelement");
-  spacer.innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-
-  var innerDesc = document.getElementsByClassName("inner_window_w_desc")[0];
-  if (innerDesc) {
-    var target = innerDesc.children[1] || innerDesc;
-    target.appendChild(spacer);
-  }
-
-  var menuHeader = document.createElement("div");
-  menuHeader.classList.add("inner_window_front");
-  menuHeader.innerHTML = `<h1 style='font-family: "Times New Roman";'><font color='#0496f7'>Credits</font></h1>`;
-  menuHeader.id = "SOTUheader";
-  menuHeader.style = "height: 50px;background-color:#2d2d2d";
-  var newMenu = document.createElement("div");
-  newMenu.classList.add("inner_window_front");
-  newMenu.id = "SOTUmenu";
-  newMenu.style = `height:260px;background-color:#2d2d2d;color:white;overflow-y: scroll;`;
-
-  newMenu.innerHTML = credits_html;
-  let z = document.getElementById("game_window");
-  var backButton = document.createElement("button");
-  backButton.style =
-    "position: relative; bottom: -13px; left: -380px; width: 150px; height: 80px;font-size:40px;padding-top:5px;padding-left:8px";
-  backButton.id = "backSOTUBtn";
-  backButton.innerHTML = `<b>BACK</b>`;
-  backButton.onclick = function () {
-    document.getElementById("SOTUheader").remove();
-    document.getElementById("SOTUmenu").remove();
-    document.getElementById("backSOTUBtn").remove();
-    changeGameDisp(false);
-  };
-  z.appendChild(menuHeader);
-  z.appendChild(newMenu);
-  z.appendChild(backButton);
-
-}
-
-e.credits = "<button onclick='e.creditsPage()'>Credits</button>"
-
-
 // Initialise custom music
 
 // Hide default player elements
