@@ -24309,34 +24309,6 @@ e.vpSwitcher = () => {
         console.log(`WVwin point assigned: MLK won West Virginia!`);
       }
 }
-// End of Game Achievements
-	
-	const playerEV = quickstats[0];
-	const playerPVPercent = quickstats[1];
-	if (playerPVPercent >= 50 && playerEV >=270 && e.running_mate_last_name === "Brown") 
-			ctsAchievement("Fight the Power");
-	if (playerEV >=270 && e.player_answers.includes(15477))
-			ctsAchievement("Black Power");
-	if (playerEV >=270 && e.player_answers.includes(4519))
-			ctsAchievement("Rainbow Coalition");	
-	if (playerEV >=270 && e.player_answers.includes(4439))
-			ctsAchievement("Red Scare");		
-	if (playerEV >=270 && e.player_answers.includes(4426))
-			ctsAchievement("J. Edgar WHOover?");
-	if (playerEV >=365 && e.running_mate_last_name === "Biden")
-			ctsAchievement("Yes We Can");		
-	if (ARwin === 1 && MOwin === 1 && TNwin === 1 && KYwin === 1 && LAwin === 1 && WVwin === 1 && e.running_mate_last_name === "Gore")
-			ctsAchievement("A Confident Truth");		
-	if (SDwin === 1 && e.running_mate_last_name === "Harkin")
-			ctsAchievement("Farmer-Labor");	
-	if (TXwin === 1 && e.running_mate_last_name === "Richards")
-			ctsAchievement("Where's the Beef?");	
-	if (KYwin === 1 && e.running_mate_last_name === "Rockefeller")
-			ctsAchievement("Country Roads");
-	if (WVwin === 1 && e.running_mate_last_name === "Tsongas" && e.player_answers.includes(4450))
-			ctsAchievement("It's the Economy, Stupid");	
-	if (e.running_mate_last_name === "Blanchard" && e.player_answers.includes(21046))
-			ctsAchievement("What Corruption?");	
 }
 			
 // This handles all the nominees in the "Opposition File"
@@ -24401,12 +24373,71 @@ function lockInNominee(selectedId) {
     }
 }
 
+
+function handleMutations(mutationsList, observer) {
+    if (observerRunning) return;
+    observerRunning = true;
+
+    addHeadquarterButton();
+    addOpButton();
+
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+    observerRunning = false;
+}
+
+
+let observerRunning = false;
+
+var element = document.getElementById('controlElement');
+if (!element) {
+    let singleObserver = new MutationObserver(handleMutations);
+    singleObserver.observe(document.documentElement, { childList: true, subtree: true });
+    var controlElement = document.createElement('div');
+    controlElement.style.display = 'none';
+    controlElement.id = 'controlElement';
+    document.body.appendChild(controlElement);
+}
 // Endings
 campaignTrail_temp.multiple_endings = true;
 endingPicker = (out, totv, aa, quickstats) => {
 	
-				
-		
+	// End of Game Achievements
+	const playerEV = quickstats[0];
+	const playerPVPercent = quickstats[1];
+	
+	const stateAbbrs = new Map(e.states_json.map(s => [s.pk, s.fields.abbr]));
+    const stateWinners = new Map(
+        e.final_state_results.map(s => [stateAbbrs.get(s.state), s.result[0].candidate])
+    );
+    const stcount = (stateList, cid) => stateList.every(stAbbr => stateWinners.get(stAbbr) === cid);
+	const candId = 153; // the player PK
+	
+	if (playerPVPercent >= 50 && playerEV >= 270 && e.running_mate_last_name === "Brown") 
+            ctsAchievement("Fight the Power");    
+    if (playerEV >= 270 && e.player_answers.some(a => a == 15477))
+            ctsAchievement("Black Power");    
+    if (playerEV >= 270 && e.player_answers.some(a => a == 4519))
+            ctsAchievement("Rainbow Coalition");    
+    if (playerEV >= 270 && e.player_answers.some(a => a == 4439))
+            ctsAchievement("Red Scare");    
+    if (playerEV >= 270 && e.player_answers.some(a => a == 4426))
+            ctsAchievement("J. Edgar WHOover?");    
+    if (playerEV >= 365 && e.running_mate_last_name === "Biden")
+            ctsAchievement("Yes We Can");
+	
+	if (stcount(['AR', 'MO', 'TN', 'KY', 'LA', 'WV'], candId) && e.running_mate_last_name === "Gore")
+            ctsAchievement("A Confident Truth");		
+    if (stateWinners.get('SD') === candId && e.running_mate_last_name === "Harkin")
+            ctsAchievement("Farmer-Labor");	
+    if (stateWinners.get('TX') === candId && e.running_mate_last_name === "Richards")
+            ctsAchievement("Where's the Beef?");	
+    if (stateWinners.get('KY') === candId && e.running_mate_last_name === "Rockefeller")
+            ctsAchievement("Country Roads");
+    if (stateWinners.get('WV') === candId && e.running_mate_last_name === "Tsongas" && e.player_answers.includes(4450))	
+			ctsAchievement("It's the Economy, Stupid");	
+	if (e.running_mate_last_name === "Blanchard" && e.player_answers.includes(21046))
+			ctsAchievement("What Corruption?");
+			
     function swapEndingPlaylist(targetPlaylistIndex) {
     try {
     if (campaignTrail_temp._endingPlaylistSwapped1996) return;
