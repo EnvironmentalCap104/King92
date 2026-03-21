@@ -20552,7 +20552,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 4434,
             "candidate": 153,
-            "answer_feedback": "As you spoke of the factuality of homosexual relationships both across history and even among Christians, people were dazed and confused. You gave them such a raw wake up call, even having factuality behind you from the brotherhood of nights to the links of apostles that people are hounding you for lies, a conspiracy. It will fade; lies don't survive truth eternally."
+            "answer_feedback": "As you spoke of the facts of homosexual relationships both across history and even among Christians, people were dazed and confused. You gave them a raw wake up call, even having factuality behind you from the brotherhood of nights to the links of apostles that people are hounding you for lies. It will fade; lies don't survive truth eternally."
         }
     },
     {
@@ -20561,7 +20561,7 @@ campaignTrail_temp.answer_feedback_json = [
         "fields": {
             "answer": 4435,
             "candidate": 153,
-            "answer_feedback": "Your base is incensed. For many among you, it's the new battle for civil rights here today. However, the right has found their new crusade to fight. The cries you hear that a man should always and ever remain wed to a woman reminds you of those against miscegenation. The old world is crying its dying yelps. They may not break tonight, but the beast is bleeding."
+            "answer_feedback": "Your base is incensed. For many, it's the new battle for civil rights here today. However, the right has found a new crusade to fight. The cries you hear that a man should always marry a woman reminds you of those against miscegenation. The old world is crying its dying yelps. They may not break tonight, but the beast is bleeding."
         }
     },
     {
@@ -24400,7 +24400,34 @@ if (!element) {
 // Endings
 campaignTrail_temp.multiple_endings = true;
 endingPicker = (out, totv, aa, quickstats) => {
-			
+// End of Game Achievements
+	
+	const playerEV = quickstats[0];
+	const playerPVPercent = quickstats[1];
+	if (playerPVPercent >= 50 && playerEV >=270 && e.running_mate_last_name === "Brown") 
+			ctsAchievement("Fight the Power");
+	if (playerEV >=270 && e.player_answers.includes(15477))
+			ctsAchievement("Black Power");
+	if (playerEV >=270 && e.player_answers.includes(4519))
+			ctsAchievement("Rainbow Coalition");	
+	if (playerEV >=270 && e.player_answers.includes(4439))
+			ctsAchievement("Red Scare");		
+	if (playerEV >=270 && e.player_answers.includes(4426))
+			ctsAchievement("J. Edgar WHOover?");
+	if (playerEV >=365 && e.running_mate_last_name === "Biden")
+			ctsAchievement("Yes We Can");		
+	if (ARwin === 1 && MOwin === 1 && TNwin === 1 && KYwin === 1 && LAwin === 1 && WVwin === 1 && e.running_mate_last_name === "Gore")
+			ctsAchievement("A Confident Truth");		
+	if (SDwin === 1 && e.running_mate_last_name === "Harkin")
+			ctsAchievement("Farmer-Labor");	
+	if (TXwin === 1 && e.running_mate_last_name === "Richards")
+			ctsAchievement("Where's the Beef?");	
+	if (KYwin === 1 && e.running_mate_last_name === "Rockefeller")
+			ctsAchievement("Country Roads");
+	if (WVwin === 1 && e.running_mate_last_name === "Tsongas" && e.player_answers.includes(4450))
+			ctsAchievement("It's the Economy, Stupid");	
+	if (e.running_mate_last_name === "Blanchard" && e.player_answers.includes(21046))
+			ctsAchievement("What Corruption?");				
     function swapEndingPlaylist(targetPlaylistIndex) {
     try {
     if (campaignTrail_temp._endingPlaylistSwapped1996) return;
@@ -24807,34 +24834,7 @@ endingPicker = (out, totv, aa, quickstats) => {
                     `;
             }
         }
-// End of Game Achievements
-	
-	const playerEV = quickstats[0];
-	const playerPVPercent = quickstats[1];
-	if (playerPVPercent >= 50 && playerEV >=270 && e.running_mate_last_name === "Brown") 
-			ctsAchievement("Fight the Power");
-	if (playerEV >=270 && e.player_answers.includes(15477))
-			ctsAchievement("Black Power");
-	if (playerEV >=270 && e.player_answers.includes(4519))
-			ctsAchievement("Rainbow Coalition");	
-	if (playerEV >=270 && e.player_answers.includes(4439))
-			ctsAchievement("Red Scare");		
-	if (playerEV >=270 && e.player_answers.includes(4426))
-			ctsAchievement("J. Edgar WHOover?");
-	if (playerEV >=365 && e.running_mate_last_name === "Biden")
-			ctsAchievement("Yes We Can");		
-	if (ARwin === 1 && MOwin === 1 && TNwin === 1 && KYwin === 1 && LAwin === 1 && WVwin === 1 && e.running_mate_last_name === "Gore")
-			ctsAchievement("A Confident Truth");		
-	if (SDwin === 1 && e.running_mate_last_name === "Harkin")
-			ctsAchievement("Farmer-Labor");	
-	if (TXwin === 1 && e.running_mate_last_name === "Richards")
-			ctsAchievement("Where's the Beef?");	
-	if (KYwin === 1 && e.running_mate_last_name === "Rockefeller")
-			ctsAchievement("Country Roads");
-	if (WVwin === 1 && e.running_mate_last_name === "Tsongas" && e.player_answers.includes(4450))
-			ctsAchievement("It's the Economy, Stupid");	
-	if (e.running_mate_last_name === "Blanchard" && e.player_answers.includes(21046))
-			ctsAchievement("What Corruption?");				
+			
     }		    			    					
 }
 			
