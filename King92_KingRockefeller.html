@@ -23609,42 +23609,39 @@ cyoAdventure = function (a) {
     // VP Tracker
     // Candidate compatibility scoring happens below;
 
-    if (ans == 4413) {
+    if (ans === 4413) {
         biden += 3;
     }
-    if (ans == 4415) {
+    if (ans === 4415) {
         harkin += 3;
     }
-    if (ans == 4449) {
+    if (ans === 4449) {
         rockefeller += 3;
     }
-    if (ans == 4459) {
+    if (ans === 4459) {
         brown += 2;
         tsongas += 2;
     }
-    if (ans == 4501) {
+    if (ans === 4501) {
         brown += 1;
     }
-    if (ans == 4502) {
+    if (ans === 4502) {
         richards += 3;
         tsongas += 1;
     }
-    if (ans == 4515 || ans == 4516 || ans == 4517) {
+    if (ans === 4515 || ans === 4516 || ans === 4517) {
         gore += 3;
         blanchard += 3;
     }
 
 	// Primary Variables
-
-    if (ans == 4440 || ans == 4446 || ans == 4464 || ans == 4481 || ans == 4524 || ans == 21502 || ans == 21503 || ans == 21507 || ans == 21510 || ans == 21511 || ans == 21512 || ans == 21519 || ans == 21523 || ans == 21524) {
+	if ([4440, 4446, 4464, 4481, 4524, 21502, 21503, 21507, 21510, 21511, 21512, 21519, 21523, 21524].includes(ans)) {
         primary += 1;
-        console.log("Primary + 1")
-        console.log("Primary:", primary)
+        console.log("Primary + 1\nPrimary:", primary);
     }
-    if (ans == 4442 || ans == 15387 || ans == 21506 || ans == 21526) {
+    if ([4442, 15387, 21506, 21526].includes(ans)) {
         primary += 2;
-        console.log("Primary + 2")
-        console.log("Primary:", primary)  
+        console.log("Primary + 2\nPrimary:", primary);
     }	
 
 	// Achievement Variables
@@ -23652,21 +23649,21 @@ cyoAdventure = function (a) {
     // NAFTA Variables
     // NOTE: This question happens BEFORE the running mate is chosen.
     // So we store the NAFTA stance now, and apply VP-dependent tunneling once a running mate is locked in.
-    if (ans == 4501 || ans == 4502) {
+    if (ans === 4501 || ans === 4502) {
         campaignTrail_temp.nafta_choice = ans;
     }
 
     // War Hawk
-    if (ans == 4458 || ans == 4459) {
+    if (ans === 4458 || ans === 4459) {
         campaignTrail_temp.iraq_choice = ans;
     }
 
 	// King doesn't run for higher office
-	if (ans == 4419) {
+	if (ans === 4419) {
         campaignTrail_temp.questions_json[6] = tunnel(20058)
 		}
     // The actual setting of the running mates
-    if ((ans == 4515 || ans == 4516 || ans == 4517 || ans == 21515 || ans == 21516 || ans == 21517) && rockefeller >= 3) {
+    if ((ans === 4515 || ans === 4516 || ans === 4517 || ans === 21515 || ans === 21516 || ans === 21517) && rockefeller >= 3) {
         console.log("Rockefeller, 159");
         lockInNominee('rockefeller');
         campaignTrail_temp.running_mate_json.push({
@@ -23680,7 +23677,7 @@ cyoAdventure = function (a) {
         )
     }
 
-    if ((ans == 4515 || ans == 4516 || ans == 4517 || ans == 21515 || ans == 21516 || ans == 21517) && richards >= 3) {
+    if ((ans === 4515 || ans === 4516 || ans === 4517 || ans === 21515 || ans === 21516 || ans === 21517) && richards >= 3) {
         console.log("Richards, 160");
         lockInNominee('richards');
         campaignTrail_temp.running_mate_json.push({
@@ -23694,7 +23691,7 @@ cyoAdventure = function (a) {
         )
     }
 
-    if ((ans == 4515 || ans == 4516 || ans == 4517 || ans == 21515 || ans == 21516 || ans == 21517) && gore >= 3) {
+    if ((ans === 4515 || ans === 4516 || ans === 4517 || ans === 21515 || ans === 21516 || ans === 21517) && gore >= 3) {
         console.log("Gore, 161");
         lockInNominee('gore');
         campaignTrail_temp.running_mate_json.push({
@@ -23708,7 +23705,7 @@ cyoAdventure = function (a) {
         )
     }
 
-    if ((ans == 4515 || ans == 4516 || ans == 4517 || ans == 21515 || ans == 21516 || ans == 21517) && blanchard >= 3) {
+    if ((ans === 4515 || ans === 4516 || ans === 4517 || ans === 21515 || ans === 21516 || ans === 21517) && blanchard >= 3) {
         console.log("Blanchard, 50003");
         lockInNominee('blanchard');
         campaignTrail_temp.running_mate_json.push({
@@ -23722,7 +23719,7 @@ cyoAdventure = function (a) {
         )
     }
 
-    if ((ans == 4515 || ans == 4516 || ans == 4517 || ans == 21515 || ans == 21516 || ans == 21517) && harkin >= 3) {
+    if ((ans === 4515 || ans === 4516 || ans === 4517 || ans === 21515 || ans === 21516 || ans === 21517) && harkin >= 3) {
         console.log("Harkin, 162");
         lockInNominee('harkin');
         campaignTrail_temp.running_mate_json.push({
@@ -23736,7 +23733,7 @@ cyoAdventure = function (a) {
         )
     }
 
-    if ((ans == 4515 || ans == 4516 || ans == 4517 || ans == 21515 || ans == 21516 || ans == 21517) && biden >= 3) {
+    if ((ans === 4515 || ans === 4516 || ans === 4517 || ans === 21515 || ans === 21516 || ans === 21517) && biden >= 3) {
         console.log("Biden, 50000");
         lockInNominee('biden');
         campaignTrail_temp.running_mate_json.push({
@@ -23750,7 +23747,7 @@ cyoAdventure = function (a) {
         )
     }
 
-    if ((ans == 4515 || ans == 4516 || ans == 4517 || ans == 21515 || ans == 21516 || ans == 21517) && tsongas >= 3) {
+    if ((ans === 4515 || ans === 4516 || ans === 4517 || ans === 21515 || ans === 21516 || ans === 21517) && tsongas >= 3) {
         console.log("Tsongas, 50001");
         lockInNominee('tsongas');
         campaignTrail_temp.running_mate_json.push({
@@ -23764,7 +23761,7 @@ cyoAdventure = function (a) {
         )
     }
 
-    if ((ans == 4515 || ans == 4516 || ans == 4517 || ans == 21515 || ans == 21516 || ans == 21517) && brown >= 3) {
+    if ((ans === 4515 || ans === 4516 || ans === 4517 || ans === 21515 || ans === 21516 || ans === 21517) && brown >= 3) {
         console.log("Brown, 50002");
         lockInNominee('brown');
         campaignTrail_temp.running_mate_json.push({
@@ -23785,7 +23782,7 @@ cyoAdventure = function (a) {
 
     // King runs for Senate
 
-    if (ans == 4420) {
+    if (ans === 4420) {
         campaignTrail_temp.candidate_json[1]["fields"].first_name = "Bill";
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Clinton";
         campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://upload.wikimedia.org/wikipedia/commons/d/d7/Bill_Clinton_1992.jpg";
@@ -23794,14 +23791,14 @@ cyoAdventure = function (a) {
     }
 		
 	// King doesn't run for higher office
-    if (ans == 21197) {
+    if (ans === 21197) {
         campaignTrail_temp.candidate_json[1]["fields"].first_name = "Douglas";
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Wilder";
         campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://cdn.britannica.com/51/149851-050-CEF0A032/Douglas-Wilder.jpg";
         campaignTrail_temp.question_number = 34;
 		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#cb2929";
     }
-	if (ans == 21198) {
+	if (ans === 21198) {
         campaignTrail_temp.candidate_json[1]["fields"].first_name = "Jerry";
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Brown";
         campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://i.imgur.com/3xgF5C1.jpeg";
@@ -23814,90 +23811,86 @@ cyoAdventure = function (a) {
 	if (e.player_answers.includes(21094) || e.player_answers.includes(21095) || e.player_answers.includes(21096) || e.player_answers.includes(21097)) {
         campaignTrail_temp.candidate_json[2]["fields"].last_name = "Perot";
 	}
-    if (ans == 21199) {
+    if (ans === 21199) {
         campaignTrail_temp.candidate_json[1]["fields"].first_name = "Paul";
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Tsongas";
         campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://i.imgur.com/fCtmChu.jpeg";
         campaignTrail_temp.question_number = 34;
 		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#cb1833";
     }
-    if (ans == 21200) {
+    if (ans === 21200) {
         campaignTrail_temp.candidate_json[1]["fields"].first_name = "Tom";
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Harkin";
         campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://i.imgur.com/fq5gwv3.jpeg";
         campaignTrail_temp.question_number = 34;
 		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#cb1818";
     }		
-    if (ans == 4411 || ans == 4412 || ans == 4413) {
-        e.election_json[0].fields.has_visits = 0
+	if ([4411, 4412, 4413].includes(ans)) {
+        e.election_json[0].fields.has_visits = 0;
     }
-    if (ans == 4515 || ans == 4516 || ans == 4517 || ans == 21515 || ans == 21516 || ans == 21517) {
+    if ([4515, 4516, 4517, 21515, 21516, 21517].includes(ans)) {
         e.election_json[0].fields.has_visits = 1
     }
 
 // Achievements
-	if (ans == 4515 || ans == 4516 || ans == 4517 || ans == 21515 || ans == 21516 || ans == 21517) {
+	if (ans === 4515 || ans === 4516 || ans === 4517 || ans === 21515 || ans === 21516 || ans === 21517) {
         mlkRunning = 1;
 		ctsAchievement("Ain't No Mountain High Enough");
 		}
-	if (ans == 21515 || ans == 21516 || ans == 21517) {
+	if (ans === 21515 || ans === 21516 || ans === 21517) {
 		ctsAchievement("Mandate for Justice");
 		}
-	if (ans == 21514) {
+	if (ans === 21514) {
 		ctsAchievement("Don't Stop");
 		}		
-	if (ans == 4443) {
+	if (ans === 4443) {
 		ctsAchievement("Giant Sucking Sound");
 		}		
-	if (ans == 21094 || ans == 21095 || ans == 21096 || ans == 21097) {
+	if (ans === 21094 || ans === 21095 || ans === 21096 || ans === 21097) {
 		ctsAchievement("United We Stand");
 		}
 // Primary CYOA Tunneling
 
-// Q9
-	if (ans == 4502) {
-        campaignTrail_temp.questions_json[8] = tunnel(20500)
-		}
-	if (ans == 4524) {
-        campaignTrail_temp.questions_json[8] = tunnel(20501)
-		}		
+	// Q9
 	if (e.player_answers.includes(4502) && e.player_answers.includes(4524)) {
-        campaignTrail_temp.questions_json[8] = tunnel(20508)
-		}
+		e.questions_json[8] = tunnel(20508);
+	} else if (ans === 4502) {
+		e.questions_json[8] = tunnel(20500);
+	} else if (ans === 4524) {
+		e.questions_json[8] = tunnel(20501);
+	}
 
-// Q11
-	if (ans == 4458) {
-        campaignTrail_temp.questions_json[10] = tunnel(20502)
-		}
-	if (ans == 4502) {
-        campaignTrail_temp.questions_json[10] = tunnel(20503)
-		}		
+	// Q11
 	if (e.player_answers.includes(4502) && e.player_answers.includes(4458)) {
-        campaignTrail_temp.questions_json[10] = tunnel(20509)
-		}
-// Q12
-	if (ans == 4450 || ans == 4451) {
-        campaignTrail_temp.questions_json[11] = tunnel(20504)
-		}
-	if (ans == 4465 || ans == 15335) {
-        campaignTrail_temp.questions_json[11] = tunnel(20505)
-		}		
+        e.questions_json[10] = tunnel(20509);
+	} else if (ans === 4502) {
+		e.questions_json[10] = tunnel(20503);
+	} else if (ans === 4458) {
+		e.questions_json[10] = tunnel(20502);
+	}
+	
+
+	// Q12
 	if ((e.player_answers.includes(4465) || e.player_answers.includes(15335)) && (e.player_answers.includes(4450) || e.player_answers.includes(4451))) {
-        campaignTrail_temp.questions_json[11] = tunnel(20510)
-		}
+        e.questions_json[11] = tunnel(20510);
+	} else if (ans === 4450 || ans === 4451) {
+        e.questions_json[11] = tunnel(20504);
+	} else if (ans === 4465 || ans === 15335) {
+        e.questions_json[11] = tunnel(20505);
+	}
 		
-// PRIMARIES
+	// PRIMARIES
 	if (primary >= 5) { // Coronation 
-		campaignTrail_temp.questions_json[12] = tunnel(20507)
-	} else if (primary <= 2) { // Loss
-        campaignTrail_temp.questions_json[12] = tunnel(20506)
-    } else {
-        campaignTrail_temp.questions_json[12] = tunnel(754)
-    }
+    campaignTrail_temp.questions_json[12] = tunnel(20507)
+	} else if (primary <= 1) { // Loss
+		campaignTrail_temp.questions_json[12] = tunnel(20506)
+	} else {
+		campaignTrail_temp.questions_json[12] = tunnel(754)
+	}
 
 // Lose the Primary in Q13
 	
-    if (ans == 21514) {
+    if (ans === 21514) {
         campaignTrail_temp.candidate_json[1]["fields"].first_name = "Bill";
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Clinton";
         campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://upload.wikimedia.org/wikipedia/commons/d/d7/Bill_Clinton_1992.jpg";
