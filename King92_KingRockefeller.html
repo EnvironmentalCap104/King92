@@ -24420,6 +24420,7 @@ endingPicker = (out, totv, aa, quickstats) => {
             img = document.getElementsByClassName("person_image")[0];
             if (img != null) {
                 img.src = url;
+                img.width = "200";
                 clearInterval(interval);
             }
         }, 50);
