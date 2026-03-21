@@ -112,7 +112,7 @@ campaignTrail_temp.questions_json = [
         "pk": 754,
         "fields": {
             "priority": 4,
-            "description": "(<i>July 16th, 1992</i>) You've reached it. After the hardest fight of your life, against the jeers, against the still ringing reality of your skin color, you've been nominated as the Democratic candidate for the presidency of the United States of America. You know the real fight is still in front of you, yet you can also see the shards of the shattered glass ceiling.",
+            "description": "Placeholder Convention Question",
             "likelihood": 1
         }
     },
@@ -937,6 +937,15 @@ campaignTrail_temp.questions_json = [
             "likelihood": 1
         }
     },
+    {
+        "model": "campaign_trail.question",
+        "pk": 20511,
+        "fields": {
+            "priority": 4,
+            "description": "(<i>July 16th, 1992</i>) You've reached it. After the hardest fight of your life, against the jeers, against the still ringing reality of your skin color, you've been nominated as the Democratic candidate for the presidency of the United States of America. You know the real fight is still in front of you, yet you can also see the shards of the shattered glass ceiling.",
+            "likelihood": 1
+        }
+    },
 ]
 
 campaignTrail_temp.answers_json = [
@@ -1416,7 +1425,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 4515,
         "fields": {
-            "question": 754,
+            "question": 20511,
             "description": "That house of democracy has pilgrims of many creeds. Some have been driven by this new fear of tomorrow which replaced the fear of the cold war. Yet, each of us standing today know that this future can be made a better place as we break from the past to let a new world be born. A world where all God's children can breathe."
         }
     },
@@ -1424,7 +1433,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 4516,
         "fields": {
-            "question": 754,
+            "question": 20511,
             "description": "What we are driving today is the idea of change. We can see in their face that they fear what they don't know because they can't control it. Today, we've released a force that is going to change America to its foundation, for its inner lies may not be kept silent any more. This November, truth shall ring in the bell of freedom!"
         }
     },
@@ -1432,7 +1441,7 @@ campaignTrail_temp.answers_json = [
         "model": "campaign_trail.answer",
         "pk": 4517,
         "fields": {
-            "question": 754,
+            "question": 20511,
             "description": "America was founded by people that dared to break from the taboo they found in their homeland. From the faith of the pilgrims to those fleeing persecution of dictators, that land was made in a shared hope for all to share a united mark for freedom. Here today, we are driven by the song of freedom that rings in all our throat that we shall chant until the end."
         }
     },
@@ -23885,7 +23894,7 @@ cyoAdventure = function (a) {
 	} else if (primary <= 1) { // Loss
 		campaignTrail_temp.questions_json[12] = tunnel(20506)
 	} else {
-		campaignTrail_temp.questions_json[12] = tunnel(754)
+		campaignTrail_temp.questions_json[12] = tunnel(20511)
 	}
 
 // Lose the Primary in Q13
