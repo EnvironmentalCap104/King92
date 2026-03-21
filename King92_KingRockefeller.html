@@ -24443,7 +24443,7 @@ endingPicker = (out, totv, aa, quickstats) => {
             </div>
             `;    
 		    ctsAchievement("A House Divided Upon Itself");	
-		} else if(quickstats[0] == 0) { // 0 EVs
+		} else if(quickstats[0] == 0 && aa[0].electoral_votes > 269 && aa[0].candidate == 152) { // 0 EVs
             swapEndingPlaylist(1);			
             setImage("https://i.postimg.cc/fLG8d7RH/Screenshot-2026-03-18-211924.png");
             return `    <div class="ending-slide">
@@ -24458,7 +24458,7 @@ endingPicker = (out, totv, aa, quickstats) => {
             </div>
             `;
 		    ctsAchievement("Hard Times");	
-		} else if(quickstats[0] > 0  && quickstats[0] < 113) { // Landslide Loss
+		} else if(quickstats[0] > 0  && quickstats[0] < 113 && aa[0].electoral_votes > 269 && aa[0].candidate == 152) { // Landslide Loss
             swapEndingPlaylist(2);					
             setImage("https://i.postimg.cc/d0k5WNpL/Screenshot-2026-03-18-211938.png");
             return `    <div class="ending-slide">
@@ -24475,7 +24475,7 @@ endingPicker = (out, totv, aa, quickstats) => {
             </div>
             `; 
 		    ctsAchievement("Hard Times");	   
-        } else if(quickstats[0] > 112  && quickstats[0] < 269) { // Loss
+        } else if(quickstats[0] > 112  && quickstats[0] < 269 && aa[0].electoral_votes > 269 && aa[0].candidate == 152) { // Loss
             swapEndingPlaylist(3);			
             setImage("https://i.postimg.cc/wvv8Wt1R/Screenshot-2026-03-18-211953.png");
             return `    <div class="ending-slide">
@@ -24502,7 +24502,7 @@ endingPicker = (out, totv, aa, quickstats) => {
             </div>
             `;
             ctsAchievement("Who am I? Why am I Here?");  
-	    } else if(quickstats[0] > 269 && quickstats[0] < 371) { // Win
+	    } else if(quickstats[0] > 269 && quickstats[0] < 371 && aa[0].electoral_votes > 269 && aa[0].candidate == 153) { // Win
             swapEndingPlaylist(5);		
             setImage("https://i.postimg.cc/26KpgzWQ/Screenshot-2026-03-18-212016.png");
             return `    <div class="ending-slide">
@@ -24617,7 +24617,7 @@ endingPicker = (out, totv, aa, quickstats) => {
             </div>
             `;    
             ctsAchievement("I'm On The Mountaintop");	   
-	    } else if(quickstats[0] > 370 && quickstats[0] < 538) { // Landslide Win
+	    } else if(quickstats[0] > 370 && quickstats[0] < 538 && aa[0].electoral_votes > 269 && aa[0].candidate == 153) { // Landslide Win
 		swapEndingPlaylist(6);		
             setImage("https://i.postimg.cc/zBcm4JhF/Screenshot-2026-03-18-212024.png");
             return `    <div class="ending-slide">
@@ -24629,7 +24629,7 @@ endingPicker = (out, totv, aa, quickstats) => {
             </div>
             `;    
 		    ctsAchievement("I'm On The Mountaintop");	   
-	    } else if(quickstats[0] == 538) { // 538 EVs
+	    } else if(quickstats[0] == 538 && aa[0].electoral_votes > 269 && aa[0].candidate == 153) { // 538 EVs
             swapEndingPlaylist(7);		
             setImage("https://i.postimg.cc/jj9tmjcx/Screenshot-2026-03-18-212033.png");
             return `    <div class="ending-slide">
